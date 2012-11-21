@@ -1,0 +1,4 @@
+name = Ushahidi Map
+description = A node module that retrieves the Ushahidi Map.
+core = 7.x
+package = Noise Monitoring System Custom
