@@ -1,5 +1,0 @@
-Some text.
-
-I have altered some text! :D
-
-I am sick and tired of .git... Fuck you guys start using ssh! -_-"
