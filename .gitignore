@@ -45,3 +45,5 @@ xmlrpc.php
 
 update_rails.sh
 nms_server.git
+
+.DS_Store
