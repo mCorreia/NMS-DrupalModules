@@ -1,2 +1,215 @@
 <?php
 
+  /**
+   * @file
+   * Module for Ushahidi Page module.
+   */
+ 
+ 
+ /**
+  * Implments hook_help().
+  * 
+  * Displays information about the module, depending of the $path.
+  * 
+  * I the first $path, the help text will appear on the simple page
+  * defined in hook_menu below in the region designated for help text.
+  * 
+  * In the second $path, the text will be available throught thhe module
+  * page as a link besides the module or on the admin page in the list of
+  * help topics using the name of the module.
+  */ 
+  function ushahidi_map_help($path, $arg){
+  	switch($path) {
+		case 'ushahidi_map/simple' :
+			//Help text for the simple page registered for this path.
+			return t('This page is a test to import Ushahidi Map iFrame');
+		
+		case 'admin/hrlp#ushahidi_map' :
+			//Help text for the admin section
+			return t('This module generates a page that imports the Ushahidi Map iFrame');
+  	}
+  }
+  
+  /**
+   * Implements hook_permissions()
+   * 
+   * Since the access to this page will be granted vased on special permissions, we need
+   * to define what those permissions are here.
+   * This ensures that they are availabe to enable on the user role administration pages.
+   */
+   function ushahidi_map_permission() {
+   	 return array(
+	   'access simple page' => array(
+	     'title' => t('Access simple Ushahidi Map page'),
+	     'description' => t('Allow users to access simple Ushahidi Map page'),
+	   ),
+	   'access arguments page' => array(
+	     'title' => t('Access Ushahidi Map page with arguments'),
+	     'description' => t('Allow users to acces Ushahidi Map page with arguments'),
+	   ),
+	 );
+   }
+
+  /**
+   * Implements hook_menu()
+   * 
+   * Because hook_menu() registers URL paths for items defined by the function, it is
+   * necessary for modules to create pages. Each item can also specify a callback
+   * function for a given URL. The menu items returned here provide this information
+   * to the menu system.
+   * 
+   * We will define some menus, and their paths will be interpreted as follows:
+   * 
+   *   If the user access http://<website>/?q=ushahidi_map/simple, the menu system
+   *   will first look for a menu item with that path. In this case it will find
+   *   a match, and execute ushahidi_map_simple().
+   * 
+   *   If the user accesses http://<website>/?q=ushahidi_map/arguments/1/2, the menu
+   *   system will first look for ushahidi_map/arguments/1/2. Not finding a match, 
+   *   it will look for ushahidi_map/arguments/1/%. Again not finding a match, it 
+   *   will look for ushahidi_map/arguments/%/2. Yet again not finding a match, it
+   *   will look for ushahidi_map/arguments/%/%. This time it finds a match, and so
+   *   will execute page_example_arguments(1,2). Since the parameters are passed to
+   *   the function after the match, the function can do additional checking or make 
+   *   use of them before executing the callback function.
+   */
+   function ushahidi_map_menu() {
+   	
+	//This is the minimum information you can provide for a menu item. This menu item
+	// will be created in the default menu, usually Navigation.
+	
+	$items['ushahidi_map'] = array (
+	  'title' => 'Ushahidi Map Page',
+	  'page callback' => 'ushahidi_map_description',
+	  'access callback' => TRUE,
+	  'expanded' => TRUE,
+	);
+	
+	$items['ushahidi_map/simple'] = array (
+	  'title' => 'Ushahidi Map Page - no arguments',
+	  'page callback' => 'ushahidi_map_simple',
+	  'access arguments' => array('access simple page'),
+	);
+	
+	/** 
+	 * By using the MENU_CALLBACK type, we can register the callback function for this
+	 * path without the item appearing in the menu; the admin cannot enable the item
+	 * in the menu, either.
+	 * 
+	 * Notice taht 'page arguments' is an array of numbers. These will be replaced with
+	 * the corresponding parts of the menu path. In ths case a 0 would be replaced by
+	 * 'ushahidi_map' and a 2 by 'arguments'. 2 and 3 will be replaced by whatever the
+	 * user provides. These will be passed as arguments to the ushahidi_map_arguments()
+	 * function 
+	 */
+	 $items['ushahidi_map/arguments/%/%'] = array (
+	   'page callback' => 'ushahidi_map_arguments',
+	   'page arguments' => array(2, 3),
+	   'access arguments' => array('access arguments page'),
+	   'type' => MENU_CALLBACK,
+	 );
+	 
+	 return $items;
+   } 
+   
+   /**
+    * Constructs a descriptive page.
+    * 
+    * Our menu maps this function to the path 'ushahidi_map'.
+    */
+  function ushahidi_map_description() {
+  	return array (
+	  '#markup' => t('The ushahidi_map provides two page, "simple" and "arguments".') 
+	  . '<p/>' . 
+	  t('The <a href="@simple_link">simple page</a> just returns a Ushahidi Map iframe 
+	  in a renderable array for display.', 
+	    array(
+	      '@simple_link' => url('ushahidi_map/simple', array('absolute' => TRUE) ) 
+		 ) )
+	  . '<p/>' .
+	  t('The <a href="@arguments_link">arguments page</a> 
+	  takes two arguments and displays them as in @arguments_link',
+	  	array(
+		  '@arguments_link' => url('ushahidi_map/arguments/720/366', array('absolute' => TRUE))
+		  )
+	  )
+	);
+  } 
+  
+  /**
+   * Constructs a simple page.
+   * The simple page callback, mapped to the path 'ushahidi_map/simple'.
+   * 
+   * Page callbacks return a renderable array with the content area of the page.
+   * The theme system will later render and surround the content in the apropriate
+   * blocks, navigation, and styling.
+   * 
+   * If you do not want to use the theme system (for example for outputting an image
+   * or XML), you should print the content yourself and not return anything.
+   */
+   function ushahidi_map_simple() {
+   	
+	$width = 515;
+	$height = 430;
+	
+   	return array(
+   	  '#markup' => '<p>' . 
+   	  				t('<iframe src="@url" frameborder="0" scrolling="no" width="@width px" height="@height px"></iframe>', array (
+					  '@url' => url('http://paginas.fe.up.pt/~nms-g3c/ushahidi/iframemap?showControls=0&showTitle=0&width='.$width.'&height='.$height
+					   , array('absolute' => FALSE)),
+					   '@height' => $height,
+					   '@width' => $width,
+					) )
+   	);
+   } 
+   
+   /**
+    * A more complex page callback that takes arguments
+    * 
+    * This callback is mapped to the path 'ushahidi_map/arguments/%/%'.
+    * 
+    * The % arguments are passed in from the page URL. In our hook_menu in form the page URL.
+    * In the hook_menu implementation we instructed the menu system to extract the last two
+    * parameters of the path and pass them to this funcion as arguments.
+    * 
+    * This function also demonstrates a more complex render array in the returned values.
+    * Instead of just rendering the HTML with a theme('item_list'), the list is left 
+    * unrenderedm and a #theme attached to it so that it can be rendered as late as possible,
+    * giving more parts of the system a chance to change it if necessary.
+    * 
+    * Render Arrays documentation :: @link http://drupal.org/node/930760
+    */
+   function ushahidi_map_arguments($width, $height) {
+   	//Make sure you don't trust the URL to be safe! Always check for exploits!!!
+   	if (!is_numeric($width) || !is_numeric($height)) {
+   		//We will just show a standard "access denied" page in this case.
+   		drupal_access_denied();
+		return; // We actually don't get here. 
+   	}
+	
+	$list[] = t("Width set = @number.", array('@number' => $width));
+	$list[] = t("Height set = @number.", array('@number' => $height));
+	$list[] = t('<iframe src="@url" frameborder="0" scrolling="no" width="@width px" height="@height px"></iframe>', array (
+					  '@url' => url('http://paginas.fe.up.pt/~nms-g3c/ushahidi/iframemap?showControls=0&showTitle=0&width='.$width.'&height='.$height
+					   , array('absolute' => FALSE)),
+					   '@height' => $height,
+					   '@width' => $width,
+				) );
+	
+	$render_array['ushahidi_map_arguments'] = array(
+		'#theme' => 'item_list', //The theme function to apply to #items
+		'#items' => $list,
+		'#title' => t('Argument Information'),
+	);
+	
+	return $render_array;
+   } 
+   
+   /**
+    * Implements hook_page_alter()
+    * 
+    * We use this to alter the overall appearance of this page to set it as a Main Page.
+    */
+   function ushahidi_map_page_alter(&$page) {
+   	 unset($page['footer']['system_powered-by']);
+   }

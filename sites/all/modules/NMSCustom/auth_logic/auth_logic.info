@@ -1,4 +1,0 @@
-name = Authentication Logic
-description = A block module that handles the authentication with the NMS server.
-core = 7.x
-package = Noise Monitoring System Custom
