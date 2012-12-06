@@ -1,0 +1,7 @@
+name = NMS Citizen's Incidents
+description = This module handles the Citizen Incident Report logic for NMS, incluiding REST ressources.
+core = 7.x
+php = 5.2
+package = Noise Monitoring System Custom
+dependencies[] = services
+dependencies[] = date

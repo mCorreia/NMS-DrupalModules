@@ -1,0 +1,168 @@
+<?php
+
+/** 
+ * Implements hook_install() to add test values to the tables
+ * created by hook_schema()
+ */
+ function nms_incidents_install() {
+ 	
+	$incidents1 = db_insert('incidents')
+				->fields(array(
+					'iid' => 1,
+					'lid' => 1,
+					'uid' => 1,
+					'subject' => 'Demasiado Trabalho',
+					'description' => 'Vitima de escravidao por parte dos professores!',
+					'created' => 1353419583,
+					'date' => 1353419583,
+				))
+				->execute();
+
+	$incidents2 = db_insert('incidents')
+				->fields(array(
+					'iid' => 2,
+					'lid' => 2,
+					'uid' => 1,
+					'description' => 'Um exemplo de report no Porto.',
+					'subject' => 'Porto 1',
+					'created' => 1353418200,
+					'date' => 1353418200,
+				))
+				->execute();
+				
+	$incidents3 = db_insert('incidents')
+				->fields(array(
+					'iid' => 3,
+					'lid' => 3,
+					'uid' => 1,
+					'subject' => 'Barulho em casa',
+					'description' => 'Ipsum lorem...',
+					'created' => 1353888000,
+					'date' => 1353888000,
+				))
+				->execute();
+
+	$locations1 = db_insert('locations')
+				->fields(array(
+					'lid' => 1,
+					'name' => 'FACULDADE DE ENGENHARIA DA UNIVERSIDADE DO PORTO, Rua Doutor Plácido da Costa, 4440-452 Oporto, Portugal',
+					'latitude' => 41.178366,
+					'longitude' => -8.594872,
+				))
+				->execute();
+
+	$locations2 = db_insert('locations')
+				->fields(array(
+					'lid' => 2,
+					'name' => 'Porto, Portugal',
+					'latitude' => 41.171882,
+					'longitude' => -8.615536,
+				))
+				->execute();
+
+	$locations3 = db_insert('locations')
+				->fields(array(
+					'lid' => 3,
+					'name' => 'Rua Padre Cruz 10, 4440-452 Oporto, Portugal',
+					'latitude' => 41.153334,
+					'longitude' => -8.624632,
+				))
+				->execute();
+
+ }
+
+/**
+ * Implements hook_schema()
+ */
+function nms_incidents_schema() {
+
+  $schema = array();
+  $schema['incidents'] = array ( 
+	    'description' => t('Stores Information about a Citizens Incident Report.'),
+	    'fields' => array(
+		  	'iid' => array(
+		    	'description' => t('The primary identifier for a incident Report.'),
+		    	'type' => 'serial',
+		    	'unsigned' => TRUE,
+		    	'not null' => TRUE,
+		  	),
+		  	'lid' => array( 
+		  		'description' => t('Links to the Locations Table for location information.'),
+		  		'type' => 'int',
+		  		'unsigned' => TRUE,
+		  		'not null' => TRUE,
+		  		'default' => 0,
+			),
+			'uid' => array(
+				'description' => t('Links to the User that submitted the Incident.'),
+				'type' => 'int',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+				'default' => 0,
+			),
+			'subject' => array(
+				'description' => t('The title of the incident.'),
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+			),
+			'description' => array(
+				'description' => t('Description of the incident.'),
+				'type' => 'text',
+				'size' => 'medium',
+				'not null' => TRUE,
+			),
+			'created' => array(
+				'description' => t('Timestamp of the incident creation.'),
+				'type' => 'int',
+				'size' => 'big',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+				'default' => 0,
+			),
+			'date' => array(
+				'description' => t('Timestamp of the user defined incident ocorrunce. By default it is the same as created.'),
+				'type' => 'int',
+				'size' => 'big',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+				'default' => 0,
+			),
+		),
+		'primary key' => array('iid'),
+	  );
+	  
+  $schema['locations'] = array (
+	  	'description' => t('Stores Information about the Locations where Incidents where submitted.'),
+	  	'fields' => array(
+			'lid' => array(
+				'description' => t('The primary identifier for a location'),
+				'type' => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			),
+			'name' => array(
+				'description' => t('The name of the location, given by Geocoding or by The user input'),
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+			),
+			'latitude' => array(
+				'description' => t('GPS Latitude Coordinate'),
+				'type' => 'float',
+				'size' => 'big',
+				'not null' => TRUE,
+			),
+			'longitude' => array(
+				'description' => t('GPS Longitude Coordinate'),
+				'type' => 'float',
+				'size' => 'big',
+				'not null' => TRUE,
+			),
+		),
+		'primary key' => array('lid'),  
+  );
+  
+  return $schema;
+	 
+}

@@ -1,0 +1,958 @@
+<?php
+
+/**
+  * Implements hook_help
+  * 
+  * Displays help and module information
+  * 
+  * @param path
+  * 	Which path of the site we're using to display help
+  * @param arg
+  * 	Array that holds the current path as returned form arg() function
+  */
+ function nms_incidents_help($path, $arg) {
+ 	switch($path) {
+		case "admin/help#nms_incidents":
+			return '<p>' . t("Manages the Citizen's Incident Report Schema, REST Ressources and logic") . '</p>';
+			break;
+ 	}
+ }
+
+/**
+ * Implements hook_permission().
+ */
+ function nms_incidents_permission() {
+ 	return array (
+ 		'incident resource create' => array(
+				'title' => t('incident resource create'),
+				'description' => t('create an incident report'),
+		),
+ 		'incident resource view any incident' => array(
+ 				'title' => t('incident resource view any incident'),
+ 				'description' => t('view any incident report'),
+		),
+ 		'incident resource view own incidents' => array(
+				'title' => t('incident resource view own incidents'),
+				'description' => t('view own incident reports'),
+		),
+ 		'incident resource edit any incident' => array(
+ 				'title' => t('incident resource edit any incident'),
+ 				'description' => t('edit any incident report'),
+ 		),
+ 		'incident resource edit own incidents' => array(
+				'title' => t('incident resource edit own incidents'),
+				'description' => t('edit own incident reports'),
+		),
+ 		'incident resource delete any incident' => array(
+ 				'title' => t('incident resource delete any incident'),
+ 				'description' => t('delete any incident report'),
+ 		),
+ 		'incident resource delete own incidents' => array(
+ 				'title' => t('incident resource delete own incidents'),
+ 				'description' => t('delete own incident reports'),
+		),
+		'incident resource access all incidents' => array(
+				'title' => t('incident resource access all incidents'),
+				'description' => t('access all incidents'), 
+		),
+	);
+ }
+
+/**
+ * Implements hook_menu()
+ */
+ function nms_incidents_menu() {
+	
+	$items['incidents/create'] = array(
+		'title'				=> t('Report an Incident'),
+		'description'		=> 'Create a new Incident Report',
+		'page callback'		=> 'drupal_get_form',
+		'page arguments'	=> array('_nms_incidents_reports_create'),
+		'access arguments'	=> array('incident resource create'),
+		'weight' 			=> -10,
+		'type'				=> MENU_NORMAL_ITEM,
+	);
+	$items['incidents/mine'] = array(
+		'title'				=> t('My Incident Reports'),
+		'description'	  	=> 'View my Incident Reports',
+		'page callback'		=> '_nms_incidents_reports_view_table',
+		'access arguments' 	=> array('access content'),
+		'type'				=> MENU_NORMAL_ITEM,
+	);
+	$items['incidents/view/%'] = array(
+		'title'			 	=> t('Incident Report'),
+		'description' 	 	=> 'Incident Report view page.',
+		'page callback'		=> '_nms_incidents_report_view',
+		'access callback'	=> array('_nms_incidents_access'),
+		'access arguments'	=> array('view', 2), 
+		'type'				=> MENU_CALLBACK,
+	);
+	$items['incidents/delete/%incident_iid'] = array(
+		'title'				=> t('Delete an Incident'),
+		'description'		=> 'This page will delete an Incident.',
+		'page callback'		=> 'drupal_get_form',
+		'page arguments'	=> array('_nms_incidents_confirm_delete', 2),
+		//'access callback'	=> array('_nms_incidents_access'),
+		'access arguments'	=> array('incident resource delete own incidents'),	
+		'type'				=> MENU_CALLBACK,
+	);
+	$items['incidents/edit/%incident_iid'] = array(
+		'title'				=> t('Incident Report - Edit'),
+		'description'		=> 'Incident Report Edit Page',
+		'page callback'		=> 'drupal_get_form',
+		'page arguments'	=> array('_nms_incidents_report_edit', 2),
+		'access arguments'	=> array('incident resource edit own incidents'),
+		'type'				=> MENU_CALLBACK,
+	); 
+	
+	return $items;
+ }
+ 
+ /**
+  * Creates the incident report form page.
+  */
+ function _nms_incidents_report_view() {
+	
+	$incident_id = arg(2);
+
+	$incident = nms_incidents_get_incident($incident_id)->fetchObject();
+	
+	$title = $incident->subject;
+	drupal_set_title($title);
+	
+	$output = array(
+		'content'		 => array(
+			'time' => array(
+				'#markup' => date('D, d M Y - H:m', $incident->date),
+				'#prefix' => '<div id = "_nms_incidents_time">',
+				'#suffix' => '</div>',
+			),
+			'description-container' => array(
+				'#markup' => t('Description'),
+				'#prefix' => '<p/><div id="nms_incidents_descr"><h4>',
+				'#suffix' => '</h4>',
+			),
+			'description' => array(
+				'#markup' => $incident->description, 
+				'#suffix' => '</div>', 
+			),
+			'location-container' => array(
+				'#markup' => t('Location'),
+				'#prefix' => '<p/><div id="nms_incidents_location"><h4>',
+				'#suffix' => '</h4>'
+			),
+			'location-name' => array(
+				'#markup' => $incident->location,
+				'#prefix' => '<div class="location_name">',
+				'#suffix' => '</div>',
+			),
+			'latitude' => array(
+				'#markup' => t('Latitude: ') . $incident->latitude,
+				'#prefix' => '<div class="latitude">',
+				'#suffix' => '</div>',
+			),
+			'longitude' => array(
+				'#markup' => t('Longitude: ') . $incident->longitude,
+				'#prefix' => '<div class="longitude">',
+				'#suffix' => '</div></div>', 
+			),
+		),
+	);
+	
+	$output['_controll_links'] = array(
+		'delete' => array(
+			'#markup' => "<a href=?q=incidents/delete/{$incident->iid}>" . t('Delete') .'</a>',
+			'#prefix' => '<div class="_controll_links"><div id="_nms_delete">',
+			'#suffix' => '</div>'
+		),
+		'edit' => array(
+			'#markup' => "<a href=?q=incidents/edit/{$incident->iid}>" . t('Edit') . '</a>',
+			'#prefix' => '<div id ="_nms_edit">',
+			'#suffix' => '</div></div>'
+		),
+	);
+	/*
+	$output['report_delete'] = array(
+		'#type' => 'submit',
+		'#value' => t('Delete'),
+		'#submit' => array('_nms_incidents_confirm_delete_submit'),
+	);
+	*/
+	/* $output =  array(
+    	'title' => array(
+      		'#markup' => $incident->subject,
+      		'#prefix' => '<div id="_nms_incidents_report_title"><h1>',
+      		'#suffix' => '</h1></div>',
+    	),
+    	'time' => array(
+			'#markup' => date('D, d M Y - H:m', $incident->date),
+			'#prefix' => '<div id="_nms_incidents_time">',
+			'#suffix' => '</div>',
+		),*/
+  return $output;
+ }
+ 
+ /**
+  * Implements incident_iid_load callback called by the hook_menu
+  * delete and edit function
+  */
+  function incident_iid_load($iid){
+  	
+	$query = nms_incidents_get_incident($iid);
+	
+	if($query) return $query->fetchObject();
+	
+	return FALSE;
+	
+  }
+ 
+ /**
+  * Implements the delete confirmation form specified in hook_menu
+  */
+  function _nms_incidents_confirm_delete($form_state, $incident) {
+	
+	$form['_iid'] = array(
+		'#type' => 'value',
+		'#value'=> $incident['build_info']['args'][0]->iid,
+	);
+	
+	$question = t('Are you sure you want to delete this incident?');
+	$description = t('This action cannot be undone.');
+	$path = 'incidents/mine';
+	$yes = t('Delete');
+	$no = t('Cancel');
+	
+	
+	return confirm_form($form, $question, $path, $description, $yes, $no);
+  }
+  
+  /**
+   * Implements _form_submit function called by the _nms_incidents_confirm_delete
+   * confirm_form
+   */
+  function _nms_incidents_confirm_delete_submit($form, &$form_state) {
+  	$form_values = $form_state['values'];
+	
+	if ($form_state['values']['confirm']) {
+		
+		$iid = $form_values['_iid'];
+		nms_incidents_delete_incident($iid);
+		drupal_set_message(t('The incident has been deleted successfully.'), 'status');
+	}
+  	
+	drupal_goto('incidents/mine');
+  }
+  
+  /**
+   * Implements hook_menu edit incident page
+   */
+  function _nms_incidents_report_edit($form_state, $incident) {
+  	
+	$incident_data = $incident['build_info']['args'][0];
+	
+	$date = date('Y-m-d H:i', $incident_data->date);
+	$format = 'Y-m-d H:i:s';
+	
+	$form = array();
+	$form['nms_incidents_subject'] = array(
+		'#type' 	 => 'textfield',
+		'#title' 	 => t('Subject'),
+		'#size' 	 => 60,
+		'#maxlength' => 255,
+		'#required'	 => TRUE,
+		'#default_value' => $incident_data->subject,
+	);
+	$form['nms_incidents_date'] = array(
+		'#type'		=> 'date_popup',
+		'#title'	=> t('Date of the Incident'),
+		'#default_value' => $date,
+		'#default_format' => $format,
+		'#date_label_position' => 'above',
+		'#date_year_range' => '-3:0',
+		'#date_increment' => 1,
+		'#required'	=> TRUE,		
+	);
+	$form['nms_incidents_description'] = array(
+		'#type'		=> 'text_format',
+		'#title'	=> t('Description'),
+		'#required' => TRUE,
+		'#default_value' => $incident_data->description,
+	);
+	$form['nms_incidents_location_container_begin'] = array(
+		'#type'		=> 'markup',
+		'#markup'	=> t('Incident Location'),
+		'#prefix'	=> '<div id="nms_incidents_report_location_wraper"><h3>',
+		'#suffix'	=> '</h3>',
+	);
+	$form['nms_incidents_location_name'] = array(
+		'#type'		=> 'textfield',
+		'#title'	=> t('Location Name'),
+		'#maxlength'=> 255,
+		'#size'		=> 60,
+		'#required' => TRUE,
+		'#default_value' => $incident_data->location,
+	);
+	$form['nms_incidents_latitude'] = array(
+		'#type'		=> 'textfield',
+		'#title'	=> t('Latitude'),
+		'#maxlength'=> 20,
+		'#size'		=> 20,
+		'#required' => TRUE,
+		'#default_value' => $incident_data->latitude,
+	);
+	$form['nms_incidents_longitude'] = array(
+		'#type'		=> 'textfield',
+		'#title'	=> t('Longitude'),
+		'#maxlength'=> 20,
+		'#size'		=> 20,
+		'#required' => TRUE,
+		'#default_value' => $incident_data->longitude,
+	);
+	$form['nms_incidents_location_container_end'] = array(
+		'#type'		=> 'markup',
+		'#suffix'	=> '</div>'
+	);
+	$form['_iid'] = array(
+		'#type' => 'value',
+		'#value'=> $incident_data->iid,
+	);
+	$form['_uid'] = array(
+		'#type' => 'value',
+		'#value'=> $incident_data->uid,
+	);
+	$form['submit'] = array(
+		'#type' 	=> 'submit',
+		'#value' 	=> t('Submit Changes'),
+	);
+	
+	return $form;
+  }
+
+  function _nms_incidents_report_edit_submit($form, &$form_state) {
+  		global $user;
+	
+		switch ($user->roles) {
+			case (in_array('anonymous user', $user->roles)) : 
+				drupal_set_message(t('Please Login to edit a report.'), 'warning');
+				break;
+			case (in_array('Citizen', $user->roles)) :
+				
+				$values = $form_state['values'];
+				$date_timestamp = strtotime($values['nms_incidents_date']);
+				$status = 0;
+				
+				if (!is_numeric($values['nms_incidents_latitude']) ) {
+					$status++;
+					drupal_set_message(t('Latitude must be a numeric value.'), 'error');
+				}
+				if (!is_numeric($values['nms_incidents_longitude']) ) {
+					$status++;
+					drupal_set_message(t('Longitude must be a numeric value.'), 'error');
+				}
+				if ($date_timestamp > time()) {
+					$status++;
+					drupal_set_message(t('The Incident Date cannot be in the future.'), 'error');
+				}
+				if ($status > 0) {
+					$form_state['redirect'] = FALSE;
+					break;
+				}    
+				
+				$update_incident = (object) array(
+					'iid'			=> $values['_iid'],
+					'uid'			=> $values['_uid'],
+					'subject' 		=> $values['nms_incidents_subject'],
+					'description'	=> $values['nms_incidents_description']['value'],
+					'date'			=> $date_timestamp,
+					'location'		=> $values['nms_incidents_location_name'],
+					'latitude'		=> $values['nms_incidents_latitude'],
+					'longitude'		=> $values['nms_incidents_longitude'],
+				);
+				
+				$iid = nms_incidents_write_incident($update_incident);
+				drupal_set_message(t('Your changes have been saved.'), 'status');
+				drupal_goto('incidents/view/' . $iid);
+				break;
+			default :
+				drupal_set_message(t('Only Citizens can make reports.'), 'error');
+		}	
+  }
+ 
+ /**
+  * Implements the view my reports callback
+  */
+ function _nms_incidents_reports_view_table() {
+ 	global $user;
+	
+	$incidents = array();
+	$query = nms_incidents_get_incidents_by_user($user->uid);
+	
+	foreach ($query as $incident) {
+		$incidents[] = $incident;
+	}
+	
+	$table = array();
+	$headers = array(t('Subject'), t('Created'), t('Actions'));
+	$rows = array();
+	
+	foreach ($incidents as $incident) {
+		$rows[] = array(
+			t('<a href="@uri">@subject</a>', array( '@uri' => '?q=incidents/view/'.$incident->iid,
+													'@subject' => $incident->subject)),
+			date('D, d M Y - H:m', $incident->created),
+			"<a href=?q=incidents/edit/{$incident->iid}>" . t('Edit') . "</a> | 
+				<a href=?q=incidents/delete/{$incident->iid}>" . t('Delete') .'</a>',
+		);
+	}
+	
+	$table['my_incidents_table'] = array(
+		'#type' => 'markup',
+		'#markup' => theme('table', array('header' => $headers, 'rows' => $rows))
+	);
+	//_my_debug($incidents);
+	
+	return $table;
+ }
+ 
+ function _nms_incidents_reports_create() {
+ 	
+	$date = date('Y-m-d H:i');
+	$format = 'Y-m-d H:i:s';
+	
+	$form = array();
+	$form['nms_incidents_subject'] = array(
+		'#type' 	 => 'textfield',
+		'#title' 	 => t('Subject'),
+		'#size' 	 => 60,
+		'#maxlength' => 255,
+		'#required'	 => TRUE,
+	);
+	$form['nms_incidents_date'] = array(
+		'#type'		=> 'date_popup',
+		'#title'	=> t('Date of the Incident'),
+		'#default_value' => $date,
+		'#default_format' => $format,
+		'#date_label_position' => 'above',
+		'#date_year_range' => '-3:0',
+		'#date_increment' => 1,
+		'#required'	=> TRUE,		
+	);
+	$form['nms_incidents_description'] = array(
+		'#type'		=> 'text_format',
+		'#title'	=> t('Description'),
+		'#required' => TRUE,
+	);
+	$form['nms_incidents_location_container_begin'] = array(
+		'#type'		=> 'markup',
+		'#markup'	=> t('Incident Location'),
+		'#prefix'	=> '<div id="nms_incidents_report_location_wraper"><h3>',
+		'#suffix'	=> '</h3>',
+	);
+	$form['nms_incidents_location_name'] = array(
+		'#type'		=> 'textfield',
+		'#title'	=> t('Location Name'),
+		'#maxlength'=> 255,
+		'#size'		=> 60,
+		'#required' => TRUE,
+	);
+	$form['nms_incidents_latitude'] = array(
+		'#type'		=> 'textfield',
+		'#title'	=> t('Latitude'),
+		'#maxlength'=> 20,
+		'#size'		=> 20,
+		'#required' => TRUE,
+	);
+	$form['nms_incidents_longitude'] = array(
+		'#type'		=> 'textfield',
+		'#title'	=> t('Longitude'),
+		'#maxlength'=> 20,
+		'#size'		=> 20,
+		'#required' => TRUE,
+	);
+	$form['nms_incidents_location_container_end'] = array(
+		'#type'		=> 'markup',
+		'#suffix'	=> '</div>'
+	);
+	$form['submit'] = array(
+		'#type' 	=> 'submit',
+		'#value' 	=> t('Submit Report'),
+	);
+	
+	
+	
+	//_my_debug($form);
+	
+	return $form;
+ }
+ 
+ /**
+  * Implements hook_form_submit
+  */
+  function _nms_incidents_reports_create_submit($form, &$form_state){
+	
+	global $user;
+	
+	switch ($user->roles) {
+		case (in_array('anonymous user', $user->roles)) : 
+			drupal_set_message(t('Please Login to submit a report.'), 'warning');
+			break;
+		case (in_array('Citizen', $user->roles)) :
+			
+			$values = $form_state['values'];
+			$date_timestamp = strtotime($values['nms_incidents_date']);
+			$status = 0;
+			
+			if (!is_numeric($values['nms_incidents_latitude']) ) {
+				$status++;
+				drupal_set_message(t('Latitude must be a numeric value.'), 'error');
+			}
+			if (!is_numeric($values['nms_incidents_longitude']) ) {
+				$status++;
+				drupal_set_message(t('Longitude must be a numeric value.'), 'error');
+			}
+			if ($date_timestamp > time()) {
+				$status++;
+				drupal_set_message(t('The Incident Date cannot be in the future.'), 'error');
+			}
+			if ($status > 0) {
+				$form_state['redirect'] = FALSE;
+				break;
+			}    
+			
+			$new_incident = (object) array(
+				'uid'			=> $user->uid,
+				'subject' 		=> $values['nms_incidents_subject'],
+				'description'	=> $values['nms_incidents_description']['value'],
+				'date'			=> $date_timestamp,
+				'created'		=> time(),
+				'location'		=> $values['nms_incidents_location_name'],
+				'latitude'		=> $values['nms_incidents_latitude'],
+				'longitude'		=> $values['nms_incidents_longitude'],
+			);
+			
+			$iid = nms_incidents_write_incident($new_incident);
+			drupal_set_message(t('Your report has been saved.'), 'status');
+			drupal_goto('incidents/view/' . $iid);
+			break;
+		default :
+			drupal_set_message(t('Only Citizens can make reports.'), 'error');
+	}
+	
+	/*
+	$new_incident = (object) array(
+  		'subject' 		=> 'Rest API Incident Test',
+  		'description' 	=> 'This is a test to the Incident Report Test API',
+  		'date' 			=> time(),
+  		'location' 		=> 'Centro do Porto',
+  		'latitude' 		=> 41.166379,
+  		'longitude' 	=> -8.594999,
+		);
+  */
+	
+  }
+ 
+ function _my_debug($d) {
+ 	echo '<pre>';
+	print_r($d);
+	echo '</pre>';
+ }
+ 
+/**
+ * Gets a Incident report by its iid.
+ * 
+ * @param int $iid
+ * @return object
+ */
+ function nms_incidents_get_incident($id) {
+		
+ 	$query = db_select('incidents', 'i'); //SELECT incidents table
+ 	$query->join('locations', 'l', 'i.lid = l.lid'); //JOIN incidents with locations
+	$query->orderBy('i.uid'); //ORDER BY uid
+	$query->condition('i.iid', $id, '='); //Where iid = $id
+	$query->fields('i') //SELECT * From incidents
+	      ->fields('l', array('latitude', 'longitude')); //SELECT fields from locations
+	
+	$query->addField('l', 'name', 'location');
+	
+	return $query->execute();
+ }
+ 
+ /**
+  * Get all Incident reports by an user ordered by most recent.
+  * 
+  * @param int $uid
+  * @return object
+  */
+  function nms_incidents_get_incidents_by_user($uid) {
+  	
+	$query = db_select('incidents', 'i');
+	$query->join('locations', 'l', 'i.lid = l.lid');
+	$query->orderBy('i.created', 'DESC');
+	$query->condition('i.uid', $uid, '=');
+	$query->fields('i')
+			->fields('l', array('latitude','longitude'));
+	$query->addField('l', 'name', 'location');
+	
+	return $query->execute();
+  }
+ 
+/**
+ * Gets the lid (Location's id) of an incident by its iid.
+ * 
+ * @param int $iid
+ * @return int $lid 
+ */
+function nms_incidents_get_lid($iid) {
+	
+	$query = db_select('incidents', 'i')
+				->condition('i.iid', $iid, '=')
+				->fields('i', array('lid'))
+				->execute()
+				->fetchObject();
+	
+	return $query->lid;
+	
+}
+
+/**
+ * Writes an Incident into the database.
+ * Returns the Incident Unique key stored in the database.
+ * 
+ * @param object $incident
+ * @return int $incident_id
+ * 
+ * Format of $incident:
+ * 		'iid' -> Primary key of table incidents, the incident unique key : int(10)
+ * 		'uid' -> id of the user that submitted the incident : int(10)
+ * 		'subject' -> Subject of the incident  : varchar(255)
+ * 		'description' -> description of the incident : mediumtext
+ * 		'created' -> timestamp of the creation date : bigint(20)
+ * 		'date' -> timestamp of the incident date : bigint(20)
+ * 		'location' -> location name : varchar(255)
+ * 		'latitude' -> GPS Latitude coordinates : float
+ * 		'longitude' -> GPS Longitude coordinates : float
+ */
+ function nms_incidents_write_incident($incident) {
+	/**
+	 * We will use the drupal_write_record() function that will decide
+	 * wether to write a new record to the database or to update an existing
+	 * one. If the incident primary key 'iid' is passed the corresponding
+	 * incident will be updated, if not, a new record will be created.
+	 * 
+	 * The object $incident has all the information of an incident,
+	 * however, an incident information is split between 2 tables (incidents
+	 * and locations). We have to write records on both.
+	 * 
+	 * First, we write the location id, wich will return the location's 
+	 * identifier, the we use it to write to the incidents table.
+	 * 
+	 * As said before, if 'iid' is passed it will perform an update using
+	 * the available information, so we must check if the fields on table
+	 * locations are ment to be altered or not. The drupal_write_record
+	 * will only alter the fields of the table's schema that it has values
+	 * for.
+	 */
+	 
+	 
+	$location = array();
+	$location = (object) $location;
+	
+	if(isset($incident->location)) {
+		$location->name = $incident->location;
+		unset($incident->location);
+	}
+	if(isset($incident->latitude)) {
+		$location->latitude = (float) $incident->latitude;
+		unset($incident->latitude);
+	}
+	if(isset($incident->longitude)) {
+		$location->longitude = (float) $incident->longitude;
+		unset($incident->longitude);
+	}
+	
+	$incident_primary_key = NULL;
+	$location_primary_key = NULL;
+
+	if ( !empty($incident->iid) ) {
+		//If the iid is sent, then we want to update
+		$incident_primary_key = array('iid');
+		
+		//Set $location's lid
+		$location->lid = nms_incidents_get_lid($incident->iid);
+		$location_primary_key = array('lid');
+	}	
+	if(!isset($location_primary_key) || !isset($incident_primary_key)) {
+		drupal_write_record('locations', $location);
+		$incident->lid = $location->lid;
+		drupal_write_record('incidents', $incident);
+	} else {
+		drupal_write_record('locations', $location, $location_primary_key);
+		$incident->lid = $location->lid;
+		drupal_write_record('incidents', $incident, $incident_primary_key); 
+	}
+	return $incident->iid; 
+ }
+
+/**
+ * Deletes an Inicident from the database, by its iid.
+ * 
+ * @param int $id
+ * @return void
+ */ 
+ function nms_incidents_delete_incident($id) {
+ 	//When we delete an incident, we also want to delete it's linked
+ 	//location because it has no sense to show in the map a location
+ 	//from an incident report that was deleted.
+ 	//As we receive the incident's ID we have to first get the lid 
+ 	//from the lid column, delete de Location linked by the lid
+ 	//and, finally, delete the incident.
+ 	
+	$lid = nms_incidents_get_lid($id);
+	
+	//Now that we have the location Id we can delete the Locations Entry
+	db_delete('locations')
+		->condition('lid', $lid, '=')
+		->execute();
+	
+	//Finally, delete the Incident
+	db_delete('incidents')
+		->condition('iid', $id, '=')
+		->execute();
+ }
+
+/**
+ * Implements hook_services_resources().
+ */
+ function nms_incidents_services_resources() {
+ 	return array( 'incidents' => array(
+ 	  'operations' => array(
+		'retrieve' => array(
+			'help' => 'Retrieve an Incident Report.',
+			'file' => array('file' => 'inc', 'module' => 'nms_incidents'),
+			'callback' => '_nms_incidents_retrieve',
+			'access callback' => '_nms_incidents_access',
+			'access arguments' => array('view'),
+			'access arguments append' => TRUE,
+			'args' => array(
+				array(
+					'name' => 'iid',
+					'type' => 'int',
+					'description' => 'The iid of the incident report to get',
+					'source' => array('path' => '0'),
+					'optional' => FALSE,
+				),
+			),
+		),
+		'create' => array(
+			'help' => 'Creates an Incident Report',
+			'file' => array('file' => 'inc', 'module' => 'nms_incidents'),
+			'callback' => '_nms_incidents_create',
+			'access arguments' => array('incident resource create'),
+			'access arguments append' => FALSE,
+			'args' => array(
+				array(
+					'name' => 'data',
+					'type' => 'array',
+					'description' => 'The incident report object',
+					'source' => 'data',
+					'optional' => FALSE,
+				),
+			),
+		),
+		'update' => array(
+			'help' => 'Update an Incident Report',
+			'file' => array('file' => 'inc', 'module' => 'nms_incidents'),
+			'callback' => '_nms_incidents_update',
+			'access callback' => '_nms_incidents_access',
+			'access arguments' => array('update'),
+			'access arguments append' => TRUE,
+			'args' => array(
+				array(
+					'name' => 'iid',
+					'type' => 'int',
+					'description' => 'The iid of the incident report to update.',
+					'source' => array('path' => '0'),
+					'optional' => FALSE,
+				), 
+				array(
+					'name' => 'ReceivedData',
+					'type' => 'array',
+					'description' => 'The incident report object.',
+					'source' => 'data',
+					'optional' => FALSE,
+				),
+			),
+		),
+		'delete' => array(
+			'help' => 'Deletes an Incident Report.',
+			'file' => array('file' => 'inc', 'module' => 'nms_incidents'),
+			'callback' => '_nms_incidents_delete',
+			'access callback' => '_nms_incidents_access',
+			'access arguments' => array('delete'),
+			'access arguments append' => TRUE,
+			'args' => array(
+				array(
+					'name' => 'iid',
+					'type' => 'int',
+					'description' => 'The iid of the incident report to delete.',
+					'source' => array('path' => '0'),
+					'optional' => FALSE,
+				),
+			),
+		),
+		'index' => array(
+			'help' => 'Retrieves a listing of incidents from the logged user',
+			'file' => array('file' => 'inc', 'module' => 'nms_incidents'),
+			'callback' => '_nms_incidents_index',
+			'access callback' => 'user_access',
+			'access arguments' => array('access content'),
+			'access arguments append' => FALSE,
+			'args' => array(
+				array(
+					'name' => 'page',
+					'type' => 'int',
+					'desscription' => '',
+					'source' => array(
+						'param' => 'page',	
+					),
+					'optional' => TRUE,
+					'default value' => 0,
+				),
+				array(
+					'name' => 'parameters',
+					'type' => 'array',
+					'description' => '',
+					'source' => 'param',
+					'optional' => TRUE,
+					'default value' => array(), 
+				),
+			),
+		),
+	  ),
+	  'actions' => array (
+	  	'listAll' => array (
+			'help' => 'Retrieves a listing of all incidents',
+			'file' => array('file' => 'inc', 'module' => 'nms_incidents'),
+			'callback' => '_nms_incidents_getAll',
+			'access arguments' => array('incident resource view any incident'),
+			'access arguments append' => FALSE,
+		),
+	  ),
+	),
+	);
+ }
+
+/**
+ * Access callback for the Incident Report resource.
+ * 
+ * This checks so that users don't overstep their bounds
+ * and start looking at other people's incidents without
+ * having the proper permissions. 
+ * 
+ * @param string $op
+ * 		The operation that's going to be performed.
+ * @param array $args
+ * 		The arguements that will be passed to the callback.
+ * @return bool
+ * 		Whether access is given or not
+ */
+ function _nms_incidents_access($op, $args) {
+ 	global $user;
+	
+	$access = FALSE;
+	
+	switch ($op) {
+		case 'view' :
+			$incident = nms_incidents_get_incident($args[0])->fetchObject();
+			if(!is_object($incident)) { break; }
+			$access = user_access('incident resource view any incident');
+			$access = $access || $incident->uid == $user->uid && user_access('incident resource view own incidents');
+			break;
+		case 'update' :
+			$incident = nms_incidents_get_incident($args[0])->fetchObject();
+			if(!is_object($incident)) { break; }
+			$access = user_access('incident resource edit any incident');
+			$access = $access || $incident->uid == $user->uid && user_access('incident resource edit own incidents');
+			break;
+		case 'delete' :
+			$incident = nms_incidents_get_incident($args[0])->fetchObject();
+			if(!is_object($incident)) { break; }
+			$access = user_access('incident resource delete any incident');
+			$access = $access || $incident->uid == $user->uid && user_access('incident resource delete own incidents');
+			break; 
+	}
+	
+	return $access;
+ }
+
+/**
+ * Implements hook_default_services_endpoint()
+ */
+ function nms_incidents_default_services_endpoint() {
+ 	$endpoints = array();
+	
+	$endpoint = new stdClass();
+	$endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
+	$endpoint->api_version = 3;
+	$endpoint->name = 'auth';
+	$endpoint->server = 'rest_server';
+	$endpoint->path = 'api';
+	$endpoint->authentication = array(
+  		'services' => 'services',
+	);
+	$endpoint->server_settings = array(
+ 		'formatters' => array(
+  	  		'bencode' => TRUE,
+  	  		'json' => TRUE,
+    		'php' => TRUE,
+    		'rss' => TRUE,
+    		'xml' => TRUE,
+    		'jsonp' => FALSE,
+  		),
+  		'parsers' => array(
+    		'application/json' => TRUE,
+    		'application/vnd.php.serialized' => TRUE,
+    		'application/x-www-form-urlencoded' => TRUE,
+    		'application/xml' => TRUE,
+    		'multipart/form-data' => TRUE,
+    		'text/xml' => TRUE,
+  		),
+	);
+	$endpoint->resources = array(
+	  	'incidents' => array(
+	    	'operations' => array(
+	      		'retrieve' => array( 'enabled' => '1',),
+	      		'create' => array('enabled' => '1',),
+	      		'update' => array('enabled' => '1',),
+	      		'delete' => array( 'enabled' => '1',),
+	      		'index' => array('enabled' => '1',),
+	    		),
+	  		),
+	  	'user' => array(
+	    	'operations' => array(
+	      		'retrieve' => array('enabled' => '1',),
+				'create' => array('enabled' => '1',),
+				'update' => array('enabled' => '1',),
+	      		'delete' => array('enabled' => '1',),
+	      		'index' => array('enabled' => '1',),
+	    	),
+	    	'actions' => array(
+	    		'login' => array('enabled' => '1',),
+	     		'logout' => array(
+	    			'enabled' => '1',
+	        		'settings' => array(
+	          			'services' => array(
+	            			'resource_api_version' => '1.0',
+	          			),
+	        		),
+	      		),
+	      		'register' => array('enabled' => '1',),
+	    	),
+	  	),
+	);
+	$endpoint->debug = 0;
+	
+	$endpoints[] = $endpoint;
+
+  	return $endpoints;
+ }
