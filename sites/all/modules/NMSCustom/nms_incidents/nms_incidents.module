@@ -400,8 +400,8 @@
 			t('<a href="@uri">@subject</a>', array( '@uri' => '?q=incidents/view/'.$incident->iid,
 													'@subject' => $incident->subject)),
 			date('D, d M Y - H:m', $incident->created),
-			"<a href=?q=incidents/edit/{$incident->iid}>" . t('Edit') . "</a> | 
-				<a href=?q=incidents/delete/{$incident->iid}>" . t('Delete') .'</a>',
+			"<a class='_nms_table_edit' href=?q=incidents/edit/{$incident->iid}>" . t('Edit') . "</a> | 
+				<a class='_nms_table_edit' href=?q=incidents/delete/{$incident->iid}>" . t('Delete') .'</a>',
 		);
 	}
 	
