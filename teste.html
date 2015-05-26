@@ -1,0 +1,2845 @@
+<html><head></head><body>A Better Speciﬁed Asset Pricing Model to Explain the
+
+Cross-Section and Time-Series of Commodity Returns
+a† b‡ c§
+Gurdip Bakshi Xiaohui Gao Alberto Rossi
+a
+Smith School of Business, University of Maryland, College Park, MD 20742, USA
+b
+Visiting Assistant Professor, Smith School of Business, University of Maryland, College Park, MD 20742,
+USA
+c
+Smith School of Business, University of Maryland, College Park, MD 20742, USA
+First draft, December 2012
+This version, January 2, 2014
+Abstract
+We show that a model featuring an average commodity factor, a carry factor, and a momentum factor is
+capable of describing both the cross-sectional and time-series variation of commodity returns. Our results
+indicate that more parsimonious one- and two-factor models that feature the average and/or carry factors are
+rejected, and the momentum factor contains additional information. Furthermore, we ﬁnd that additional
+factors (e.g., value or volatility) are statistically insigniﬁcant. The model is not rejected when portfolios
+or individual commodities are used as test assets. Together, the three factors appear to forecast economic
+growth, returns of bonds, equities, and commodity currencies.
+KEY WORDS: Commodity asset pricing models, commodity futures returns, individual commodities as
+test assets, average returns, carry strategy, momentum strategy, investment opportunity set, macroeconomy.
+JEL CLASSIFICATION CODES: C23, C53, G11, G12, G13, C5, D24, D34.
+
+The authors acknowledge helpful discussions with Tobias Adrian, Hank Bessembinder, Nina Boyarchenko, Fousseni Chabi-
+Yo, Richard Crump, Rob Engle, Andreas Fuster, Steve Heston, Mark Loewenstein, George Kapetanios, Leonid Kogan, Alex
+Kostakis, Pete Kyle, Anthony Lynch, Dilip Madan, Or Shachar, George Panayotov, Bryan Routledge, Lemma Senbet, George
+Skiadopulos, and George Skoulakis. We welcome comments, including references to related papers we have inadvertently over-
+looked. Participants at the NBER 2013 conference on the economics of commodity markets, including Alex David, Ravi Jagan-
+nathan, Peter Christoffersen, Lars Lochstoer, Anna Pavlova, Geert Roewenhorst, Nikolaj Roussanov, Ken Singleton, and Marta
+Szymanowska provided many useful comments. An earlier version of the paper was presented at the Federal Reserve Bank of
+New York, the University of Maryland, the NBER 2013 conference on the economics of commodity markets, and the Queen Mary
+University of London conference on advances in commodity markets. Any remaining errors are our responsibility alone.
+†
+Tel.: +1-301-405-2261; fax: +1-301-405-0359. E-mail address: gbakshi@rhsmith.umd.edu
+‡
+Tel.: +1-301-405-8644; fax: +1-301-405-0359. E-mail address: xiaohui@rhsmith.umd.edu
+§
+Tel.: +1-301-405-0703; fax: +1-301-405-0359. E-mail address: arossi@rhsmith.umd.edu1. Introduction
+The interaction of storage and convenience yield, and the hedging motives of producers, consumers, and
+speculators has led to the development of theories about the behavior of commodity futures prices and has
+1
+spearheaded efforts to understand the evolution of futures prices over time and across maturities. Yet there
+is a paucity of tractable commodity asset pricing models whose stochastic discount factor is capable of
+reconciling the stylized patterns in the cross-section and time-series of commodity futures returns.
+Despite substantial headway, several other key questions remain unresolved. Which risk factors provide
+a parsimonious characterization of both the cross-sectional and time-series variation in commodity returns?
+Do we garner distinct insights when we apply the models to individual commodities rather than commodity
+portfolios? Are the risk factors also able to forecast developments in the real economic activity, bond,
+equity, and currency markets, as argued by adherents of asset pricing theories (e.g., as summarized in
+Cochrane (2005, chapter 20))? How do these risk factors correlate with the macroeconomy? Our aim is to
+ﬁll in the aforementioned gaps in a market that has grown tremendously with the advent of ﬁnancialization.
+Extending the analysis in Szymanowska, de Roon, Nijman, and Goorbergh (2013), we consider both
+time-series as well as cross-sectional tests to discriminate among commodity asset pricing models. Impor-
+tantly, we reject the model in Szymanowska, de Roon, Nijman, and Goorbergh (2013) that features carry
+as the only factor. We also extend the analysis in Yang (2013), by showing that the three-factor model that
+incorporates the momentum factor appears better aligned with the data compared to a two-factor nested
+counterpart that contains the average and the carry factor. The predominant ﬁnding is that the momentum
+factor contains additional information beyond that conveyed by the carry factor.
+1
+The commodity literature has evolved considerably since Keynes (1930), Hicks (1939), Kaldor (1939), and Samuelson (1965).
+For a partial list of empirical treatments, we mention Chang (1985), Fama and French (1988a), Bessembinder (1992, 1993),
+Bessembinder and Chan (1992), Deaton and Laroque (1992), de Roon, Nijman, and Veld (2000), Erb and Harvey (2006), Gorton
+and Rouwenhorst (2006), Gorton, Hayashi, and Rouwenhorst (2013), Yang (2013), and Szymanowska, de Roon, Nijman, and
+Goorbergh (2013). These studies mainly focus on the economic nature of commodity risk premia and their statistical attributes.
+Complementing the empirical work, a strand of theoretical research has centered around characterizing the shape of the futures
+curve. Such studies include Hirshleifer (1988, 1990), Litzenberger and Rabinowitz (1995), Routledge, Seppi, and Spatt (2000),
+Carlson, Khokher, and Titman (2007), Kogan, Livdan, and Yaron (2009), and Acharya, Lochstoer, and Ramadorai (2013). How-
+ever, these contributions do not cater to the structure of the cross-sectional relations and are silent about the connections between
+the slope of the futures curves, average commodity returns, and returns of carry and momentum portfolios. The review articles by
+Till (2006) and Basu and Miffre (2012) provide a historical perspective.
+1In the context of the three-factor model, our analysis highlights three additional ﬁndings: (i) the Hansen
+and Jagannathan (1997) distance test does not reject correct model pricing; (ii) the average pricing errors
+are not statistically different from zero, when standard errors are computed using the Newey and West
+(1987) procedure, with and without the Shanken (1992) correction; and (iii) the risk factors have low
+correlations. We also elaborate on the joint pricing ability of the model using time-series regressions and
+ﬁnd that statistical tests do not reject model adequacy based on the implied alphas. Taken all together,
+our approach shows some promise in reconciling the large average returns to investing in a portfolio of
+backwardated commodities and high momentum commodities.
+With three factors, the commodity pricing model is parsimonious. Our speciﬁcation tests show that
+incorporating an additional value factor (along the lines of Asness, Moskowitz, and Pedersen (2013)) or a
+volatility factor (along the lines of Lustig, Roussanov, and Verdelhan (2011) and Menkhoff, Sarno, Schmel-
+ing, and Schrimpf (2012a)) fails to improve pricing ability across our test assets. Additionally, we ﬁnd that
+conditional pricing models that allow for state dependence in the sensitivity of the stochastic discount factor
+to the risk factors can often outperform their unconditional counterparts.
+The model also has broad support when individual commodities are used as test assets, allaying possible
+concerns regarding the results obtained using portfolios as test assets. In the time-series tests, we adopt
+the bootstrap procedure of Kosowski, Timmermann, Wermers, and White (2006), which accounts for the
+unbalanced nature of the panel and the fact that commodities exhibit different return volatilities, and ﬁnd
+that none of the individual commodities has a signiﬁcant alpha. In the cross-sectional tests, we show that
+it is important to model the time-varying exposure of each commodity to the carry and momentum factors.
+2
+In this case, the model is not rejected according toc tests. These ﬁndings are important because working
+with individual commodities entails incorporating in the tests the full heterogeneity of commodity returns.
+Considerable attention is devoted to understanding the economic underpinnings of the model. This por-
+tion of our analysis is inspired by the evolving literature that investigates the reasons behind the explanatory
+power of the size, value, and momentum factors for the cross-section of equity returns. We follow the lead
+of Fama (1991) and Campbell (1996) and show that the commodity risk factors capture state variables
+2that forecast changes in the investment opportunity set. Speciﬁcally, our predictive regressions support the
+view that the commodity factors can forecast real GDP growth across the G7 economies (our inference is
+throughout based on the conservative Hodrick (1992) 1B covariance estimator).
+Going further, we also uncover that the factors, predominantly the average and carry factors, can fore-
+cast bond and equity returns up to 12 months, with predictive slope coefﬁcients that are mutually compat-
+ible across GDP growth, bond returns, and equity returns. For instance, an increase in the carry factor is
+associated with a future economic slowdown, higher bond returns, and lower equity returns. Testifying to
+the global economic nature of the commodity factors, we also show that some of the factors can forecast
+the returns of commodity currencies, extending the analysis of Chen, Rogoff, and Rossi (2010). Finally,
+we show that each factor exhibits differential exposure to various aspects of the macroeconomy.
+Our efforts complement a growing body of literature that strives to comprehend the behavior of com-
+modity returns. Importantly, we evaluate the model using individual commodities in addition to commodity
+portfolios. Speciﬁcally, our work can be differentiated from Erb and Harvey (2006), Gorton and Rouwen-
+horst (2006), and Gorton, Hayashi, and Rouwenhorst (2013) in that our focus is on unconditional and
+conditional commodity asset pricing models and their ability to price the cross-section and time-series of
+commodity returns. Our study also departs from Hong and Yogo (2012), who provide a horse race among
+alternative predictors of commodity futures returns but do not investigate cross-sectional implications. We
+also differ from Asness, Moskowitz, and Pedersen (2013) and Koijen, Pedersen, Moskowitz, and Vrugt
+(2012), whose focal point is to construct an empirically viable global asset pricing model. Finally, we pro-
+vide evidence that deviates from the core conclusions in Yang (2013) and Szymanowska, de Roon, Nijman,
+and Goorbergh (2013), and we offer a further distinction by exploring the connection of the three factors
+to changes in the investment opportunity set (as gauged by real economic activity and returns of bonds,
+equities, and commodity currencies).
+Our empirical work also elaborates on the disparity in the cross-section of commodity futures returns,
+providing some distinction from the approaches in Deaton and Laroque (1992), Litzenberger and Ra-
+binowitz (1995), Hirshleifer (1988), Routledge, Seppi, and Spatt (2000), Casassus and Collin-Dufresne
+3(2005), and Kogan, Livdan, and Yaron (2009). The compatibility of the three-factor model with the doc-
+umented commodity return patterns has possible implications for investment theory and practice, which
+transcends the scope of commodity investments.
+2. Data description and commodity futures returns
+Our commodity futures returns are constructed from end-of-day data provided by the Chicago Mercantile
+Exchange (CME). For each commodity and maturity available, the database contains, at the daily fre-
+quency, a record of the open, low, high, and closing prices, along with information on open interest and
+trading volume. Our analysis centers on 29 commodity futures contracts covering four major categories,
+namely, agriculture, energy, livestock, and metal.
+We take the start (end) date for our commodity futures sample to be January 1970 (September 2011).
+Starting the sample in January 1970 allows us to construct carry and momentum portfolios that contain at
+least three commodities. The number of commodities available ranges from a minimum of 15 in 1970 to a
+maximum of 28 in July 1994.
+An important element to the calculation of monthly futures returns is the treatment of the ﬁrst notice
+day, which varies across commodities (as can be seen from Table Online-I). For each commodity, we take a
+position in the futures contract with the second shortest maturity at the end of month t, while guaranteeing
+that its ﬁrst notice day is after the end of month t+ 1. We follow this treatment because, if the ﬁrst notice
+day occurs before a long (short) position is closed, the investor may face a physical delivery (delivery
+demand) from the counterparty.
+Consider our return calculation in the context of crude oil futures between the end of February and
+(0) (1)
+March 2011. Let F be the price of the front-month futures contract and F the price of the next
+t t
+maturity futures contract, both observed at the end of month t. Among the available contracts at the end of
+(1)
+February 2011, we take a position in the May 2011 contract (i.e., F ), as its ﬁrst notice day falls in the
+t
+(0)
+middle of April. We do not invest in the April 2011 contract (i.e., F ) because its ﬁrst notice day falls in
+t
+4the middle of March 2011. The position in the May 2011 contract is closed at the end of March at price
+(1)
+F . In the same vein, we switch to the June 2011 contract at the end of March 2011.
+t+1
+We calculate the returns of the long and short futures positions as
+   
+1 1
+long (1) (1) f (1) (1) f
+short
+r = F   F + r and r =   F   F + r ; (1)
+t t t t
+t+1 t+1 t+1 t+1
+(1) (1)
+F F
+t t
+f
+where r reﬂects the interest earned on the fully collateralized futures position (e.g., Gorton, Hayashi, and
+t
+Rouwenhorst (2013, equation (14))). Deﬁne
+long long f f
+short short
+er  r   r and er  r   r ; (2)
+t t+1 t+1 t
+t+1 t+1
+as the excess return of a long and short futures position between the end of month t and t+ 1, respectively.
+Our procedure for constructing futures returns, which accounts for the ﬁrst notice day, deviates from
+Shwayder and James (2011) but is broadly consistent with Gorton, Hayashi, and Rouwenhorst (2013) and
+(0)
+Hong and Yogo (2012). We note that F never enters our return calculation because of the way that the
+t
+ﬁrst notice day calendar interacts with our returns, which are based on end of month observations.
+Several checks are performed to safeguard the integrity of our futures returns data. First, we extract the
+monthly composite futures quotes from Bloomberg and ﬁnd that the correlation with our returns series is
+high. Moreover, there is a substantial overlap in the extreme returns of the two return series, pointing to
+2
+the broader reliability of our futures return observations.
+The summary statistics tabulated in Table Appendix-I show that 20 out of 29 commodities have Sharpe
+ratios below 0.25, indicating that stand-alone investments in commodities are not attractive. Among other
+salient features, the commodity returns are serially uncorrelated (the absolute ﬁrst-order autocorrelations
+are below 0.1 for 22 commodities) and typically positively skewed. Corn is the most liquid futures contract,
+2
+Some data limitations are addressed in the following manner. First, when there is a missing observation (for example,
+palladium on a few occasions), we ﬁll in the corresponding return from Bloomberg to maintain a complete time-series. Second, if
+there is no recorded futures price for a commodity on the last business day of a given month, we use prices from the second-to-last
+business day. For example, because there is no trading record for crude oil, natural gas, gasoline, and heating oil on Monday, May
+31, 2010, we employ prices from Friday, May 28, 2010.
+5as measured by its open interest, and propane is the least liquid.
+Our data offers ﬂexibility in two additional ways. First, the availability of daily futures returns allows
+us to construct monthly realized volatilities for each commodity and, hence, an average volatility factor
+that could be used in asset pricing tests (e.g., Menkhoff, Sarno, Schmeling, and Schrimpf (2012a)). Next,
+futures prices at multiple maturities help to identify whether a commodity is in backwardation or contango.
+Inspection of Table Appendix-I indicates that (i) the fraction of the months in which a commodity
+is in contango is often greater than when it is in backwardation, and (ii) a predominant portion of the
+commodities exhibit contango on average. Overall, the magnitudes reported in Table Appendix-I appear
+aligned with the corresponding ones in others, for example, Erb and Harvey (2006, Table 4) and Gorton,
+Hayashi, and Rouwenhorst (2013, Table I). The goal of this paper is to explain the cross-sectional and
+time-series patterns in commodity returns, at both the portfolio and the individual commodity levels.
+3. Asset pricing approach and methodology
+To outline our approach and empirical tests, we denote the time t+1 excess return of a commodity portfolio
+i
+i by er and collect the returns on all test assets in a vector er . No-arbitrage implies the existence of a
+t+1
+t+1
+candidate stochastic discount factor (SDF) m such that (Cochrane (2005, chapter 12)):
+t+1
+0
+E[m er ]= 0; with m = 1  b(f   μ μ μ); (3)
+t+1 t+1 t+1 t+1
+where f is a vector of risk factors and μ μ μ are the factor means.
+t+1
+In our setup, the parameter vector b is estimated in the system:
+2 3
+0
+(1  b(f   μ μ μ))
+ er
+t+1 t+1
+6 7
+6 7
+6 7
+E = 0; (4)
+6 7
+μ
+f   μ μ
+t+1
+6 7
+4 5
+0
+vec((f   μ μ μ)(f   μ μ μ))  vec(S)
+t+1 t+1 f
+6using the generalized method of moments of Hansen (1982), whereS is the variance-covariance matrix
+f
+of f . Our formulation follows that of Burnside, Eichenbaum, Kleshchelski, and Rebelo (2011) and
+t+1
+Menkhoff, Sarno, Schmeling, and Schrimpf (2012a, equation (A4)) in that our estimates incorporate the
+uncertainty associated with estimating the means and covariances of f .
+t+1
+The speciﬁcation of the SDF in equation (3) implies a beta representation, in which the expected excess
+returns of each asset depend on the vector of factor risk premialll, which is common to all assets, and the
+vector of risk loadingsbbb , which is asset-speciﬁc. More formally,
+i
+ 
+0
+i
+E er = lllbbb; where lll=S b: (5)
+f
+i
+Our baseline implementation uses 12 test assets and 3 factors. We therefore estimate 12 parameters using
+21 moment conditions. As in Cochrane (1996), we ﬁrst focus on a one-step GMM that uses the identity
+matrix as a weighting matrix, but we also report results for a two-step GMM that uses the optimal weight-
+ing matrix. The standard errors are based on the Newey and West (1987) procedure with lags selected
+automatically according to Newey and West (1994).
+Additionally, we provide estimates oflll using the cross-sectional regression methodology of Fama and
+MacBeth (1973). In the ﬁrst step, we run a time-series regression of returns on the factors. In the second
+step, we run a cross-sectional regression of average returns on the betas without including a constant.
+The standard errors of lll are computed using the Newey and West (1987) procedure with automatic lag
+selection with and without the correction of Shanken (1992). We employ the framework in equations
+(3)–(5) to compare alternative models of commodity returns.
+4. Motivating a model with average, carry, and momentum factors
+In this section, we propose an asset pricing model for commodities that incorporates an average factor, a
+carry factor, and a momentum factor. The three-factor model is capable of explaining both the cross-section
+and time-series variation in expected commodity returns.
+7We also compare, statistically and economically, the performance of the three-factor model to alter-
+native speciﬁcations that include a value and a volatility factor, and we explore conditional models that
+relax the assumption of constant loadings on the stochastic discount factor. Our evidence suggests that the
+one-factor model in Szymanowska, de Roon, Nijman, and Goorbergh (2013) and the two-factor model in
+Yang (2013) do not appear to adequately characterize commodity returns.
+Our empirical analysis centers on the following speciﬁcation of the SDF:
+m = 1  b (AVG   μ )  b (CARRY   μ )  b (CMOM   μ ); (6)
+t+1 AVG t+1 AVG CARRY t+1 CARRY CMOM t+1 CMOM
+implying that the expected excess returns of a commodity portfolio is a function of its exposure to three
+factors.
+The average factor, denoted by AVG , is the excess return of a long position in all available com-
+t+1
+modity futures (see equation (2)). AVG is required, because models that do not incorporate this average
+t+1
+factor fail to explain the time-series variation in commodity returns (see Section 5.2).
+The commodity carry factor, denoted by CARRY , and the momentum factor, denoted by CMOM ,
+t+1 t+1
+deserve further comments, since these factors can be constructed in a variety of ways and depend on the
+implementation of the underlying carry and momentum strategies. Deﬁne the slope of the futures curve by
+(1) (0)
+y  F =F . As detailed in Appendix A and the captions of Table Online-II and Table 1, we construct
+t t t
+CARRY as the return on a portfolio that is long in the ﬁve commodities that are most backwardated
+t+1
+(i.e., the lowest ln(y)< 0) and short the ones that are most in contango (i.e., the highest ln(y)> 0).
+t t
+Several salient features are worth mentioning. At the outset we emphasize that the carry strategy based
+on the short-end of the futures curve maximizes the number of observations, the number of commodities
+included, and is associated with the highest open-interest (as noted in Table Online-II). In contrast, the
+carry factor of Yang (2013, equation (3)) is obtained by sorting commodities based on the log difference
+between the 12-month and the one-month futures prices. Our carry factor is also different from that of
+Szymanowska, de Roon, Nijman, and Goorbergh (2013) in that (i) they construct the factor by going long
+in an equally weighted portfolio of the 10 commodities that are most backwardated and short in an equally
+8weighted portfolio of the 10 commodities that are most in contango (Section IV-B.1), and (ii) their study is
+based on bimonthly returns (Section II.A).
+As noted in Panel A of Table 1, over the past 42 years the carry factor (strategy C5) has been econom-
+ically proﬁtable, with an average annualized return of 16.34%, three to ﬁve times larger than the returns
+generated by investing in commodity indexes (see Table Appendix-II). The average return of the carry
+factor is statistically different from zero as indicated by the bootstrap conﬁdence intervals. The 95% con-
+ﬁdence intervals, denoted as PW, lower CI and upper CI, are based on a stationary bootstrap with 10,000
+iterations, where the block size is based on the algorithm of Politis and White (2004).
+In our analysis, CMOM is constructed as the return on a portfolio that is long in the ﬁve commodities
+t+1
+with the highest returns over the previous six months and short the ones with the lowest returns over
+the previous six months. In this sense our momentum factor differs from that of Gorton, Hayashi, and
+Rouwenhorst (2013, Table VII) and Szymanowska, de Roon, Nijman, and Goorbergh (2013, Appendix
+B), as they construct it using the prior 12-month futures excess returns. Note, however, that this choice
+does not appear to have a signiﬁcant impact on the performance of the momentum factor, as discussed in
+Appendix B. The average return of the momentum factor is 16.11% (see strategy M5 in Panel C of Table
+1), and it is statistically signiﬁcant.
+The joint inclusion of carry and momentum in the SDF as distinct factors can be defended on several
+grounds. First, the top and middle panels of Figure 1 reveal the distinct time-series behavior of the carry
+and momentum factors, with shaded areas representing NBER recessions. The bottom panel plots the
+cm
+return differential between the carry and the momentum factors, that is, er  CARRY  CMOM , and
+t t
+t
+cm
+shows that the standard deviation of er is 8.5%, the minimum is 40.1% and the maximum is 39.4%.
+t
+As shown, the factors may be loading differently on economic conditions (see Table 15 and the related
+discussion). For example, consider March 1980, during which the momentum (carry) factor delivered a
+return of 28:2% (11:2%). The poor performance of momentum over this month was caused by the sharp
+decline in silver prices, but such a decline had no impact on the returns to carry. Additionally, CARRY
+t
+and CMOM do not share the same sign in 41% of the months, which further helps to dichotomize between
+t
+9the two factors.
+[Fig. 1 about here.]
+To assess whether the two strategies are conditionally loading on the same set of commodities, we ﬁrst
+compute the commodity overlap in the long and short legs of the carry and momentum strategies separately,
+and then sum the two overlaps. The results, reported in Figure 2, indicate that the two strategies are largely
+decoupled, with the third quartile (Q3) of the overlap distribution equal to one.
+[Fig. 2 about here.]
+Later we also show that unconditionally the two strategies have little overlap in their set of constituent
+commodities (see Table Appendix-III and the discussion in Appendix D).
+The notion that the two strategies are distinct can be further analyzed by computing their conditional
+correlations. To do so, we estimate the time-varying correlation between the returns generated by the
+carry and momentum factors using a dynamic conditional correlation model (Engle (2002)), in which the
+dynamics of carry and momentum returns are modeled using a bivariate GARCH (1,1) model. The results,
+reported in Figure 3, indicate that the returns correlation between the two strategies has not increased or
+decreased over time. Furthermore, their unconditional returns correlation is only 0.27.
+[Fig. 3 about here.]
+We report the descriptive statistics of these risk factors in Table Appendix-II. Importantly, additional
+tests show that none of the factors displays seasonality.
+Several other considerations motivate an SDF driven by three factors. First, we conduct a principal
+component analysis with our test assets, which reveals that AVG is highly correlated to the ﬁrst prin-
+t+1
+cipal component, CMOM is highly correlated with the second and third principal components, and
+t+1
+CARRY loads only, but substantially, on the third principal component. Importantly, the ﬁrst three
+t+1
+components explain 71% of the variation in the data, which is nontrivial, given that we have 12 portfolios
+and, hence, 12 potential principal components.
+10Lewellen, Nagel, and Shanken (2010) observe that when the underlying test portfolios admit a certain
+2
+factor structure, even misspeciﬁed asset pricing models could deliver high R and low pricing errors. We
+allay such concerns by considering an expanded set of test assets that broadly represent the commodity
+market: (i) the four carry portfolios; (ii) the ﬁve momentum portfolios; and (iii) three category portfolios,
+that is, agriculture, livestock, and metal. We exclude energy as a test asset because of its shorter time-series.
+3
+By jointly pricing all the 12 commodity portfolios, we reasonably challenge the asset pricing model.
+Additionally, we test the model on individual commodity returns.
+As an additional robustness check, we also present the results from a randomization exercise (Lustig,
+Roussanov, and Verdelhan (2011)) and results from portfolios constructed on variance (guided by Menkhoff,
+Sarno, Schmeling, and Schrimpf (2012a)).
+Next, we conduct speciﬁcation tests and show that more parsimonious models are rejected in the data,
+while additional commodity factors, such as the value and volatility factors, are statistically insigniﬁcant.
+Complementing our statistical analysis, we show that some of the factors forecast economic growth and
+asset returns and therefore capture shifts in the investment opportunity set. This evidence appears aligned
+with the interpretation (Cochrane (2005, chapter 20)) that variables able to forecast economic conditions
+could be viewed as risk factors, the exposure to which can help characterize the cross-sectional variation
+in average returns. Strengthening this notion, we further establish that our factors are contemporaneously
+correlated with certain economy-wide fundamentals, alluding to a possible risk-based interpretation.
+5. Understanding the cross-section and time-series of commodity returns
+In this section we study the ability of our model to jointly explain the cross-section and time-series of com-
+modity returns. We highlight our incremental contribution relative to the literature, notably Szymanowska,
+3
+The choice of test assets is motivated by Cochrane (2005, page 444) “in testing a model, it is exactly the right thing to do
+to sort stocks into portfolios based on characteristics related to expected returns. When Black, Jensen, and Scholes and Fama
+and MacBeth ﬁrst tested the CAPM, they sorted stocks into portfolios based on betas, because betas are a good characteristic for
+sorting stocks into portfolios that have a spread in average returns. If your portfolios have no spread in average returns - if you
+just choose 25 random portfolios, then there will be nothing for the asset pricing model to test.”
+11de Roon, Nijman, and Goorbergh (2013), Yang (2013), and Asness, Moskowitz, and Pedersen (2013).
+5.1. AVG , CARRY , and CMOM summarize the cross-section of commodity returns
+t t t
+Can the three-factor model explain the cross-section of commodity returns? Are carry and momentum
+priced risk factors? Could these factors rationalize the documented average returns across our test port-
+folios? To answer these questions, we report in Panel A of Table 2 the GMM estimates of the factor risk
+l
+premia ll, the loadings on the SDF b, and the Hansen and Jagannathan (1997) distance measure. The
+Newey and West (Shanken) p-values are reported in parentheses (curly brackets).
+The estimated risk premia of both carry and momentum are positive, implying that portfolios that
+covary more with CARRY and CMOM earn extra compensation. In particular, the estimate of 0:018
+t+1 t+1
+(0:012) for l (l ) amounts to an annualized risk premium of 21.6% (14.4%) for CARRY
+CARRY CMOM t+1
+(CMOM ). The p-values attest to the statistical signiﬁcance of both factors in pricing the test portfolios.
+t+1
+Note that the average factor helps to describe the cross-section of commodity returns, and such ﬁnding
+contrasts the corresponding one from the equity market (Fama and French (1992)) and the currency market
+(Lustig, Roussanov, and Verdelhan (2011, Table 4) and Menkhoff, Sarno, Schmeling, and Schrimpf (2012a,
+Table 2)). However, the estimated annualized risk premium for the average factor is about 6%, which is
+below the risk premia for the other two commodity risk factors.
+Displayed in the column “HJ-Dist.” is the Hansen and Jagannathan (1997) distance measure, which
+quantiﬁes the normalized maximum pricing errors. For the three-factor model, the distance measure is
+0:006, with a p-value of 0.21. Consequently, we do not reject correct pricing.
+l
+The estimates ofll obtained using the Fama-MacBeth procedure are identical, by construction, to those
+obtained using the one-step GMM. The p-values based on Newey-West and Shanken are in agreement and
+b
+establish the statistical signiﬁcance of the three risk premia, even after accounting for the fact that thebb ’s
+i
+are estimated. Overall, our evidence strongly supports the presence of priced risk factors.
+2
+With a GLS cross-sectional uncentered R of 96.3% (Lewellen, Nagel, and Shanken (2010, Prescription
+122
+3)) and an OLS uncentered R of 93.9%, the three factors capture a large fraction of the cross-sectional
+2
+variation of the commodity portfolios. Furthermore, the c tests for the null hypothesis that the pricing
+errors are zero, have p-values equal to 0.22 and 0.25 for Newey and West (1987) and Shanken (1992),
+respectively, indicating that the asset pricing model cannot be rejected. The model pricing errors, displayed
+in Panel A of Figure 4, as measured by the deviation from the 45-degree line, reveal that the unexplained
+returns are small.
+[Fig. 4 about here.]
+How can one quantify the contribution of each factor in explaining the returns cross-section? The issue
+of a possibly redundant factor is addressed from two different perspectives. First, Panels B and C of Table 2
+report results for restricted versions of the baseline model that exclude, alternatively, the momentum or the
+2
+carry factor. In this regard, thec tests of the pricing errors show that both restricted models are rejected,
+SH
+with p-values equal to 0.01 for the model that excludes CMOM and 0.00 for the model that excludes
+t+1
+2
+CARRY . In particular, omitting the carry (momentum) factor worsens the performance, as the GLS R
+t+1
+drops to 67.7% (82.9%), and the p-value for the HJ-Dist. drops to 0.00 (0.15). In sum, the three-factor
+generalization provides a better characterization of commodity returns compared to its nested counterparts.
+Building on our analysis, we also perform a two-step GMM estimation based on an optimal weighting
+matrix (e.g., Cochrane (1996, Table 1) and Lustig, Roussanov, and Verdelhan (2011, row GMM in Table
+2
+4)). We ﬁrst test three exclusion restrictions on the SDF in equation (6): (i) b  0, (ii) b  0,
+CARRY CMOM
+and (iii) b = b  0, and report the results below:
+CARRY CMOM
+b  0 b  0 b = b  0
+CARRY CMOM CARRY CMOM
+2 2 2
+c (1)= 14:18, p-val.=0.00 c (1)= 5:30, p-val.=0.02 c (2)= 30:13, p-val.=0.00
+All the restrictions are rejected, illustrating that both the carry and the momentum factors have loadings on
+the SDF that are statistically different from zero and, hence, provide additional pricing ﬂexibility. Second,
+2
+we perform the Hansen (1982) test of over-identifying restrictions, which isc (9)-distributed, and ﬁnd that
+it has a p-value of 0:167, reinforcing the conclusion that the three-factor model cannot be rejected.
+13Could other economically relevant factors drive out the explanatory ability of our commodity factors?
+To investigate additional models, we augment the three-factor model in equation (6) with either (i) a com-
+modity value factor (in the spirit of Asness, Moskowitz, and Pedersen (2013)) or (ii) a commodity volatility
+factor (in the spirit of Menkhoff, Sarno, Schmeling, and Schrimpf (2012a)). As reported in Panel A of Ta-
+ble 3, the Newey-West p-values for the null hypothesis of l = 0 and l = 0 are, respectively,
+VALUE DVOL
+0:21 and 0:94, indicating that these additional risks are not priced. Next, to examine the relevance of each
+2
+additional factor in the SDF speciﬁcation, we also perform ac exclusion restriction test in the context of a
+2
+two-step GMM. The p-values for thec (1) statistics are 0:51 (0:41) for the value (volatility) factor. Thus,
+4
+our tests seem to favor a more parsimonious three-factor model speciﬁcation.
+Are our conclusions robust to an alternative set of test portfolios? For this purpose, we conduct cross-
+sectional tests on the four portfolios double-sorted ﬁrst by momentum and then by carry, as described in
+2
+Appendix B. Here we ﬁnd that thec test for the model that excludes the carry (momentum) factor is
+NW
+rejected with a p-value of 0.07 (0.00). On the other hand, the model that includes both is not rejected. For
+2
+instance, thec has a p-value of 0.38, afﬁrming that the pricing errors are statistically indistinguishable
+NW
+from zero. Furthermore, the magnitudes of the factor risk premia are consistent with those in Table 2. The
+three-factor model offers considerable ﬂexibility in pricing the various test assets.
+How sensitive are our results to the randomization procedure advocated in Lustig, Roussanov, and
+Verdelhan (2011)? Following their approach, in the ﬁrst step we construct the average, carry, and momen-
+tum factors based on commodities whose ticker symbol starts with the letter A through the letter M. In the
+second step we construct two carry, two momentum, and three category portfolios based on commodities
+whose ticker symbol starts with the letter N through the letter Z. Finally, we use the factors constructed
+on the ﬁrst set of commodities to price portfolios formed on the second set of commodities, and we also
+conduct the reverse exercise. Such a procedure poses a higher hurdle for the pricing models, given that the
+commodities included in the pricing factors are different from the ones included in the priced portfolios.
+4
+We also assess whether a common set of factors prices both commodity and equity portfolios by replacing the three commod-
+ity factors with the four Fama-French equity factors. Our statistical tests reject correct model pricing, implying that the commodity
+and equity markets may be segmented (Daskalaki, Kostakis, and Skiadopoulos (2013)).
+14Together, the evidence from Panels A and B of Table 4 provides justiﬁcation for the inclusion of both
+carry and momentum to price the cross-section of commodity returns. In fact, the three-factor model is not
+rejected on the ﬁrst set of commodities and is borderline rejected on the second. On the other hand, the
+two-factor model that features the average and the carry factor is rejected in both cases. The model that
+features the average and the momentum factors is not rejected in the ﬁrst subsample, but it is rejected on
+the second.
+Additionally, we augment the composition of the test portfolios to include ﬁve portfolios that are sorted
+based on the volatility of commodity returns computed using daily returns over the past month, as in
+Menkhoff, Sarno, Schmeling, and Schrimpf (2012a). The results, reported in Table Appendix-V, show that
+the three-factor model continues to perform well, while the two-factor models are rejected, according to
+2 2
+both thec andc tests.
+NW SH
+Motivated by Tang and Xiong (2013) and Henderson, Pearson, and Wang (2012), we also study whether
+the ﬁnancialization of commodities had an impact on the performance of the model. To address this issue,
+we compare model ability from 1970:07 to 2003:12 and 2004:01 to 2011:09, and obtain a p-value of 0.15
+2
+and 0.24, respectively, for thec test of zero pricing errors. Our evidence of correct model pricing on
+NW
+both subsamples shows that the ﬁnancialization of commodities does not affect model performance.
+5.2. Time-series regressions: The hypothesis of zero alphas is not rejected
+To assess how the three-factor model fares in capturing the time-series dimension of commodity returns,
+we perform the following regressions for test assets indexed by i= 1;:::;12:
+i i i i i i
+er =a + b AVG + b CARRY + b CMOM + e for t= 1;:::;T: (7)
+t t t
+t AVG CARRY CMOM t
+1 120
+We gauge model adequacy by testing the joint hypothesis that aaa = 0 0 0, where aaa = [a ;:::;a ] . This
+0
+ 1
+a ˆ a ˆ a ˆ
+hypothesis of zero pricing errors is tested by constructing the statistic aa var(aa) aa in a GMM setting,
+2
+which is asymptotically distributed asc (d f), where d f is the dimensionality ofaaa (see Cochrane (2005,
+15i
+page 234)). We also test the individual signiﬁcance ofa for i= 1;:::;12.
+As can be inferred from Table 5, the three-factor model aptly describes the time-series returns of the
+a 0
+test portfolios. For example, with a p-value of 0:11, we are unable to reject the null hypothesis thataa= 0 0.
+Furthermore, ten out of the 12a estimates have p-values that exceed 0.05. The largest (absolute)a has an
+annualized value of 4:8%, while the majority ofa’s are below 2:4%, implying that the departures from the
+model are economically small.
+All the b coefﬁcients are uniformly positive and statistically signiﬁcant and range from 0.659 to
+AVG
+1.165. The implication of this ﬁnding is that the returns of commodity portfolios manifest a strong com-
+modity market component.
+i
+As nine (ten) out of 12 p-values on b are below 0.05 (0.1), we also conclude that CMOM
+t
+CMOM
+i
+explains the return dynamics of the commodity portfolios. We further note that the b coefﬁcients
+CARRY
+are statistically signiﬁcant for carry portfolios. However, CARRY does not seem to impact the returns of
+t
+momentum and commodity category portfolios in a statistically signiﬁcant manner.
+Overall, the portfolio returns display differential sensitivity to the carry and momentum factors. Specif-
+ically, the extreme contango portfolio (i.e., P4) serves to hedge CMOM risks, offering some justiﬁcation
+t
+for its low average returns (see Table 1 and the discussion in Appendix B). Our ﬁndings also enable the
+insight that commodities linked to the livestock can hedge momentum related risks, while the returns of
+2
+commodity categories are largely detached from the carry factor. The adjusted R ’s range from 22.3% for
+Livestock to 84.5% for the momentum portfolio Q1, implying that the factors help to track the time-series
+behavior of commodity portfolios. A later analysis is directed at understanding the economic sources of
+model performance.
+There is some disagreement about the number of factors needed to characterize the time-series of com-
+modity returns. Szymanowska, de Roon, Nijman, and Goorbergh (2013, Tables IX, and X) provide tests
+suggesting that only carry is needed, while Yang (2013) makes the case for a two-factor model featuring
+the average and the carry factors. We shed light on this issue by reporting, in Table 6, the performance of
+162
+the one- and the two-factor models. From a statistical standpoint, the R ’s associated with the one-factor
+model, driven by the carry factor alone, are negative for ﬁve out of the 12 portfolios and are signiﬁcantly
+lower than the ones associated with the three-factor model. This model is fundamentally misspeciﬁed with
+2 5
+ﬁve out of 12 a’s signiﬁcantly different from zero and a c (12) statistic, indicating model inadequacy.
+2
+The two-factor model featuring the average and the carry factor is also rejected according to the c (12)
+statistic indicating that momentum has explanatory power beyond the average and carry factor and may be
+needed to characterize the variation in commodity returns.
+Table 7, which presents the performance of the three-factor model under the randomization approach
+further reinforces the relevance of the momentum factor. The main message from combining the results
+from Table 5 through Table 7 is that generalizing the two-factor model in Yang (2013) can help to further
+explain the dynamic behavior of commodity returns.
+5.3. The conditional versions provide some additional ﬂexibility
+Cochrane (1996), Lettau and Ludvigson (2001), Jagannathan and Wang (2002), and Nagel and Single-
+ton (2011), among others, have compared the performance of conditional and unconditional asset pricing
+models. One ﬁnding is that conditional models can enhance performance if the loadings on the risk factors
+affecting the SDF are not constant but ﬂuctuate with the state of the economy.
+Following the literature on equity returns, we modify the SDF in equation (6) and set it to m =
+t+1
+0
+μ
+1  b[z](f   μ μ). We further assume that b[z] is a linear function of a state variable z . In the context of
+t t+1 t t
+the three-factor model, the SDF becomes:
+m = 1  b (AVG   μ )  b (CARRY   μ )  b (CMOM   μ )
+t+1 AVG t+1 AVG CARRY t+1 CARRY CMOM t+1 CMOM
+  b (AVG   μ )(z  μ )  b (CARRY   μ )(z  μ )
+AVG;z t+1 AVG t z CARRY;z t+1 CARRY t z
+  b (CMOM   μ )(z  μ ): (8)
+CMOM;z t+1 CMOM t z
+5
+The departure in our results from Szymanowska, de Roon, Nijman, and Goorbergh (2013, Tables IX, and X) could be
+presumably attributed to (i) our longer sample, (ii) our use of monthly sampled observations versus their bimonthly sampled
+observations, and (iii) our use of 12 test portfolios versus their use of four test portfolios.
+17This model reﬂects the additional interaction terms between AVG , CARRY , CMOM , and z .
+t+1 t+1 t+1 t
+Choosing a conditioning variable is critical because, in principle, it should contain all the information
+available to investors, which is unobservable to the econometrician. Because theory offers little guidance,
+we assess the performance of a number of alternative z ’s (deﬁned in Appendix C): (i) open interest growth,
+t
+(ii) change in commodity volatilityDVOL , (iii) log dividend yield of the US equity index, (iv) the currency
+t
+returns (US dollar index, FXjUSD), (v) industrial production growth (G7 countries), (vi) the US term
+spread, (vii) the average slope of the futures curve for the commodities in backwardation (i.e., ln(y)< 0),
+t
+and (viii) the average slope of the futures curve for the commodities in contango (i.e., ln(y)> 0).
+t
+Our choices of z are meant to capture the state of the economy and broadly reﬂect developments in
+t
+real economic activity, equity, bond, currency, and commodity markets. For example, the aggregate open
+interest is a slight variation of the one used in Hong and Yogo (2012), while the relation between the
+commodity risk premia, currency returns, the slope of the futures curve, and macroeconomic variables
+have been studied by Bailey and Chan (1993, Table 1), and Chen, Rogoff, and Rossi (2010, Table IV).
+For each conditioning variable z , Table 8 presents the results from the Hansen and Jagannathan (1997)
+t
+distance test as an overall measure of ﬁt, as well as exclusion tests that analyze in what respects the condi-
+tional models differ from the unconditional model featured in equation (6).
+In all cases, we are unable to reject the null that the distance measure is equal to zero, as all the p-values
+are greater than 0:1 (see Panel A of Table 8). This implies that more elaborate parameterizations do not
+substantially worsen model performance.
+Additional evidence of the effect of conditioning can be gathered from evaluating the null hypothesis
+that all coefﬁcients representing the interaction between the factors and z are jointly equal to zero, i.e.,
+t
+H : b = b = b  0, against the alternative that at least one is different from zero. Five
+0 AVG;z CARRY;z CMOM;z
+2
+out of the eight p-values for thec (3) tests in Panel B of Table 8 are less than 0:1. Such ﬁndings indicate
+that the combined effect of allowing time-varying coefﬁcients b[z] could produce a better pricing model.
+t
+2
+Complementing the above results, Panel C of Table 8 reports thec (1) exclusion tests on the individual
+18interaction terms between z and each of the factors. The number of statistically signiﬁcant interaction terms
+t
+varies from three to ﬁve among the three factors, reinforcing the possible need to model time-varying b[z].
+t
+Finally, Panels B through D of Figure 4 illustrate that incorporating conditioning can better align the
+predicted and realized returns along the 45-degree line. This can be gauged by the slightly higher uncen-
+2
+tered R and the lower mean absolute pricing errors. The takeaway is that conditional models that admit
+time-varying loadings on the SDF can be expected to improve the pricing of certain commodity portfolios.
+To summarize, we ﬁnd that the three-factor model offers versatility in describing the cross-section of
+commodity returns and establish the relevance of the momentum factor. The estimates of the factor risk
+2
+premia appear reasonable and are statistically signiﬁcant, thec -tests are supportive of zero pricing errors,
+2 2
+the model yields a high GLS R , and the c exclusion tests do not support the importance of value or
+volatility as additional factors. At the same time, allowing for time-varying loadings on the average, carry,
+and momentum factors could deliver slightly better asset pricing.
+6. Model performance using individual commodity returns as test assets
+While the tradition is to examine the performance of factor models using portfolios of assets sorted on iden-
+tiﬁable characteristics, there is some concern that such rankings may be arbitrary. Instead, there appears
+to be some interest in examining models based on individual assets (e.g., Ang, Liu, and Schwarz (2010),
+Chordia, Goyal, and Shanken (2013), and Jegadeesh and Noh (2013)). Catering to this line of thinking, we
+assess model performance using individual commodities as test assets.
+Our goal is twofold. First, we seek to evaluate whether the factors we have identiﬁed in the context of
+portfolios are also useful in characterizing the time-series of individual commodity returns. To do so, we
+implement a bootstrap procedure to account for the nonnormalities in the joint distribution of alphas and
+the unbalanced nature of the individual commodity data. Second, we aim to study model adequacy and
+estimate factor risk premia using cross-sectional tests based on individual commodities. We do this under
+the setting of both constant and time-varying loadings on the carry and the momentum factors. Overall, our
+19investigation with individual commodities could help alleviate concerns regarding the broader empirical
+validity of the commodity asset pricing model.
+6.1. Return time-series behavior of individual commodities and bootstrap tests of alphas
+For each of the 29 commodities, we perform the time-series regression in equation (7) and report the
+coefﬁcients in Table 9. There are four commodities with signiﬁcanta: barley and corn have negativea’s
+signiﬁcant at the 5% level, while unleaded gas and heating oil have positive a’s signiﬁcant at the 10%
+level. Keep in mind that, even if under the truth none of the commodities had a signiﬁcant unexplained
+performance, one would expect to observe three commodities with a signiﬁcant a at the 10% level, by
+virtue of random variation. Furthermore, it is not feasible to conduct tests of jointa signiﬁcance because
+of the unbalanced nature of the panel (trading starts and ends at different dates across commodities).
+To partially overcome the above limitations, we follow Kosowski, Timmermann, Wermers, and White
+(2006, Section III.B.1 and Section IV.D) and resort to a bootstrap procedure. As recommended, we focus on
+the t-statistics associated with the individual commoditiesa’s to draw our inference. We use the bootstrap
+procedure to address two questions. First, do individually (and jointly) the commodities in Table 9 with
+signiﬁcant a’s maintain their signiﬁcance once we account for the fact that (i) our cross-section covers
+a sizable number of commodities, (ii) the volatility levels are different across commodities, and (iii) the
+commodities series have different time-series lengths. Second, is the averagea computed on the whole set
+of commodities statistically different from zero.
+[Fig. 5 about here.]
+Figure 5 conveys that none of the commodities with p-values smaller than 10% in Table 9 is signiﬁcant
+once we cast the test in our bootstrap setting. This can be seen by observing the results for the commodity
+with the most negative alpha t-statistic (i.e., barley, Panel A1), as well as the second-to-most negative
+alpha t-statistic (i.e., corn, Panel A2). For both commodities, the t-statistics obtained in the sample are not
+sufﬁcient to reject the null that thea’s are equal to zero and the p-values for the alpha t-statistics associated
+20with the two commodities are 0.40 and 0.13, respectively. The same holds for the commodity with the
+highest alpha t-statistic (i.e., unleaded gas, Panel B1), and the commodity with the second-highest alpha
+t-statistic (i.e., heating oil, Panel B2) whose p-values are 0.53 and 0.34, respectively. Furthermore, we also
+test whether the worst (best) two commodities have coefﬁcients that are jointly statistically different from
+zero and obtain a p-value of 0.24 (0.44), indicating that the a’s are not statistically different from zero.
+Finally, we turn to the null hypothesis that the averagea across commodities is equal to zero. The average
+t-statistic is 0.013, with a corresponding p-value of 0:46, indicating that the null of zero averagea cannot
+be rejected.
+In summary, our results suggest model adequacy for individual commodity returns, consistent with the
+conclusions we draw using portfolios as test assets.
+Turning to the betas, the results in Table 9 indicate that all the b coefﬁcients are positive and
+AVG
+statistically signiﬁcant. In contrast, seven (four) b (b ) coefﬁcients have NW[p] values that
+CARRY CMOM
+2
+are less than 0:1. The adjusted R varies from 4.5% for orange juice to 47.2% for soybeans, implying
+signiﬁcant variation in the model ability to explain the return time-series of individual commodities.
+[Fig. 6 about here.]
+How should one interpret the difference inb loadings in Table 9 compared to the portfolio results re-
+ported in Table 5? One possibility is that the exposure of individual commodity returns to the carry and
+momentum factors may be varying due to changes in supply and demand conditions. To formalize this no-
+tion, we estimate the time-varying loadings (e.g., Engle (2013, page 23)) of each commodity with respect
+to the carry and the momentum factors using the Kalman ﬁlter (the procedure is outlined in the caption
+to Figure 6). The likelihood ratio tests indicate that the null of constant loadings on carry and momentum
+can be rejected for 26 (25) commodities at the 10% (5%) level. We also compute the monthly standard
+deviation of the time-varying coefﬁcients and ﬁnd that the 25th, 50th, and 75th percentiles of the distri-
+bution equals 0.007, 0.057, and 0.137, respectively. To illustrate the general pattern across commodities,
+we display in Figure 6 the time-varying coefﬁcients associated with corn and silver. Collectively, these
+21ﬁndings contradict the notion of constant betas for individual commodities.
+6.2. Explaining the cross-sectional returns of individual commodities
+The pertinent question now is whether the model also performs well in the cross-section of individual
+commodity returns. Going beyond the extant literature, we conduct cross-sectional tests using both constant
+betas as well as time-varying betas estimated with the Kalman ﬁlter.
+The results for the Fama-Macbeth regressions with constant beta coefﬁcients are reported in Panel
+A of Table 10. Our estimates support positive risk premia for the average and the carry factors that are
+quantitatively similar to the portfolio results reported in Table 2. In contrast, the risk premium for the
+2
+momentum factor is small and insigniﬁcant. Furthermore, the c tests with and without the Shanken
+correction both reject the model, with p-values equal to 0.04 and 0.07, respectively.
+Could one improve model performance by relaxing the assumption of constant betas? Panel B of Table
+10 adapts the standard Fama-MacBeth regressions to account for time-varying betas. In the ﬁrst step,
+we model the time-varying beta coefﬁcients with respect to the carry and momentum factors using the
+Kalman ﬁlter. In the second step, we follow the more traditional implementation of the Fama-MacBeth
+procedure described in Cochrane (2005, pages 245–247), as it is no longer appropriate to run a cross-
+6
+sectional regression of average returns on the betas due to the time-varying nature of the coefﬁcients.
+2
+The key ﬁnding is that the three-factor model is no longer rejected, as the p-value of thec test is 0.14.
+Furthermore, the factor risk premia associated with the average and the carry factors remain economically
+and statistically signiﬁcant. While the risk premium of the momentum factor increases to 0.012, it remains
+statistically insigniﬁcant with a p-value of 0.31. Our results are in contrast to those of Daskalaki, Kostakis,
+and Skiadopoulos (2013, Tables 7 and 8).
+Overall, our ﬁndings emphasize the role of time-varying betas in modeling the cross-section of individ-
+ual commodity returns. Speciﬁcally, under the more plausible setting of time-varying exposures of indi-
+6
+As noted in Cochrane (2005, page 245), this procedure has the limitation of not allowing corrections for the fact that the betas
+2
+are estimated. We also cannot compute R values.
+22vidual commodities on carry and momentum, the three-factor model is not rejected on statistical grounds.
+7. Comparisons with the extant literature
+Our treatment builds on Yang (2013), who uses an average factor and a carry factor to price the cross-
+section and time-series of commodity portfolio returns. Recall that Yang (2013)’s approach to portfolio
+formation involves constructing seven test portfolios with commodities sorted on the slope of the futures
+curve that is inferred from log-difference of the 12-month and one-month futures prices. Given that, at any
+point in time, the number of commodities available can be as low as 15, this approach may be subject to
+the limitation that the number of commodities included in each portfolio can be as low as two or three,
+giving rise to a potentially large estimation error. This feature can be problematic as evidenced by the
+cross-sectional tests in Yang (2013, page 169), in which a model that contains the average factor as the
+only factor cannot be rejected. Moreover, in the time-series tests (Table 3, page 170), none of the seven
+portfolios has a signiﬁcanta when the average factor is used as the only factor.
+Relative to Yang (2013), our novelty lies in establishing the importance of the commodity momentum
+factor. In the time-series dimension, we show that the momentum factor can price the carry portfolios, but
+the carry factor is not able to price the momentum portfolios. In the cross-sectional dimension, we show
+that a two-factor model that does not include the momentum factor has difﬁculties pricing the cross-section
+of commodity returns, when confronted with a larger set of test portfolios. The essential point is that
+the three-factor model outperforms the nested two-factor models in capturing the documented patterns in
+commodity portfolio returns. Furthermore, we present evidence relying on individual commodity returns.
+The focus of Szymanowska, de Roon, Nijman, and Goorbergh (2013) is on decomposing commodity
+futures risk premia into spot premia and term premia. One feature highlighted in their analysis is that the
+carry factor alone can provide an acceptable description of the time-series variation in commodity spot
+premia. Guided by their analysis, we investigate in Table 6 the ability of the carry factor to explain the
+time-series behavior of our test portfolios. The main ﬁnding to be gleaned from our exercises is that the
+232
+omission of the average factor leads to a rather poor performance of the model in terms of adjusted R ’s.
+We surmise that the misspeciﬁcation associated with the omission of the average factor could potentially
+induce large standard errors, and this could possibly explain the failure to reject the null that thea’s are
+jointly equal to zero, when carry is used as the only factor. A distinctive ﬁnding in our setting is that a
+commodity asset pricing model driven by the carry factor alone is strongly rejected in the data.
+Going beyond Szymanowska, de Roon, Nijman, and Goorbergh (2013), we also perform cross-sectional
+tests and show that the momentum factor contains additional information beyond that conveyed by the carry
+factor. A further distinction is that we perform our analysis on individual commodity returns.
+Besides, while accommodating the ﬁrst-notice-day convention, we employ the second-nearest maturity
+futures contract sampled at the monthly frequency. This contrasts Szymanowska, de Roon, Nijman, and
+Goorbergh (2013), as they construct returns at the bimonthly frequency. Furthermore, our dataset features
+16 more years of data (it starts in 1970 rather than 1986 and ends in 2011 rather than 2010) and contains 29
+commodities rather than 21. The combination of the higher data frequency and the longer sample translates
+into a larger number of time-series observations (approximately 500 compared to approximately 150) and
+that could result into a higher precision of our estimates. Our results indicate that a three-factor model is
+needed to explain both the cross-sectional and time-series variation in commodity returns.
+Our focus departs from Asness, Moskowitz, and Pedersen (2013), who employ commodities in their
+construction of value and momentum factors across countries and asset classes. While their intent is to
+study the performance of a global asset pricing model, our goal is to explain the cross-section and time-
+series of commodity returns. The common denominator between our studies lies in establishing the impor-
+tance of momentum.
+Finally, our approach has the ﬂavor of the currency studies of Menkhoff, Sarno, Schmeling, and
+Schrimpf (2012a, 2012b), and Lustig, Roussanov, and Verdelhan (2011) in that we construct the com-
+modity factors from the space of commodity returns to price commodity portfolios. Overall, having a
+richer commodity asset pricing model could improve our understanding of commodity price dynamics and
+could reﬁne the single-factor setup considered by Cortazar, Kovacevic, and Schwartz (2013).
+248. An economic rationale for the factors
+A key feature to reconcile is that the commodity factors are useful for characterizing the cross-sectional
+and time-series properties of commodity returns. In search of an interpretation of our ﬁndings, we further
+address two questions. First, do the factors help to forecast changes in the investment opportunity set?
+Second, what real macroeconomic risks underpin the performance of the three-factor model?
+The motivation for our forecasting exercises stems from the approaches in Campbell (1996) and Ferson
+and Harvey (1999) and is also guided by an analogy in Cochrane (2005, page 445): “Though Merton’s
+(1971, 1973) theory says that variables which predict market returns should show up as factors which
+explain cross-sectional variation in average returns, surprisingly few papers have actually tried to see
+whether this is true, now that we do have variables that we think forecast the market return.” In what
+follows, we assume that changes in the investment opportunity set could be summarized by (i) GDP growth,
+(ii) Treasury bond returns, (iii) equity returns, and (iv) returns of commodity currencies.
+8.1. The factors have joint predictive content for aggregate economic activity
+Motivated by Liew and Vassalou (2000, Table 5), Groen and Pesenti (2009, Section 2), Cespedes and
+Velasco (2012, Table 1), and Caballero, Farhi, and Gourinchas (2012, Table 9), among others, we consider
+whether the commodity factors can forecast growth of economic activity. Our framework uses the real
+GDP growth of the G7 countries as a measure of economic activity and the following linear model:
+0
+q
+ln(GDP =GDP) = q + qq f + e ; k2f1;2;3;4g; (9)
+t+k t 0 t t+k
+0
+where f [AVG CARRY CMOM] . Our goal is to investigate whether the predictive slope coefﬁcients
+t t t t
+contained inqqq are individually and jointly statistically signiﬁcant. We draw inference based on the Newey
+and West (1987) estimator, with lags automatically selected according to Newey and West (1994), and the
+Hodrick (1992) 1B covariance estimator under the null of no predictability.
+25Three features of our results reported in Table 11 deserve discussion. First, a higher AVG forecasts
+t
+stronger global economic growth, while higher CARRY and CMOM forecast lower economic growth.
+t t
+Second, the statistical signiﬁcance of the commodity factors is preserved at all horizons, with the exception
+of AVG , which loses its signiﬁcance at four quarters. Both the Newey and West p-values, denoted by
+t
+NW[p], and the Hodrick p-values, denoted by H[p], are in agreement. The factors are also relevant from
+an economic perspective. For example, a one standard deviation increase in the carry factor (i.e., 22%; see
+Table Appendix-II) is associated with a decline of 88 basis points of annualized GDP in the subsequent
+quarter. Third, the p-values corresponding to the null hypothesis that none of the predictors is statistically
+signiﬁcant, that is,qqq= 0, are consistently below 0:02 (reported as J[p]). These results afﬁrm the ability of
+the commodity factors to jointly predict future economic conditions across industrialized countries.
+We conduct three additional exercises to demonstrate the reliability of the above ﬁndings. First, the
+commodity factors forecast the G7 and US industrial production growth as well as the US GDP growth
+(not reported), indicating robustness to alternative measures of economic activity. Next, we build on Liew
+and Vassalou (2000, Tables 5 and 6) and include the SMB and HML factors of Fama and French (1996) in
+t t
+our speciﬁcation (9). Our Wald statistic points to the lack of joint statistical signiﬁcance of these two equity
+factors for US GDP growth. Finally, we account for the possible effect of serial correlation in the GDP
+growth by implementing an ARMAX model. We ﬁrst select the best model for GDP growth, using the
+Bayesian information criterion, and ﬁnd it to be an ARMA(1,1). We then include the commodity factors in
+an ARMAX speciﬁcation, and ﬁnd that they maintain their joint statistical and economic signiﬁcance. In
+sum, our results extend beyond the linear forecasting model in equation (9).
+While policymakers have often relied on futures markets to derive price forecasts of commodities (e.g,
+Ben Bernanke, June 9, 2008), our evidence on the information content of commodity factors for economic
+activity adds to the extant literature in two new ways. First, the ability of the commodity factors to forecast
+output growth is not yet recognized. Second, our evidence transcends the predictive role of oil prices
+on macroeconomic ﬂuctuations (e.g., Hamilton (1983) and the follow-up studies). Speciﬁcally, when the
+growth of oil prices is added as an additional predictor in equation (9), the slope coefﬁcient on oil is
+26insigniﬁcant, while the factors remain strongly statistically signiﬁcant (see Table Online-III).
+8.2. The commodity factors predict returns of Treasury bonds and equities
+The preceding evidence emphasizes that the commodity factors can forecast one dimension of changes
+in the investment opportunity set, namely, growth of real economic activity. Still, the commodity factors
+could also forecast other dimensions of the time variation in the investment opportunity set related to bond
+returns and equity returns, suggesting a multifaceted explanation for the documented ﬁndings.
+Following Fama and French (1988b) and Hodrick (1992), consider the following predictive regressions
+with overlapping observations for Treasury bonds and equity returns for K2f1;3;6;9;12g:
+K
+0 f
+bond bond bond
+er = x + xxx f + e ; with er  ln(1+ r )  ln(1+ r ); (10)
+0 t t+K t
+å t+k t+1 t+1
+k=1
+K
+equity 0 equity equity f
+d
+er = d + dd f + e ; with er  ln(1+ r )  ln(1+ r ): (11)
+0 t t+K
+å t
+t+k t+1 t+1
+k=1
+We consider both one-year and 30-year US Treasury bond returns (source: CRSP) and US value-
+7
+weighted equity returns. The results are presented in Tables 12 and 13.
+There are three points to glean from the reported slope coefﬁcients. First, the average factor has pre-
+dictive content for one-year bond returns at all horizons and for 30-year bonds for horizons of one month
+and three months, but it is generally uncorrelated with future equity returns. When statistically signiﬁcant,
+the average factor exerts a negative effect on future bond returns, which intuitively agrees with our ﬁndings
+in Table 11 that the average factor positively predicts output growth.
+Next, our results with respect to the carry factor indicate that it tends to predict positively (negatively)
+bond (equity) returns. In particular, the estimated coefﬁcientsd decline with the return horizon, and
+CARRY
+the effect of the carry factor on future equity returns is statistically signiﬁcant. The forecasting ability of
+7
+Examining the behaviors of bond and equity returns serves an important purpose. For instance, if the factors predict equity
+returns, then they should either predict discount rate uncertainty or cash ﬂow uncertainty. On the other hand, Treasury bonds
+embed ﬁxed cash ﬂows (e.g., Ilmanen (1995, Table 1)). Thus, the predictability of the default-free component of the discount
+rates, when viewed in conjunction with equity returns, could help trace the economic nature of the commodity factors.
+27the carry factor also holds in univariate regressions (i.e., whend =d = 0), withd estimates
+AVG CMOM CARRY
+2
+that lie between 0:06 and 0:32. Additionally, the 12-month horizon adjusted R is equal to 2.5%, in
+8
+line with other equity market predictors (e.g., Cochrane and Piazzesi (2005, Table 3)).
+The negative slope coefﬁcients with GDP growth and equity returns, and the positive slope coefﬁcients
+with bond returns, impart a countercyclical attribute to the carry factor. In particular, the relative spread
+between the returns of commodities in backwardation versus those in contango contains information for
+aggregate future cash ﬂows, as measured by the GDP growth, and for equity returns, but our evidence also
+illustrates the predictive link to bond returns.
+Observe that the effect of the momentum factor is inconspicuous and statistically insigniﬁcant for
+equity returns and 30-year bond returns but predictability surfaces for one-year bond returns at horizons
+ranging from six to 12 months. Viewed together, the commodity momentum factor is negatively related
+to GDP growth at all horizons, and positively related to short-term bond returns at horizons equal to and
+longer than six months.
+Overall, our analysis points to the need to develop theoretical models that recognize the interlinkages
+among the expected returns across different asset classes.
+8.3. Relation between the factors and the future behavior of commodity currencies
+Chen, Rogoff, and Rossi (2010, Table IV) show that commodity returns have some predictive power for
+the returns of commodity currencies. Extending their analysis, we consider the predictive regressions:
+0
+ln(FX =FX) = p + ppp f + e and k2f1;2;3;4g; (12)
+t+k t 0 t t+k
+where ln(FX =FX) represents currency returns, obtained by equally weighting returns across the com-
+t+k t
+modity currencies (i.e., Australia, Canada, Chile, Norway, New Zealand, and South Africa; see Labuszewski
+8
+Appreciate, in addition, that the carry factor is not persistent (see columnr in Table Appendix-II), offering a certain deviation
+1
+from other predictors of bond and equity returns, such as the term premium and the dividend yield, which are instead highly
+persistent (see Campbell (2001)).
+28(2012)). Following convention, we maintain the US dollar as the reference currency. We assess the factors
+p
+to see if they reﬂect certain global risks, which would translate into a statistically signiﬁcantpp.
+Table 14 reveals three prominent ﬁndings. First, an increase in the average factor predicts the deprecia-
+tion of the US dollar, but the effect weakens after one quarter and becomes statistically insigniﬁcant. Next,
+increases in the carry and momentum factors imply an appreciation of the dollar, with six out of eight H[p]
+below 0.1. Analogous to our ﬁndings in Tables 11 through 13, the signs of the predictive slope coefﬁcients
+p are the opposite of those of p and p , sharpening the distinction between the economic
+AVG CARRY CMOM
+nature of the three factors.
+At the same time, our results appear economically sensible. For example, a rise in commodity carry
+returns forecasts future appreciation of the US dollar, which coincides with a forecast of an economic
+downturn, and is accompanied by falling equity prices. Such downturns often witness the unwinding of the
+long leg of the currency carry trades, caused by the unraveling of positions in high interest rate currencies
+(e.g., Australian dollar, New Zealand dollar, and South African rand). This piece of evidence implies that
+the commodities factors are likely aligned with certain risks that have global orientations.
+In summary, our ﬁndings are in the spirit of Cochrane (2005, pages 442–445), and Hong and Yogo
+(2012) and add to a growing body of studies that suggest the interlinkages between equity returns, bond re-
+turns, currency returns, and now, commodity returns. Our view is also shaped by Fama (1991, page 1610):
+“In the end, I think we can hope for a coherent story that (1) relates the cross-section properties of expected
+returns to the variation of expected returns through time, and (2) relates the behavior of expected returns
+to the real economy in a rather detailed way. Or we can hope to convince ourselves that no such story is
+possible.” We provide some resolution to this ongoing debate by corroborating the connection between the
+commodity factors and economic variables that proxy for changes in the investment opportunity set.
+8.4. Quantifying the exposure of the factors to economic fundamentals
+To broadly explore the role of the macroeconomy, we follow Bailey and Chan (1993), Fama and French
+(1989), Driesprong, Jacobsen, and Maat (2008), Menkhoff, Sarno, Schmeling, and Schrimpf (2012b), and
+29Asness, Moskowitz, and Pedersen (2013), among others, and run the following univariate regressions:
+AVG = f + fX + e ; CARRY = f + fX + e ; CMOM = f + fX + e ; (13)
+t 0 t t t 0 t t t 0 t t
+where X proxies for a source of risk. We take X to be variables related to real economic activity, equity
+t t
+markets, bond markets, currency markets, and liquidity. The central proposition is whether X inﬂuences
+t
+risk premia in the commodity market, as gauged by a statistically signiﬁcantf.
+Table 15 presents thef estimates and the corresponding Newey and West (1987) p-values, with lags
+automatically selected according to Newey and West (1994). We normalize f so that the coefﬁcients
+correspond to a percentage change in the commodity risk premia for one standard deviation change in X .
+t
+There is a strong association between the average factor and the macroeconomy, whereby ﬁve (six) out
+of 14f’s have p-values lower than 0:05 (0:1). For example, thef estimate is positive for output growth,
+equity risk premium, and open interest growth. On the other hand, there is a negative association with the
+term spread and equity volatility, and average commodity returns are higher with the depreciation of the
+US dollar. These ﬁndings convey the cyclical nature of AVG .
+t
+The carry factor exhibits markedly different exposures, whereby the carry strategies tend to perform
+well during periods of broad-based equity market declines and when the commodity market experiences
+high volatility. The commodity carry is proﬁtable when value stocks outperform growth stocks and high
+momentum stocks outperform low momentum stocks.
+Our ﬁndings also point to the elusive nature of commodity momentum returns, with 12 out of 14f esti-
+mates statistically insigniﬁcant. An exception is that commodity momentum returns are signiﬁcantly higher
+in periods of high value spreads and momentum spreads, reinforcing the view that they load on certain risks
+relevant to equity investors. Our observations hint to possible feedback effects between commodity returns
+and equity returns, as argued also by Buyuksahin and Robe (2012).
+Even though commodity carry and momentum strategies appear to provide some protection against
+equity market declines, the negative effect on expected returns is offset by extra compensation, due to the
+30positive exposures with respect to the equity value and equity momentum factors. Thus, the search for
+a plausible explanation of higher average returns to both carry and momentum factors is challenging and
+depends on countervailing effects.
+Importantly, open interest growth exerts a positive, and statistically signiﬁcant, effect on both the aver-
+age factor and the momentum factor. Our evidence, thus, supports the view in Hong and Yogo (2012) that
+the evolution of open interest reﬂects developments affecting the commodity markets.
+Combining the various parts of our analysis, we also ﬁnd that the commodity factors are seemingly
+detached from our bond market variables (ﬁve out of sixf’s are insigniﬁcant). Furthermore, we ﬁnd no
+discernible link between any of the commodity factors and a measure of liquidity, i.e., the TED spreads.
+In contrast to Lustig, Roussanov, and Verdelhan (2011), who emphasize the information content of
+currency carry returns and their connection to global risks, the factors are decoupled from currency carry
+trade returns. Moreover, the factors do not signiﬁcantly respond to changes in currency volatility.
+Overall, the commodity factors display differential exposures to our universe of economic fundamen-
+tals. Moreover, these exposures, when viewed in conjunction with the forecasting exercises, offer some
+insights as to why the identiﬁed factors help to describe the cross-sectional and time-series variation in
+commodity returns. Our arguments rely on the premise that the factors synthesize the multidimensional
+9
+aspects of the macroeconomy and, at the same time, track variations in the investment opportunity set.
+9. Concluding remarks
+This paper studies cross-sectional and time-series patterns of commodity futures returns over a 42-year
+period, from 1970 to 2011. The big picture is that the three-factor model driven by an average factor, a
+carry factor, and a momentum factor is not rejected when portfolios are used as test assets, whereas a two-
+factor model (as featured in Yang (2013)) or a one-factor model (as featured in Szymanowska, de Roon,
+9
+Table Online-IV shows that the returns of long and short legs of carry and momentum display correlations with the average
+factor that are equal in magnitude but of opposite signs and, hence, the combined strategies are commodity market neutral.
+However, the central result is that the combined positions isolate risks that correlate with future output growth and asset returns.
+31Nijman, and Goorbergh (2013)) furnishes pricing errors that are statistically different from zero. Thus, our
+results indicate that the momentum factor is incrementally important in explaining the cross-section and
+time-series of commodity returns.
+Additionally, the model is not rejected when individual commodities are used as test assets. The docu-
+mented empirical viability of the model has implications for measuring risk and performance in the space
+of commodity investments.
+Our exercises establish that the commodity factors capture variations in the future investor opportu-
+nity set. Speciﬁcally, we show that they predict, in isolation or together, measures of output growth, bond
+returns, equity returns, and returns of commodity currencies. Additionally, the returns of carry and mo-
+mentum strategies correlate with the macroeconomy. For example, backwardated commodities outperform
+cantangoed commodities during periods when equities are doing poorly, commodity volatility is high, and
+value outperforms growth. The carry strategy provides higher returns during economic downturns.
+There are avenues to extend our work. For one, we need tractable dynamic stochastic general equi-
+librium models in which commodities differ in characteristics, such as carry and momentum, and which
+furnish an economically identiﬁed link between commodity characteristics and expected futures returns.
+Such models should provide a parsimonious description of the commodity returns and a framework for
+interpreting the documented empirical regularities.
+32References
+Acharya, V., Lochstoer, L., Ramadorai, T., 2013. Limits to arbitrage and hedging: Evidence from com-
+modity markets. Journal of Financial Economics 109, 441–465.
+Ang, A., Liu, J., Schwarz, K., 2010. Using stocks or portfolios in tests of factor models. Unpublished
+working paper. Columbia University.
+Asness, C., Moskowitz, T., Pedersen, L., 2013. Value and momentum everywhere. Journal of Finance 68,
+929–985.
+Bailey, W., Chan, K., 1993. Macroeconomic inﬂuences and the variability of the commodity futures basis.
+Journal of Finance 48, 555–573.
+Basu, D., Miffre, J., 2012. Capturing the risk premium of commodity futures: The role of hedging pressure.
+Unpublished working paper. EDHEC Business School.
+Bessembinder, H., 1992. Systematic risk, hedging pressure, and risk premiums in futures markets. Review
+of Financial Studies 5, 637–667.
+Bessembinder, H., 1993. An empirical analysis of risk premia in futures markets. Journal of Futures Mar-
+kets 13, 611–630.
+Bessembinder, H., Chan, K., 1992. Time-varying risk premia and forecastable returns in futures markets.
+Journal of Financial Economics 32, 169–193.
+Burnside, C., Eichenbaum, M., Kleshchelski, I., Rebelo, S., 2011. Do peso problems explain the returns to
+the carry trade?. Review of Financial Studies 24, 853–891.
+Buyuksahin, B., Robe, M., 2012. Speculators, commodities and cross-market linkages. Unpublished work-
+ing paper. American University.
+Caballero, R., Farhi, E., Gourinchas, P., 2012. Financial crash, commodity prices and global imbalances.
+Unpublished working paper. NBER#14521.
+Campbell, J., 1996. Understanding risk and return. Journal of Political Economy 104, 298–345.
+33Campbell, J., 2001. Why long horizons? A study of power against persistent alternatives. Journal of Em-
+pirical Finance 8, 459–491.
+Carlson, M., Khokher, Z., Titman, S., 2007. Equilibrium exhaustible resource price dynamics. Journal of
+Finance 62, 1663–1703.
+Casassus, J., Collin-Dufresne, P., 2005. Stochastic convenience yield implied from commodity futures and
+interest rates. Journal of Finance 60, 2283–2331.
+Cespedes, L., Velasco, A., 2012. Macroeconomic performance during commodity price booms and busts.
+Unpublished working paper. NBER#18569.
+Chang, E., 1985. Returns to speculators and the theory of normal backwardation. Journal of Finance 40,
+193–208.
+Chen, Y., Rogoff, K., Rossi, B., 2010. Can exchange rates forecast commodity prices. Quarterly Journal of
+Economics 125, 1145–1194.
+Chordia, T., Goyal, A., Shanken, J., 2013. Commodity and asset pricing models: An integration. Emory
+university. NBER#19167.
+Cochrane, J., 1996. A cross-sectional test of an investment-based asset pricing model. Journal of Political
+Economy 104, 572–621.
+Cochrane, J., 2005. Asset Pricing. Princeton University Press, Princeton, NJ.
+Cochrane, J., Piazzesi, M., 2005. Bond risk premia. American Economic Review 95, 138–160.
+Cortazar, G., Kovacevic, I., Schwartz, E., 2013. Commodity and asset pricing models: An integration.
+Unpublished working paper. NBER#19167.
+Daskalaki, C., Kostakis, A., Skiadopoulos, G., 2013. Are there common factors in commodity futures
+returns?. Unpublished working paper. University of Piraeus.
+de Roon, F., Nijman, T., Veld, C., 2000. Stochastic convenience yield implied from commodity futures and
+interest rates. Journal of Finance 55, 1437–1456.
+34Deaton, A., Laroque, G., 1992. On the behaviour of commodity prices. Review of Economic Studies 59,
+1–23.
+Driesprong, G., Jacobsen, B., Maat, B., 2008. Striking oil: Another puzzle?. Journal of Financial Eco-
+nomics 89, 307–327.
+Engle, R., 2002. Dynamic conditional correlation: A simple class of multivariate generalized autoregres-
+sive conditional heteroskedasticity models. Journal of Business & Economic Statistics 20, 339–350.
+Engle, R., 2013. Modeling commodity prices with dynamic conditional beta. Unpublished working paper
+(http://www.commoditiessef.org/presentation-slides). New York University.
+Erb, C., Harvey, C., 2006. The strategic and tactical value of commodity futures. Financial Analysts Journal
+62, 69–97.
+Fama, E., 1991. Efﬁcient capital markets: II. Journal of Finance 46, 1575–1617.
+Fama, E., French, K., 1988a. Business cycles and the behavior of metals prices. Journal of Finance 43,
+1075–1093.
+Fama, E., French, K., 1988b. Dividend yields and expected stock returns. Journal of Financial Economics
+22, 3–25.
+Fama, E., French, K., 1989. Business conditions and expected returns on stocks and bonds. Journal of
+Financial Economics 25, 23–89.
+Fama, E., French, K., 1992. The cross-section of expected stock returns. Journal of Finance 47, 427–465.
+Fama, E., French, K., 1996. Multifactor explanation of asset pricing anomalies. Journal of Finance 51,
+55–84.
+Fama, E., MacBeth, J., 1973. Risk, return and equilibrium: Empirical tests. Journal of Political Economy
+81, 607–636.
+Ferson, W., Harvey, C., 1999. Conditioning variables and cross-section of stock returns. Journal of Finance
+54, 1325–1360.
+35Gorton, G., Hayashi, F., Rouwenhorst, G., 2013. The fundamentals of commodity futures returns. Review
+of Finance 17, 35–105.
+Gorton, G., Rouwenhorst, G., 2006. Facts and fantasies about commodity futures. Financial Analyst Jour-
+nal 62, 47–68.
+Groen, J., Pesenti, P., 2009. Commodity prices, commodity currencies, and global economic developments.
+Unpublished working paper. NBER#15743.
+Hamilton, J., 1983. Oil and the macroeconomy since World War II. Journal of Political Economy 91,
+228–248.
+Hansen, L., 1982. Large sample properties of generalized methods of moments estimators. Econometrica
+50, 1029–1054.
+Hansen, L., Jagannathan, R., 1997. Assessing speciﬁcation errors in stochastic discount factor models.
+Journal of Finance 52, 557–590.
+Henderson, B., Pearson, N., Wang, L., 2012. New evidence on the ﬁnancialization of commodity markets.
+Unpublished working paper. University of Illinois at Urbana-Champaign.
+Hicks, J., 1939. Value and Capital. Oxford University Press, London.
+Hirshleifer, D., 1988. Residual risk, trading costs, and commodity futures risk premia. Review of Financial
+Studies 1, 173–193.
+Hirshleifer, D., 1990. Hedging pressure and futures price movements in a general equilibrium model.
+Econometrica 58, 411–428.
+Hodrick, R., 1992. Dividend yields and expected stock returns: Alternative procedures for inference and
+measurement. Review of Financial Studies 5, 357–386.
+Hong, H., Yogo, M., 2012. What does futures market interest tell us about the macroeconomy and asset
+prices?. Journal of Financial Economics 105, 473–490.
+Ilmanen, A., 1995. Time-varying expected returns in international bond markets. Journal of Finance 50,
+481–506.
+36Jagannathan, R., Wang, Z., 2002. The conditional CAPM and the cross-section of expected returns. Journal
+of Finance 51, 3–53.
+Jegadeesh, N., Noh, J., 2013. Empirical tests of asset pricing models with individual stocks. Unpublished
+working paper. Emory University.
+Jegadeesh, N., Titman, S., 2001. Proﬁtability of momentum strategies: An evaluation of alternative expla-
+nations. Journal of Finance 56, 699–720.
+Kaldor, N., 1939. Speculation and economic stability. Review of Economic Studies 7, 1–27.
+Keynes, J., 1930. A Treatise on Money. Macmillan, London.
+Kim, C.-J., Nelson, C., 1999. State-space Models with Regime Switching. The MIT Press, London.
+Kogan, L., Livdan, D., Yaron, A., 2009. Oil futures prices in a production economy with investment con-
+straints. Journal of Finance 64, 1345–1375.
+Koijen, R., Pedersen, L., Moskowitz, T., Vrugt, E., 2012. Carry. Unpublished working paper. University of
+Chicago.
+Kosowski, R., Timmermann, A., Wermers, R., White, H., 2006. Can mutual fund stars really pick stocks?
+new evidence from a bootstrap analysis. Journal of Finance 61, 2551 – 2595.
+Labuszewski, J., 2012. Commodities as a currency driver. Unpublished working paper. Chicago Mer-
+centile Exchange (http://www.cmegroup.com/education/ﬁles/commodities-as-a-currency-driver-2012-
+09-20.pdf).
+Lettau, M., Ludvigson, S., 2001. Resurrecting the (C)CAPM: a cross-sectional test when risk premia are
+time-varying. Journal of Political Economy 109, 1238–1287.
+Lewellen, J., Nagel, S., Shanken, J., 2010. A skeptical appraisal of asset pricing tests. Journal of Financial
+Economics 96, 175–204.
+Liew, J., Vassalou, M., 2000. Can book-to-market, size and momentum be risk factors that predict economic
+growth?. Journal of Financial Economics 57, 221–245.
+37Litzenberger, R., Rabinowitz, N., 1995. Backwardation in oil futures markets: Theory and empirical evi-
+dence. Journal of Finance 50, 1517–1545.
+Lustig, H., Roussanov, N., Verdelhan, A., 2011. Common risk factors in currency markets. Review of
+Financial Studies 24, 3731–3777.
+Menkhoff, L., Sarno, L., Schmeling, M., Schrimpf, A., 2012a. Carry trades and global foreign exchange
+volatility. Journal of Finance 67, 681–718.
+Menkhoff, L., Sarno, L., Schmeling, M., Schrimpf, A., 2012b. Currency momentum strategies. Journal of
+Financial Economics 106, 660–684.
+Nagel, S., Singleton, K., 2011. Estimation and evaluation of conditional asset pricing models. Journal of
+Finance 66, 873–909.
+Newey, W., West, K., 1987. A simple, positive semi-deﬁnite, heteroskedasticity and autocorrelation con-
+sistent covariance matrix. Econometrica 55, 703–708.
+Newey, W., West, K., 1994. Automatic lag selection in covariance matrix estimation. Review of Economic
+Studies 61, 631–653.
+Patton, A., Timmermann, A., 2010. Monotonicity in asset returns: New tests with applications to the term
+structure, the CAPM and portfolio sorts. Journal of Financial Economics 98, 605–625.
+Politis, D., White, H., 2004. Automatic block-length selection for the dependent bootstrap. Econometric
+Reviews 23, 53–70.
+Routledge, B., Seppi, D., Spatt, C., 2000. Equilibrium forward curves for commodities. Journal of Finance
+55, 1297–1338.
+Samuelson, P., 1965. Proof that properly anticipated prices ﬂuctuate randomly. Industrial Management
+Review 6, 41–49.
+Shanken, J., 1992. On the estimation of Beta-pricing models. Review of Financial Studies 5, 1–33.
+Shwayder, A., James, A., 2011. Returns to the commodity carry trade. Unpublished working paper. North-
+western University.
+38Szymanowska, M., de Roon, F., Nijman, T., Goorbergh, R. V. D., 2013. An anatomy of commodity futures
+risk premia. Journal of Finance [forthcoming] (http://ssrn.com/abstract=1343809).
+Tang, K., Xiong, W., 2013. Index investment and ﬁnancialization of commodities. Financial Analyst Jour-
+nal 68, 54–74.
+Till, H., 2006. A long-term perspective on commodity futures returns. Unpublished working paper. EDHEC
+Business School.
+Yang, F., 2013. Investment shocks and the commodity basis spread. Journal of Financial Economics 110,
+164–184.
+39Appendix A: Carry and momentum strategies in commodity markets
+The simplest carry strategy entails a long futures position in a commodity that is in backwardation and
+a short futures position in a commodity that is in contango. One may express the n-period excess return on
+such strategy as:
+8
+ 
+(n)
+>
+(n)
+> F
+1 t
+<
+S   F Long commodity if < 1
+(n) t+n t
+S
+t
+F
+t
+er = (A1)
+t+n  
+(n)
+>
+(n) F
+> 1
+t
+:  S   F Short commodity if > 1;
+t+n
+(n) t
+S
+t
+F
+t
+(n)
+where the n-period futures price is denoted by F .
+t
+To implement a carry strategy, we cast backwardation and contango in terms of the log price ratio of
+(1) (0)
+the two nearest maturity futures. Deﬁne y  F =F . Then the condition ln(y)< 0(ln(y)> 0) maps
+t t t
+t t
+to a downward (upward) sloping commodity futures curve and, hence, captures backwardation (contango).
+We compute
+long
+short
+k k
+er + er
+carry
+t+1 t+1
+k
+er = ; k= 1;:::;5; (A2)
+t+1
+k
+carry
+k
+whereby er represents the excess return generated by a carry strategy that consists of k long futures
+t+1
+positions in the commodities with the k lowest ln(y)< 0 and k short futures positions in the commodities
+t
+with the k highest ln(y)> 0. The strategy is dynamic, as commodities enter and exit a portfolio based on
+t
+the slope of their futures curve.
+Each month t, we also divide the commodity universe into two backwardation portfolios (ranked in
+ascending order of ln(y)< 0) and two contango portfolios (ranked in ascending order of ln(y)> 0), and
+t t
+compute their equally weighted returns over the following month. Our separation of commodities into two
+backwardation portfolios and two contango portfolios differentiates our approach from the one adopted in
+Koijen, Pedersen, Moskowitz, and Vrugt (2012, Table 2) and Yang (2013, Table 2).
+We also consider commodity momentum strategies. The design of momentum strategies often relies
+40on the number of commodity futures bought and shorted, the weight given to each commodity, and the
+rebalancing frequency. Here we focus on equal weights, monthly rebalancing, and ranking determined by
+a commodity’s prior J month performance:
+1
+  
+J J
+er = P (1 + er )   1; J= 1;:::;12: (A3)
+t;J t  j
+j=1
+Accordingly, the momentum strategy corresponds to k long futures positions in commodities with the k
+highest er (i.e., winners) and k short futures positions in commodities with the k lowest er (i.e., losers).
+t;J t;J
+The excess return is
+long
+short
+k k
+er + er
+momentum t+1 t+1
+k
+er = ; k= 1;:::;5: (A4)
+t+1
+k
+Each month t, we also rank commodities based on their er (in line with Gorton, Hayashi, and Rouwen-
+t;J
+horst (2013, Table VII)) into quintiles and then compute their equally-weighted return over month t+ 1.
+Appendix B: Returns of carry and momentum strategies
+Here we summarize the return patterns generated by carry and momentum strategies in commodity
+markets. We also establish the statistical signiﬁcance of the returns using a stationary bootstrap, and we
+emphasize the distinction between the long and short legs of the strategies.
+Panels A and C of Table 1 present the descriptive statistics of the excess returns generated by com-
+modity carry strategies (denoted by C1 through C5) and momentum strategies (denoted by M1 through
+M5), respectively. Symmetrically, Panels B and D of Table 1 present the results from carry portfolios (de-
+noted by P1 and P2 for backwardation and P3 and P4 for contango) and momentum portfolios (denoted by
+Q1 through Q5). While we feature momentum strategies based on a formation period of six months, our
+conclusions do not appear to be sensitive to this particular choice (as shown in Figure 7).
+The carry and momentum strategies are lucrative. For example, the carry strategy C5 that buys the ﬁve
+commodities with the lowest ln(y)< 0 and shorts the ﬁve commodities with the highest ln(y)> 0 delivers
+t t
+41annualized average monthly excess returns of 16.34%. The momentum strategy M5 generates average
+returns equal to 16.11%. Four out of the ﬁve carry strategies (C2 through C5) and four out of the ﬁve
+momentum strategies (M2 through M5) exhibit average returns that are statistically different from zero, as
+indicated by the bootstrap conﬁdence intervals. The 95% conﬁdence intervals, denoted as PW, lower CI
+and upper CI, are based on a stationary bootstrap with 10,000 iterations, where the block size is based on
+the algorithm of Politis and White (2004).
+How do these strategies fare relative to futures-based commodity indexes? Table Appendix-II shows
+that, over the same sample period, the Goldman Sachs Commodity Index (GSCI) and the Commodity
+Research Bureau (CRB) index deliver annualized average monthly excess returns equal to 5.43% and
+3.53%, respectively. Our dynamic strategies, therefore, deliver returns that are about three to ﬁve times
+larger compared to benchmarks that invest in a basket of commodity futures.
+Exploiting the conditional strategies has considerable wealth implications. Speciﬁcally, a $1 investment
+in July 1970 in the C5 (M5) strategy cumulates to $300.16 ($185.49) in September 2011, which sharply
+contrasts the $4.10 generated by the GSCI over the same period. The large disparity between the average
+returns of carry and momentum strategies versus the average returns of commodity indexes is puzzling,
+and it motivates our search for asset pricing explanations.
+The magnitudes of the Sharpe ratios further convey the attractiveness of commodity carry and momen-
+tum. Speciﬁcally, the Sharpe ratios (denoted by SR) of the C5 and M5 strategies are 0.73 and 0.61 - more
+than twice the ones associated with the GSCI and CRB index.
+Further, note that the commodity carry and momentum returns are generated, at least in part, by a
+higher percentage of positive return realizations compared to the GSCI, as reﬂected in the reported 1 .
+er>0
+The 1 for carry strategies increases from 53.13% for C1 to 56.77% for C5. At the same time, the
+er>0
+return skewness of the conditional strategies is essentially equal to zero (and similar to that of the GSCI),
+indicating that none of them generates high returns by loading excessively on possible crash risk.
+One unresolved question is whether the proﬁtability of the strategies can be traced to their long or short
+42legs. Table Appendix-IV isolates the contribution of each leg of the carry and momentum strategies and
+provides three additional insights. First, the proﬁtability emanates from the long legs and not from the short
+legs. In particular, our bootstrap analysis indicates that the excess returns of the short legs are uniformly not
+statistically different from zero. Our momentum results therefore deviate from the corresponding strategy
+in the equity market, where both the long and short legs are equally proﬁtable (e.g., Jegadeesh and Titman
+(2001, Table 1)). Second, given that the standard deviations of the short and long legs are comparable, the
+Sharpe ratios of the short legs are overshadowed by those of the long legs. Finally, the long (short) leg of
+the strategies consistently produce positively (negatively) skewed returns, indicating that the long legs are
+not generating high returns by loading on possible crash risk. The message is that the proﬁtability of the
+carry and momentum strategies stems from the long component.
+Changing our focus, Panels B and D of Table 1 report the descriptive statistics corresponding to the
+carry and momentum portfolios. Our results show that the returns of the carry portfolios are declining when
+the commodities are sorted in ascending order of ln(y): the two backwardation portfolios yield positive and
+t
+statistically signiﬁcant average returns, whereas the contango portfolios yield negative, but statistically in-
+10
+signiﬁcant, average returns. On the other hand, the average returns generated by the momentum portfolios
+increase when the commodities are sorted on the basis of their past performance. In fact, the monotonicity
+test of Patton and Timmermann (2010) is supportive of a monotonic pattern in the average returns of carry
+and momentum portfolios. Speciﬁcally, we reject the null of a non-monotonic relation between the carry
+(momentum) portfolios in favor of the alternative of a monotonically decreasing (increasing) relation with
+a p-value of 0.000 (0.079). Finally, a strategy that is long commodities with pronounced backwardation
+(high momentum), that is, P1 (Q5), and shorts commodities with pronounced contango (low momentum),
+that is, P4 (Q1), generates economically large average spreads of 16.85% (16.00%).
+How proﬁtable is carry, controlling for momentum? To investigate this question, we perform a two-
+way dependent sort whereby commodities are divided ﬁrst into two portfolios by momentum, and then
+each group is divided into two carry portfolios. We then compute the next-month returns on each of the
+10
+Since the majority of the commodities are in contango most of the time, our results could partially explain the disappointing
+performance of the commodity indexes as an asset class.
+43four portfolios. Below we report the average returns, with bootstrap lower and upper CI in square brackets:
+Backwardation Contango
+Low momentum 10.29  0.66
+[4.80 15.72] [ 5.76 4.80]
+High momentum 16.29 5.81
+[8.64 25.08] [0.72 10.80]
+The main takeaway, in relation to Tables 1 and Appendix-IV, is threefold. First, backwardation is highly
+proﬁtable across both low and high momentum commodities, highlighting the working of the carry strategy.
+Second, among commodities that are in backwardation, high and low momentum are equally proﬁtable,
+whereas among commodities that are in contango, the high momentum commodities dominate the low
+momentum counterparts. Finally, a long position in commodities featuring high momentum and backwar-
+dation and a short position in commodities featuring low momentum and contango produces a return of
+16.95% (i.e., 16.29% plus 0.66%). Overall, these results reiterate the distinct nature of the two strategies.
+[Fig. 7 about here.]
+Closing, we ask how sensitive momentum returns are to the formation period J in equation (A3). To
+address this concern, Figure 7 presents the average annualized returns (top panel) and the Sharpe ratios
+(bottom panel) for momentum strategy M5, as J varies from one to 12 months. We observe consistently
+high average annualized returns, ranging from 12.50% to 19.03%, and Sharpe ratios, ranging from 0.42 to
+0.62, thereby afﬁrming the proﬁtability of momentum strategies beyond our Tables 1 and Appendix-IV.
+Appendix C: Deﬁnition of macroeconomic fundamentals and the correlation among the risk factors
+We adopt the following series as economy-wide fundamentals or conditioning variables:
+ IP growth: The growth rate of industrial production for the G7 countries (source: Datastream);
+ Oil growth: The growth rate of West Texas intermediate oil price (source: Federal Reserve Bank–St.
+Louis);
+44 Equity risk premium: Returns of the US value-weighted index, in excess of the risk-free return
+(source: Kenneth French’s website);
+ Size factor: Returns of small capitalization stocks minus the returns of large capitalization stocks
+(source: Kenneth French’s website);
+ Value factor: Returns of value stocks minus the returns of growth stocks (source: Kenneth French’s
+website);
+ Momentum factor: Returns of high momentum stocks minus the returns of low momentum stocks
+(source: Kenneth French’s website);
+ Equity variance: The monthly sum of squared daily returns of the MSCI G7 equity index (source:
+Datastream);
+ Log dividend yield: This series is taken from Michael Robert’s website;
+ Term spread: Difference in yields between the ten-year Treasury note and the three-month Treasury
+bill rate (source: CRSP);
+ Default spread: The BAA-rated corporate bond yield minus the ten-year Treasury yield (from
+Morningstar);
+ Currency returns: The monthly log change of the US dollar index, expressed as FXjUSD. A rise in
+the index implies US dollar appreciation against major foreign currencies (source: Federal Reserve
+Board);
+ Currency variance: The monthly sum of squared daily log changes of the US dollar index, in which
+the index is expressed as FXjUSD;
+ Currency carry returns: We rank G10 currencies (USDjFX, so FX is the reference) based on
+f d ln(forward=spot). Consistent with Burnside, Eichenbaum, Kleshchelski, and Rebelo (2011,
+equation (2)), we assume a long position in foreign currencies with f d < 0 and a short position in
+foreign currencies with f d > 0;
+ Commodity (cross-sectional) volatility (VOL ): At the end of each month, we compute the monthly
+t
+45sum of absolute daily log returns for each commodity. The cross-sectional volatility is the average
+across all commodities (Menkhoff, Sarno, Schmeling, and Schrimpf (2012a, equation (4)));
+ Open interest growth: We ﬁrst construct the end-of-the-month cross-sectional average dollar open
+interest (i.e., the open interest multiplied by the contract price) corresponding to the second nearest
+(1)
+maturity futures contract (i.e., F ). The open interest growth is the log change of the dollar open
+t
+interest, which deviates, in certain respects, from Hong and Yogo (2012);
+ TED spread: The three-month dollar LIBOR rate minus the three-month US Treasury-bill rate
+(source: Datastream).
+We analyze two additional risk factors that are constructed as follows:
+(i) Commodity value factor (VALUE ): At the end of each month t, we rank all the commodities by the
+t
+(1) (1)
+ratio of F to their time t futures price F . Then we divide the commodities into ﬁve groups and
+t
+t 60
+compute the next-month return of each commodity portfolio. VALUE is the return spread between
+t
+the top and bottom quintiles (we deviate from Asness, Moskowitz, and Pedersen (2013, Section I.B),
+who construct three portfolios);
+(ii) Commodity volatility factor (DVOL ): We construct this factor as the monthly change in the com-
+t
+modity cross-sectional volatility, that is,DVOL  VOL  VOL .
+t t t 1
+As seen from the correlations reported below, the commodity momentum and commodity value fac-
+tors display a negative correlation of 0.39, which mimics its counterpart across asset classes in Asness,
+Moskowitz, and Pedersen (2013, Panel A of Table II).
+AVG CARRY CMOM VALUE
+t t t t
+CARRY 0.09
+t
+CMOM 0.11 0.27
+t
+VALUE  0.23  0.18  0.39
+t
+DVOL  0.06 0.15 0.05 0.08
+t
+Importantly, the correlation between the average factor and the carry (momentum) factor is 0.09 (0.11),
+46while the correlation between carry and momentum is 0.27, implying that the three factors adopted in our
+SDF speciﬁcation (6) are mildly correlated. The correlations ofDVOL with other risk factors are small in
+t
+absolute values.
+Appendix D: Composition of the long and short legs of the carry and momentum strategies
+Returning to Table 1, Table Appendix-IV, and the discussion in Appendix B, we note that the average re-
+turns to a long position in a dynamically rebalanced set of backwardated (or, high momentum) commodities
+is high, whereas the average returns to a short position in contangoed (or, low momentum) commodities is
+low. To probe this rather puzzling feature, we analyze the composition of the long and short legs of each
+strategy. Speciﬁcally, we compute the number of months in which each commodity enters the long and
+short legs of C5 and M5, respectively, and report the ﬁndings in Table Appendix-III.
+To elaborate on Table Appendix-III, let G be the number of months a commodity i enters in the long
+i
+(short) leg of the M5 portfolio, and let H be the number of months the same commodity enters in the long
+i
+(or short) leg of the C5 portfolio. For example, soybean oil appears 126 times in the long leg of M5 and 65
+times in the long leg of C5. We perform two OLS estimations: G =h +hH +e , where i= 1;:::;29 and
+i 0 i i
+report theh estimates and the p-values (based on White’s standard errors) below:
+2
+h p-val. R (%)
+Aligning long legs of momentum and carry 0.08 0.31 1.7
+Aligning short legs of momentum and carry 0.23 0.02 19.3
+These regression results allow for new insights into the return variation that underlie the carry and mo-
+mentum strategies. For one, the slope coefﬁcient h for the long leg is insigniﬁcant, implying that the
+outperformance of the long legs of carry and momentum do not emanate from a similar set of commodi-
+ties. In contrast, a unit increase in the short leg of the carry strategy membership is associated with a 0.23
+2
+increase in the momentum strategy membership, and the effect is statistically signiﬁcant. The R obtained
+for the short leg implies that 19.3% of the variation in momentum strategy membership can be explained
+by variation in the carry strategy membership.
+47The above ﬁnding furnishes additional information content, namely, that the distribution of member-
+ship in the long legs is not skewed toward a few economically sensitive commodities. One could ascribe
+the outperformance of the long legs to their ability to rotate across a set of commodities that reﬂect the
+prevailing state of the macroeconomy. For instance, a predominant portion of the proﬁtability of the long
+leg of the momentum strategies during the ﬁnancial crisis was inherited from the run-up in gold, which
+co-moved negatively with the stock market and real economic activity.
+Our analysis provides an intriguing portrayal of the membership structure of the carry and momentum
+strategies and how these strategies may be adapting to macroeconomic conditions.
+48Table 1
+Excess returns of commodity carry and momentum strategies
+This table presents the descriptive statistics of the excess returns generated by commodity carry and momentum
+(1) (0) (0) (1)
+strategies. Let y  F =F , where F is the price of the front-month futures contract and F is the price of the
+t
+t t t t
+next maturity futures contract, both observed at the end of month t. A commodity is in backwardation if ln(y)< 0
+t
+and in contango if ln(y)> 0. The carry strategy entails taking a long (short) futures position in a commodity that
+t
+is in backwardation (contango) at the end of month t, and we compute the returns over the subsequent month. For
+example, carry strategy C5 (C2) contains an equally weighted portfolio consisting of ﬁve (two) commodities with the
+most negative ln(y) and ﬁve (two) commodities with the most positive ln(y). In addition, each month t, we divide the
+t t
+commodity universe into two backwardation portfolios (P1 and P2) and two contango portfolios (P3 and P4), based
+on their respective rankings of ln(y), and then we compute the next-month returns. For the momentum strategies,
+t
+the commodities are ranked on the basis of their past six-month performance. Analogously, the momentum strategy
+M5 (M2) contains an equally weighted portfolio consisting of ﬁve (two) commodities with the highest past returns
+(winners) and ﬁve (two) commodities with the lowest past returns (losers). Ranking the commodities by the past
+six-month performance, the commodities are collected in quintile portfolios Q1 (lowest) through Q5 (highest). For
+each portfolio, we report the average annualized monthly return and its 95% conﬁdence interval based on a stationary
+bootstrap (denoted by PW, lower CI and PW, upper CI) with 10,000 bootstrap iterations, in which the block size is
+based on the algorithm of Politis and White (2004), the annualized monthly standard deviation (SD), the annualized
+Sharpe ratio (SR), and the monthly skewness. The percentage of months in which the excess return of a strategy is
+positive is recorded as 1 . There are 501 monthly observations in our sample from January 1970 to September
+er>0
+2011.
+Panel A: Carry Strategies Panel B: Backwardation/Contango Portfolios
+Commodities long backwardation Commodities sorted based on
+and short contango ln(y)< 0 ln(y)> 0
+t t
+C1 C2 C3 C4 C5 P1 P2 P3 P4 P1-P4
+Mean 9.31 10.08 12.14 14.27 16.34 16.32 13.50 4.63 -0.53 16.85
+PW, lower CI -2.04 0.60 2.04 6.48 9.36 8.28 7.44 -0.96 -6.00 9.48
+PW, upper CI 22.32 21.24 22.56 21.84 23.40 26.16 19.56 10.20 5.40 26.16
+SD 48.21 34.87 27.46 24.16 22.26 23.23 19.48 17.02 16.94 23.08
+SR 0.19 0.29 0.44 0.59 0.73 0.70 0.69 0.27 -0.03 0.73
+Skewness -0.29 0.02 -0.05 -0.03 0.30 0.47 0.25 0.18 0.82 0.45
+1 53.13 53.54 53.94 55.76 56.77 55.56 58.59 51.92 48.69 57.17
+er>0
+Panel C: Momentum Strategies Panel D: Momentum Portfolios
+Commodities long winners Commodities sorted based on
+and short losers past six-month performance
+M1 M2 M3 M4 M5 Q1 Q2 Q3 Q4 Q5 Q5-Q1
+Mean 10.75 17.04 13.88 14.70 16.11 -1.66 1.31 10.07 9.16 14.35 16.00
+PW, lower CI -4.32 5.64 6.00 6.96 9.36 -7.56 -4.08 3.72 3.84 6.60 7.92
+PW, upper CI 29.40 30.36 22.92 22.92 22.92 4.44 7.20 17.04 14.76 24.00 24.24
+SD 59.75 42.51 34.33 29.19 26.28 20.84 16.76 18.40 18.22 25.58 27.61
+SR 0.18 0.40 0.40 0.50 0.61 -0.08 0.08 0.55 0.50 0.56 0.58
+Skewness 0.14 0.09 0.11 0.06 0.34 0.53 0.43 1.53 0.45 0.44 0.34
+1 52.53 54.14 53.54 55.56 57.37 46.67 50.51 55.56 54.55 57.78 55.56
+er>0
+49Table 2
+Cross-sectional asset pricing results with the average, carry, and momentum factors
+Reported are the factor risk premia (lll) and the SDF parameters (b). The SDF speciﬁcation in Panel A is of the form:
+m = 1  b AVG   b CARRY   b CMOM , where AVG is the average factor (excess
+t+1 AVG t+1 CARRY t+1 CMOM t+1 t+1
+return obtained by holding all commodities available), CARRY is the carry factor (which corresponds to the
+t+1
+returns of strategy C5), and CMOM is the momentum factor (which corresponds to the returns of strategy M5).
+t+1
+Reported in Panels B and C are results for the restricted versions of the SDF that impose b  0 and b  0,
+CMOM CARRY
+respectively. In the row marked “GMM,” the parameters are estimated based on the system (4) following a one-step
+GMM procedure, while those in the row “Fama-MacBeth” are based on a two-step cross-sectional regression. The
+p-values rely on the Newey and West (1987) procedure with lags selected automatically according to Newey and
+West (1994) and are reported in parentheses. For the Fama and MacBeth procedure, the p-values are computed
+using both the Newey and West (1987) procedure without (with) the Shanken (1992) correction in parentheses (curly
+2
+brackets). We report the GLS cross-sectional uncentered R (Lewellen, Nagel, and Shanken (2010, Prescription 3))
+2 2
+and the OLS uncentered R asb.c, and thec test corresponding to the null hypothesis that the pricing errors are zero,
+with p-values computed both based on the Newey-West and Shanken standard errors. The Hansen and Jagannathan
+(1997, equation (29)) distance measure (HJ-Dist.), with the associated p-value, is shown, which tests whether the
+distance measure is equal to zero.
+Factor risk premia Loadings on the SDF Pricing errors
+—————————— —————————— ———————————-
+2 2 2
+l l l b b b R c c HJ-Dist.
+AVG CARRY CMOM AVG CARRY CMOM
+GLS NW SH
+2
+bRc (p-val.) fp-val.g (p-val.)
+Panel A: Three-factor model
+GMM 0.005 0.018 0.012 2.276 3.954 1.067 0.006
+(0.01) (0.00) (0.00) (0.07) (0.00) (0.11) (0.22)
+Fama-MacBeth 0.005 0.018 0.012 96.3 11.91 11.40
+(0.02) (0.00) (0.00) b93.9c (0.22) f0.25g
+f0.02g f0.00g f0.00g
+Panel B: Restricted model omitting a role for CMOM
+t+1
+GMM 0.005 0.020 2.394 4.661 0.008
+(0.01) (0.00) (0.05) (0.00) (0.15)
+Fama-MacBeth 0.005 0.020 82.9 23.87 22.70
+(0.02) (0.00) b91.3c (0.01) f0.01g
+f0.02g f0.00g
+Panel C: Restricted model omitting a role for CARRY
+t+1
+GMM 0.006 0.014 2.891 2.300 0.012
+(0.01) (0.00) (0.02) (0.00) (0.00)
+Fama-MacBeth 0.006 0.014 67.7 29.67 28.65
+(0.02) (0.00) b77.3c (0.00) f0.00g
+f0.02g f0.00g
+50Table 3
+Exclusion tests that evaluate whether commodity value and volatility are additional priced factors
+Reported are the factor risk premia and exclusion tests for the validity of a four-factor asset pricing model, when we
+incrementally add the value factor and the volatility factor to the SDF speciﬁcation in equation (6). Speciﬁcally, the
+SDF speciﬁcation is of the form:
+m = 1  b AVG   b CARRY   b CMOM   b VALUE
+t+1 AVG t+1 CARRY t+1 CMOM t+1 VALUE t+1
+or,
+m = 1  b AVG   b CARRY   b CMOM   b DVOL :
+t+1 AVG t+1 CARRY t+1 CMOM t+1 DVOL t+1
+Our procedure for constructing the value factor, denoted by VALUE , is similar to that in Asness, Moskowitz,
+t+1
+and Pedersen (2013), in that in each month, we rank all the commodities by the ratio of the second-nearest maturity
+futures price ﬁve years ago to its current price. We divide the commodities into ﬁve groups and compute the next
+month portfolio returns. VALUE is the return spread between the top and bottom quintiles (see Appendix C).
+t+1
+TheDVOL corresponds to the innovation in commodity volatility (see Appendix C) and is computed following
+t+1
+Menkhoff, Sarno, Schmeling, and Schrimpf (2012a, equation (4)). The estimates of the factor risk premialll are based
+on a cross-sectional regression. The p-values are computed using both the Newey and West (1987) procedure and the
+Shanken (1992) correction (in curly brackets). The test of individual parameter restriction b  0 and b  0
+VALUE DVOL
+2
+is based on the two-step GMMc test, in which the p-values rely on the Newey and West (1987) procedure with lags
+selected automatically according to Newey and West (1994).
+Fama-MacBeth GMM
+Value factor Volatility factor (two-step)
+Panel A: Factor risk premia
+l Estimate 0.003 0.005
+AVG
+NW[p] (0.11) (0.02)
+Shanken[p] f0.11g f0.02g
+l Estimate 0.017 0.018
+CARRY
+NW[p] (0.00) (0.00)
+Shanken[p] f0.00g f0.00g
+l Estimate 0.012 0.012
+CMOM
+NW[p] (0.00) (0.00)
+Shanken[p] f0.00g f0.00g
+l Estimate -0.014
+VALUE
+NW[p] (0.21)
+Shanken[p] f0.22g
+l Estimate 0.000
+DVOL
+NW[p] (0.94)
+Shanken[p] f0.94g
+Panel B: Exclusion tests for the loadings on the SDF
+2
+H : b  0 c (1) 0.43
+0 VALUE
+(p-val.) (0.51)
+2
+H : b  0 c (1) 0.68
+0 DVOL
+(p-val.) (0.41)
+5152
+Table 4
+Cross-sectional asset pricing results with the average, carry, and momentum factors - alphabetical sorts A through M or N to Z, based on the
+ticker symbol
+In Panel A we conduct a randomization exercise in the style of Lustig, Roussanov, and Verdelhan (2011), in which we construct the average, carry, and momentum factors based on
+commodities whose ticker symbol starts with the letter A through the letter M. Next we construct two carry, two momentum, and three category portfolios based on commodities
+whose ticker symbol starts with the letter N through the letter Z. Reported are the factor risk premia (lll) and the SDF parameters (b). The baseline SDF speciﬁcation is of the form:
+m = 1  b AVG   b CARRY   b CMOM . Also reported are results for the restricted versions of the SDF that impose b  0 and b  0,
+t+1 AVG t+1 CARRY t+1 CMOM t+1 CMOM CARRY
+respectively. In the row marked “GMM,” the parameters are estimated based on the system (8) following a one-step GMM procedure, while those in the row “Fama-MacBeth” are
+based on a two-step cross-sectional regression. The p-values rely on the Newey and West (1987) procedure with lags selected automatically according to Newey and West (1994),
+and reported in parentheses. For the Fama and MacBeth procedure, the p-values are computed using both the Newey and West (1987) procedure without (with) the Shanken (1992)
+2 2
+correction in parentheses (curly brackets). We report the GLS cross-sectional uncentered R (Lewellen, Nagel, and Shanken (2010, Prescription 3)) and the OLS uncentered R as
+2
+b.c, and thec test corresponding to the null hypothesis that the pricing errors are zero, with p-values computed both based on the Newey-West and Shanken standard errors. The
+Hansen and Jagannathan (1997, equation (29)) distance measure (HJ-Dist.), with the associated p-value, is shown, which tests whether the distance measure is equal to zero. In Panel
+B we repeat the exercise by constructing factors based on commodities whose ticker symbol starts with the letter N through the letter Z and test portfolios based on commodities
+whose ticker symbol starts with the letter A through the letter M.
+Panel A. Alphabetical Sorting A through M Panel B. Alphabetical Sorting N through Z
+Factor risk premia Loadings on the SDF Pricing errors Factor risk premia Loadings on the SDF Pricing errors
+—————————— —————————— ———————————- —————————— —————————— ———————————-
+2 2 2 2 2 2
+lAVG lCARRY lCMOM bAVG bCARRY bCMOM R c c HJ-Dist. lAVG lCARRY lCMOM bAVG bCARRY bCMOM R c c HJ-Dist.
+GLS NW SH GLS NW SH
+2 2
+bRc (p-val.) fp-val.g (p-val.) bRc (p-val.) fp-val.g (p-val.)
+Three-factor model
+GMM 0.003 0.024 0.048 0.736 4.377 16.976 0.004 0.016 0.077 0.035 6.026 15.937 5.355 0.007
+(0.54) (0.19) (0.03) (0.79) (0.42) (0.02) (0.61) (0.01) (0.04) (0.22) (0.01) (0.03) (0.35) (0.04)
+Fama-MacBeth 0.003 0.024 0.048 50.8 4.32 2.45 0.016 0.077 0.035 63.2 19.44 9.43
+(0.43) (0.06) (0.00) b92.6c (0.37) f0.65g (0.00) (0.00) (0.03) b81.8c (0.00) f0.05g
+f0.49g f0.14g f0.02g f0.00g f0.02g f0.13g
+Restricted model omitting a role for CMOM
+t+1
+GMM 0.005 -0.004 3.601 -1.614 0.008 0.014 0.049 5.303 10.780 0.008
+(0.08) (0.75) (0.06) (0.70) (0.04) (0.00) (0.01) (0.00) (0.01) (0.02)
+Fama-MacBeth 0.005 -0.004 35.7 12.36 12.16 0.014 0.049 60.4 21.51 15.01
+(0.00) (0.75) b68.4c (0.03) f0.03g (0.00) (0.00) b78.7c (0.00) f0.01g
+f0.10g f0.75g f0.00g f0.01g
+Restricted model omitting a role for CARRY
+t+1
+GMM 0.003 0.034 1.498 12.763 0.005 0.010 -0.014 3.953 -3.388 0.010
+(0.45) (0.04) (0.52) (0.04) (0.48) (0.02) (0.26) (0.02) (0.24) (0.00)
+Fama-MacBeth 0.003 0.034 54.2 5.41 3.98 0.010 -0.014 41.3 27.84 25.78
+(0.42) (0.04) b88.2c (0.37) f0.55g (0.01) (0.22) b66.0c (0.00) f0.00g
+f0.45g f0.08g f0.01g f0.24gTable 5
+Time-series regressions based on the three-factor model
+i i i i i i
+Results are based on the time-series regression: er =a +b AVG +b CARRY +b CMOM +e ,
+t t t
+t AVG CARRY CMOM t
+for i= 1;:::;12. We report the coefﬁcient estimates and the p-values in parentheses. The p-values are based on
+the Newey and West (1987) procedure, with lags selected automatically according to Newey and West (1994). To
+0
+ 1
+ˆ ˆ ˆ
+test the null hypothesis that all intercepts are jointly equal to zero, we compute the statisticaaa var(aaa) aaa in a GMM
+2
+setting (Cochrane (2005, page 234)), which is asymptotically distributedc (12). The underlying test assets are the
+four carry portfolios, the ﬁve momentum portfolios, and the three category portfolios. We have excluded the energy
+category as a test asset in the time-series regressions because of its shorter time-series (heating oil started in 1979:04,
+while crude oil started in 1983:04; see Table Online-I).
+Joint test ona
+2
+2
+Commodity a b b b R c (12) p-val.
+AVG CARRY CMOM
+portfolio (%)
+P1 Estimate 0.002 0.933 0.566 -0.041 66.4
+(backwardation, lowest y) NW[p] (0.36) (0.00) (0.00) (0.22)
+P2 Estimate 0.004 0.882 0.284 -0.086 53.9
+NW[p] (0.01) (0.00) (0.00) (0.00)
+P3 Estimate -0.001 1.000 -0.063 0.041 70.9
+NW[p] (0.43) (0.00) (0.01) (0.05)
+P4 Estimate -0.001 1.016 -0.303 -0.038 82.9
+(contango, highest y) NW[p] (0.20) (0.00) (0.00) (0.03)
+Q1 Estimate -0.002 1.160 0.002 -0.443 84.5
+(momentum, lowest) NW[p] (0.15) (0.00) (0.96) (0.00)
+Q2 Estimate -0.002 0.874 -0.015 -0.091 54.5
+NW[p] (0.18) (0.00) (0.68) (0.00)
+Q3 Estimate 0.004 0.950 0.000 -0.054 53.1
+NW[p] (0.01) (0.00) (0.99) (0.05)
+Q4 Estimate 0.001 0.892 -0.009 0.146 55.9
+NW[p] (0.39) (0.00) (0.81) (0.00)
+Q5 Estimate -0.002 1.165 0.039 0.552 83.5
+(momentum, highest) NW[p] (0.15) (0.00) (0.15) (0.00)
+Agriculture Estimate -0.001 0.983 -0.042 -0.022 69.1
+NW[p] (0.38) (0.00) (0.31) (0.54)
+Livestock Estimate 0.001 0.659 0.004 -0.094 22.3
+NW[p] (0.64) (0.00) (0.93) (0.04)
+Metal Estimate 0.000 0.985 -0.078 0.132 40.3
+NW[p] (0.93) (0.00) (0.18) (0.08)
+All portfolios 18.20 0.11
+53Table 6
+Time-series regressions with a two-factor model that excludes the momentum factor
+i i i i i
+In Panel A, the results are based on the time-series regression: er = a +b AVG +b CARRY +e ; for i=
+t t
+t t
+AVG CARRY
+i i i i
+1;:::;12: In Panel B, the results are based on the time-series regression: er = a + b CARRY + e ; for i=
+t
+t t
+CARRY
+1;:::;12: We report the coefﬁcient estimates and the p-values in parentheses. The p-values are based on the Newey
+and West (1987) procedure, with lags selected automatically according to Newey and West (1994). To test the null
+0
+ 1
+a ˆ a ˆ a ˆ
+hypothesis that all intercepts are jointly equal to zero, we compute the statistic aa var(aa) aa in a GMM setting
+2
+(Cochrane (2005, page 234)), which is asymptotically distributed c (12). The underlying test assets are the four
+carry portfolios, the ﬁve momentum portfolios, and the three category portfolios. We have excluded the energy
+category as a test asset in the time-series regressions because of its shorter time-series (the heating oil started in
+1979:04, while crude oil started in 1983:04).
+Panel A: Two-factor model Panel B: One-factor model
+that excludes the momentum factor with the carry factor
+2 2
+Commodity a b b R a b R
+AVG CARRY CARRY
+portfolio (%) (%)
+P1 Estimate 0.00 0.927 0.553 66.3 0.005 0.609 33.9
+(backwardation, lowest y) NW[p] (0.47) (0.00) (0.00) (0.04) (0.00)
+P2 Estimate 0.003 0.875 0.255 53.3 0.007 0.309 12.3
+NW[p] (0.07) (0.00) (0.00) (0.00) (0.00)
+P3 Estimate -0.001 1.008 -0.050 71.2 0.004 0.011 -0.2
+NW[p] (0.56) (0.00) (0.03) (0.14) (0.79)
+P4 Estimate -0.001 1.007 -0.315 82.8 0.003 -0.25 10.9
+(contango, highest y) NW[p] (0.16) (0.00) (0.00) (0.18) (0.00)
+Q1 Estimate -0.005 1.089 -0.135 55.8 0.000 -0.06 0.3
+(momentum, lowest) NW[p] (0.00) (0.00) (0.00) (0.87) (0.24)
+Q2 Estimate -0.003 0.859 -0.044 53.2 0.001 0.008 -0.2
+NW[p] (0.09) (0.00) (0.22) (0.68) (0.87)
+Q3 Estimate 0.004 0.943 -0.017 53.4 0.008 0.040 0.0
+NW[p] (0.02) (0.00) (0.64) (0.01) (0.49)
+Q4 Estimate 0.002 0.919 0.036 52.8 0.006 0.092 1.1
+NW[p] (0.13) (0.00) (0.31) (0.01) (0.08)
+Q5 Estimate 0.003 1.245 0.212 54.2 0.008 0.287 6.1
+(momentum, highest) NW[p] (0.24) (0.00) (0.00) (0.01) (0.00)
+Agriculture Estimate -0.001 0.983 -0.050 69.6 0.003 0.010 -0.2
+NW[p] (0.30) (0.00) (0.16) (0.22) (0.87)
+Livestock Estimate 0.001 0.612 -0.017 19.5 0.003 0.021 -0.1
+NW[p] (0.79) (0.00) (0.76) (0.18) (0.71)
+Metal Estimate 0.001 1.015 -0.038 39.5 0.005 0.024 -0.1
+NW[p] (0.65) (0.00) (0.45) (0.11) (0.68)
+2
+c (12) 28.94 31.28
+(p-val.) (0.00) (0.00)
+54Table 7
+Time-series regressions with a three-factor model - alphabetical sorts A through M or N through Z,
+based on the ticker symbol
+In Panel A we conduct a randomization exercise in the style of Lustig, Roussanov, and Verdelhan (2011), in which
+we construct the average, carry, and momentum factors based on commodities whose ticker symbol starts with the
+letter A through the letter M. Next, we construct two carry, two momentum, and three category portfolios based on
+commodities whose ticker symbol starts with the letter N through the letter Z. Results are based on the time-series
+i i i i i i
+regression: er =a +b AVG +b CARRY +b CMOM +e , for i= 1;:::;7. We report the coefﬁcient
+t t t
+t AVG CARRY CMOM t
+estimates and the p-values in parentheses. The p-values are based on the Newey and West (1987) procedure, with
+lags selected automatically according to Newey and West (1994). To test the null hypothesis that all intercepts are
+0
+ 1
+ˆ ˆ ˆ
+jointly equal to zero, we compute the statisticaaa var(aaa) aaa in a GMM setting (Cochrane (2005, page 234)), which is
+2
+asymptotically distributedc (7). We have excluded the energy category as a test asset in the time-series regressions
+because of its shorter time-series. In Panel B we repeat the exercise by constructing factors based on commodities
+whose ticker symbol starts with the letter N through the letter Z and test portfolios based on commodities whose
+ticker symbol starts with the letter A through the letter M.
+Panel A. Alphabetical Sorting A through M
+Joint test ona
+2
+2
+Commodity a b b b R c (7) p-val.
+AVG CARRY CMOM
+portfolio (%)
+P1 Estimate 0.003 0.784 0.089 0.069 19.7
+(backwardation, lowest y) NW[p] (0.358) (0.000) (0.059) (0.389)
+P2 Estimate -0.001 0.939 -0.161 0.132 46.9
+(contango, highest y) NW[p] (0.553) (0.000) (0.000) (0.001)
+Q1 Estimate -0.004 0.960 -0.005 -0.004 39.1
+(momentum, lowest) NW[p] (0.043) (0.000) (0.926) (0.937)
+Q2 Estimate 0.005 0.912 -0.197 0.256 34.0
+(momentum, highest) NW[p] (0.029) (0.000) (0.002) (0.000)
+Agriculture Estimate -0.004 0.839 0.118 -0.080 9.5
+NW[p] (0.415) (0.000) (0.224) (0.389)
+Livestock Estimate 0.004 0.950 -0.292 0.178 22.2
+NW[p] (0.236) (0.000) (0.001) (0.020)
+Metal Estimate -0.001 0.836 -0.094 0.087 31.6
+NW[p] (0.731) (0.000) (0.078) (0.103)
+All portfolios 13.41 0.063
+Panel B. Alphabetical Sorting N through Z
+Joint test ona
+2
+2
+Commodity a b b b R c (7) p-val.
+AVG CARRY CMOM
+portfolio (%)
+P1 Estimate 0.012 0.503 0.081 -0.122 23.2
+(backwardation, lowest y) NW[p] (0.000) (0.000) (0.014) (0.009)
+P2 Estimate -0.001 0.493 -0.075 -0.006 39.9
+(contango, highest y) NW[p] (0.360) (0.000) (0.001) (0.877)
+Q1 Estimate 0.002 0.482 -0.008 -0.103 30.9
+(momentum, lowest) NW[p] (0.425) (0.000) (0.823) (0.007)
+Q2 Estimate 0.006 0.572 -0.028 0.026 38.6
+(momentum, highest) NW[p] (0.001) (0.000) (0.321) (0.419)
+Agriculture Estimate 0.004 0.301 0.002 -0.096 10.3
+NW[p] (0.098) (0.000) (0.958) (0.024)
+Livestock Estimate 0.002 0.507 -0.138 0.133 23.6
+NW[p] (0.518) (0.000) (0.002) (0.025)
+Metal Estimate 0.001 0.562 0.018 -0.054 34.5
+NW[p] (0.747) (0.000) (0.525) (0.250)
+All portfolios 34.11 0.000
+55Table 8
+Performance of conditional asset pricing models
+Here we test conditional asset pricing models, in which the SDF takes the form:
+m = 1  b (AVG   μ )  b (CARRY   μ )  b (CMOM   μ )
+t+1 AVG t+1 AVG CARRY t+1 CARRY CMOM t+1 CMOM
+  b (AVG   μ )(z  μ )
+AVG;z t+1 AVG t z
+  b (CARRY   μ )(z  μ )
+CARRY;z t+1 CARRY t z
+  b (CMOM   μ )(z  μ );
+CMOM;z t+1 CMOM t z
+where z is a conditioning information variable. We ﬁrst report, in Panel A, the Hansen and Jagannathan (1997,
+t
+equation (29)) distance measure (HJ-Dist.), and the associated p-value, which assesses whether the distance measure
+is equal to zero. In Panel B, we test the null hypothesis b = b = b  0 against the alternative that
+AVG;z CARRY;z CMOM;z
+at least one is different from zero. Panel C tests the individual parameter restriction b  0, b  0, and
+AVG;z CARRY;z
+b  0. The p-values rely on the Newey and West (1987) procedure, with lags selected automatically according
+CMOM;z
+to Newey and West (1994). In our two-step GMM implementation, we demean each factor and z . The conditioning
+t
+variable ln(y)1 (ln(y)1 ) reﬂects the slope of the futures curves, averaged across all commodities in
+t t
+ln(y )<0 ln(y )>0
+t t
+backwardation (contango).
+Panel A: Panel B: Panel C: Exclusion restrictions on individual
+interaction terms
+HJ Dist. test All b = 0 b = 0 b = 0 b = 0
+k;z AVG;z CARRY;z CMOM;z
+—————— —————— —————— —————— ——————
+2 2 2 2
+z Dist. p-val. c (3) NW[p] c (1) NW[p] c (1) NW[p] c (1) NW[p]
+t
+I. z reﬂects commodity market developments
+t
+Open interest growth 0.006 0.12 9.35 0.03 5.91 0.02 9.36 0.00 5.97 0.02
+DVol 0.003 0.98 12.43 0.01 4.98 0.03 0.26 0.61 4.43 0.04
+t
+II. z reﬂects business conditions
+t
+Log dividend yield 0.006 0.31 7.57 0.06 5.81 0.02 0.28 0.60 5.75 0.02
+Currency returns (FXjUSD) 0.003 0.95 9.52 0.02 0.66 0.42 0.10 0.75 3.90 0.05
+Industrial production growth 0.006 0.25 5.92 0.12 2.56 0.11 0.10 0.75 0.43 0.51
+Term spread 0.007 0.14 6.22 0.10 1.72 0.19 3.53 0.06 2.82 0.09
+III. z reﬂects dynamics of the commodity futures curves
+t
+ln(y)1 0.006 0.15 3.97 0.27 0.84 0.36 3.81 0.05 1.00 0.32
+t ln(y )<0
+t
+ln(y)1 0.007 0.12 3.05 0.38 2.47 0.12 2.83 0.09 2.42 0.12
+t
+ln(y )>0
+t
+56Table 9
+Time-series regressions with a three-factor model: Individual commodities
+i i i i i i
+Results are based on the time-series regression: er =a +b AVG +b CARRY +b CMOM +e ,
+t t t
+t AVG CARRY CMOM t
+for i= 1;:::;29. We report the coefﬁcient estimates and the p-values in parentheses. The p-values are based on the
+Newey and West (1987) procedure with lags selected automatically according to Newey and West (1994).
+2
+Commodity a b b b R
+AVG CARRY CMOM
+Estimate NW[p] Estimate NW[p] Estimate NW[p] Estimate NW[p] (%)
+Barley -0.009 (0.02) 0.452 (0.00) -0.096 (0.08) 0.040 (0.38) 10.8
+Cocoa 0.000 (0.95) 0.770 (0.00) 0.108 (0.25) -0.025 (0.73) 12.0
+Coffee 0.006 (0.25) 0.795 (0.00) -0.003 (0.97) -0.136 (0.10) 8.5
+Corn -0.006 (0.03) 1.168 (0.00) -0.050 (0.55) -0.032 (0.58) 40.3
+Cotton 0.001 (0.82) 0.674 (0.00) 0.026 (0.60) -0.045 (0.34) 13.3
+Lumber -0.006 (0.10) 0.516 (0.00) -0.090 (0.11) -0.029 (0.62) 6.8
+Oats -0.004 (0.33) 1.252 (0.00) -0.208 (0.14) 0.043 (0.65) 31.8
+Orange juice 0.003 (0.48) 0.459 (0.00) -0.015 (0.82) -0.130 (0.04) 4.5
+Rough rice -0.004 (0.53) 0.643 (0.00) -0.110 (0.30) -0.007 (0.93) 6.7
+Soybeans -0.003 (0.21) 1.382 (0.00) 0.002 (0.97) -0.003 (0.94) 47.2
+Soybean meal -0.001 (0.84) 1.426 (0.00) -0.025 (0.79) 0.019 (0.82) 37.4
+Soybean oil -0.001 (0.77) 1.394 (0.00) 0.068 (0.38) -0.039 (0.61) 37.0
+Sugar 0.003 (0.60) 1.012 (0.00) -0.181 (0.19) 0.084 (0.38) 11.9
+Wheat -0.003 (0.26) 1.115 (0.00) -0.131 (0.01) -0.019 (0.67) 33.9
+Crude oil 0.003 (0.57) 1.415 (0.00) 0.195 (0.08) -0.027 (0.81) 29.4
+Heating oil 0.006 (0.08) 1.287 (0.00) 0.319 (0.01) 0.002 (0.98) 25.8
+Natural gas -0.013 (0.12) 1.595 (0.00) 0.105 (0.58) 0.156 (0.44) 16.7
+Propane 0.004 (0.61) 3.128 (0.00) 0.533 (0.08) 0.233 (0.17) 30.8
+RBOB gasoline 0.008 (0.40) 1.431 (0.00) 0.300 (0.14) -0.202 (0.19) 43.8
+Unleaded gasoline 0.010 (0.05) 2.076 (0.00) 0.291 (0.02) -0.056 (0.68) 30.0
+Feeder cattle 0.002 (0.29) 0.270 (0.00) -0.038 (0.34) -0.027 (0.57) 4.8
+Lean hogs 0.003 (0.30) 0.762 (0.00) -0.028 (0.62) -0.147 (0.01) 17.8
+Live cattle 0.003 (0.14) 0.446 (0.00) -0.043 (0.28) -0.024 (0.53) 12.5
+Pork belly -0.003 (0.49) 1.004 (0.00) 0.132 (0.17) -0.175 (0.01) 15.6
+Copper 0.002 (0.58) 0.883 (0.00) -0.033 (0.58) 0.059 (0.27) 20.5
+Gold -0.001 (0.72) 0.675 (0.00) -0.068 (0.15) 0.097 (0.14) 22.5
+Palladium 0.003 (0.49) 1.401 (0.00) 0.006 (0.95) 0.151 (0.13) 28.2
+Platinum 0.000 (0.87) 1.063 (0.00) -0.071 (0.31) 0.115 (0.16) 31.1
+Silver -0.001 (0.88) 1.173 (0.00) -0.220 (0.03) 0.235 (0.07) 27.7
+57Table 10
+Cross-sectional asset pricing tests: Individual commodities
+l
+Reported are the factor risk premia (ll) estimated using Fama-MacBeth regressions. The underlying SDF is:
+m = 1  b AVG   b CARRY   b CMOM , where AVG is the average factor (excess
+t+1 AVG t+1 CARRY t+1 CMOM t+1 t+1
+return obtained by holding all commodities available), CARRY is the carry factor (which corresponds to the re-
+t+1
+turns of strategy C5), and CMOM is the momentum factor (which corresponds to the returns of strategy M5).
+t+1
+In Panel A, the parameters are estimated using a Fama-MacBeth speciﬁcation in which, in the ﬁrst step, we run a
+time-series regression of returns on the factors and, in the second step, we run a cross-sectional regression of average
+returns on the betas. For this speciﬁcation, the p-values are computed using both the Newey and West (1987) pro-
+cedure without (with) the Shanken (1992) correction in parentheses (curly brackets), as well as the OLS uncentered
+2 2
+R and the c tests corresponding to the null hypothesis that the pricing errors are zero, with p-values computed
+both based on the Newey-West and Shanken standard errors. In Panel B, we implement the following modiﬁed
+Fama-MacBeth procedure. In the ﬁrst step we model the time-variation in beta coefﬁcients on each commodity on
+carry and momentum using the Kalman Filter. In the second step, we follow the more traditional implementation of
+the Fama-MacBeth procedure described in Cochrane (2005, pages 245–247). Panel B does not report results using
+2
+the Shanken correction, as they cannot be computed. The R values are not reported, as they are not comparable
+to the ones in Panel A. The Newey-West covariance matrix has been adapted for the presence of missing values.
+In particular, we construct the variance-covariance matrix using pairwise commodity returns series. The procedure
+requires that each pair of commodities overlaps, and this holds in all cases except for two commodities, i.e., barley
+and RBOB gasoline. Given that we cannot have missing values in the variance covariance matrix, we omit these two
+commodities from our analysis and proceed with 27 commodities instead of 29. The variance covariance matrix of
+the factors uses Newey-West estimates with automatic lags. The one for the variance-covariance matrix of residuals
+uses Newey-West standard errors with lags equal to the ones of the variance covariance matrix of the factors.
+Panel A: Fama-MacBeth results assuming constant betas
+Factor risk premia Pricing errors
+2 2 2
+l l l R c c
+AVG CARRY CMOM
+NW SH
+(p-val.) fp-val.g
+0.004 0.018 0.002 76.8 37.12 34.84
+(0.06) (0.07) (0.88) (0.04) f0.07g
+f0.06g f0.08g f0.88g
+Panel B: Fama-MacBeth results when time-varying betas are modeled using
+the Kalman ﬁlter
+Factor risk premia Pricing errors
+2
+l l l c
+AVG CARRY CMOM
+NW
+(p-val.)
+0.005 0.030 0.012 33.79
+(0.04) (0.01) (0.31) (0.14)
+58Table 11
+Relation of the commodity factors to future real GDP growth
+We report the coefﬁcient estimates from the following predictive regressions with overlapping observations
+at the quarterly frequency:
+ln(GDP =GDP)=q +q AVG +q CARRY +q CMOM +e and k2f1;2;3;4g;
+t+k t 0 AVG t CARRY t CMOM t t+k
+where GDP refers to the real GDP of the G7 countries (source: Datastream, ticker G7OCMP03D). The p-
+values based on the Newey and West (1987) covariance estimator, in which lags are automatically selected
+according to Newey and West (1994)), are denoted by NW[p]. Additionally, the p-values based on the
+Hodrick (1992) 1B covariance estimator under the null of no predictability are denoted by H[p]. Adjusted
+2
+2
+R is reported as R (in %), while the J[p] column reports the p-values for the null hypothesis that the slope
+coefﬁcients are jointly equal to zero. The sample period is from 1970:Q1 to 2011:Q3.
+Predictive slope coefﬁcients
+2
+Horizon q q q q R J[p]
+0 AVG CARRY CMOM
+1 quarter Estimate 0.01 0.03  0.01  0.01 13.8
+NW[p] (0.00) (0.02) (0.06) (0.00) (0.00)
+H[p] h0.00i h0.04i h0.09i h0.01i h0.02i
+2 quarters Estimate 0.01 0.04  0.02  0.02 11.1
+NW[p] (0.00) (0.03) (0.06) (0.00) (0.02)
+H[p] h0.00i h0.03i h0.00i h0.00i h0.00i
+3 quarters Estimate 0.02 0.04  0.03  0.02 9.3
+NW[p] (0.00) (0.08) (0.05) (0.02) (0.02)
+H[p] h0.00i h0.04i h0.00i h0.00i h0.00i
+4 quarters Estimate 0.03 0.03  0.03  0.03 7.4
+NW[p] (0.00) (0.23) (0.08) (0.00) (0.01)
+H[p] h0.00i h0.16i h0.01i h0.00i h0.00i
+5960
+Table 12
+Relation of the commodity factors to future excess Treasury bond returns
+This table reports the coefﬁcient estimates from the following predictive regressions with overlapping observations at the monthly frequency:
+K
+0 f
+bond bond bond
+er = x + xxx f + e ; with er  ln(1+ r )  ln(1+ r ) and K2f1;3;6;9;12g;
+0 t t+K
+å t+k t+1 t+1 t
+k=1
+0
+where f [AVG CARRY CMOM] . We compute standard errors based on the Hodrick (1992) 1B covariance estimator under the null of no predictability and
+t t t t
+2
+2
+report the corresponding p-values, denoted by H[p]. Adjusted R is reported as R (in %). The analysis is conducted for both one-year and 30-year Treasury bonds
+(source: CRSP), and the sample period is from January 1970 to September 2011. The inference based on the Newey-West p-values agrees with those from H[p],
+hence, the Newey-West p-values are not reported.
+Panel A: Bond returns, one-year maturity Panel B: Bond returns, 30-year maturity
+2 2
+Horizon x x x x R x x x x R
+0 AVG CARRY CMOM 0 AVG CARRY CMOM
+1 month Estimate 0.00 -0.03 0.00 0.00 4.0 0.00 -0.20 -0.02 0.02 5.2
+H[p] h0.00i h0.02i h0.57i h0.50i h0.12i h0.00i h0.53i h0.48i
+3 months Estimate 0.00 -0.04 0.02 -0.01 3.9 0.01 -0.30 0.03 0.03 3.1
+H[p] h0.00i h0.01i h0.01i h0.64i h0.05i h0.01i h0.34i h0.61i
+6 months Estimate 0.01 -0.05 0.02 0.00 2.8 0.01 -0.22 0.05 0.01 0.5
+H[p] h0.00i h0.01i h0.01i h0.06i h0.01i h0.66i h0.03i h0.95i
+9 months Estimate 0.01 -0.07 0.03 0.01 3.1 0.02 -0.21 0.15 -0.01 0.9
+H[p] h0.00i h0.00i h0.00i h0.00i h0.00i h0.39i h0.00i h0.91i
+12 months Estimate 0.01 -0.10 0.02 0.01 3.9 0.03 -0.24 0.13 0.03 0.5
+H[p] h0.00i h0.00i h0.00i h0.00i h0.00i h0.12i h0.00i h0.48iTable 13
+Relation of the commodity factors to future excess equity returns
+This table reports the coefﬁcient estimates from the following predictive regressions with overlapping observations
+at the monthly frequency:
+K
+equity equity equity f
+0
+er = d + ddd f + e ; with er  ln(1+ r )  ln(1+ r ) and K2f1;3;6;9;12g;
+0 t t+K
+å t+1 t+1 t
+t+k
+k=1
+equity
+where er is the excess return of the US value-weighted equity index over month t to t + 1 and
+t+1
+0
+f  [AVG CARRY CMOM] . We compute standard errors based on the Hodrick (1992) 1B covariance es-
+t t t t
+timator under the null of no predictability and report the corresponding p-values, denoted by H[p]. Also reported
+2
+2
+are the results of the restricted predictive regressions withd =d  0. Adjusted R is reported as R (%),
+AVG CMOM
+and the sample period is from January 1970 to September 2011. The inference based on the Newey-West p-values
+agrees with those from H[p], hence, the Newey-West p-values are not reported.
+Horizon Unrestricted predictive Restricted
+regressions regressions
+d =d  0
+AVG CMOM
+2 2
+d d d d R d R
+0 AVG CARRY CMOM CARRY
+1 month 0.01 -0.07 -0.06 0.02 0.4 -0.06 0.4
+h0.01i h0.35i h0.09i h0.45i h0.10i
+3 months 0.02 0.07 -0.15 0.02 0.7 -0.14 0.9
+h0.01i h0.59i h0.01i h0.79i h0.02i
+6 months 0.03 -0.08 -0.16 0.01 0.2 -0.16 0.5
+h0.01i h0.67i h0.09i h0.89i h0.08i
+9 months 0.05 -0.32 -0.27 0.07 1.6 -0.27 1.1
+h0.01i h0.16i h0.03i h0.44i h0.04i
+12 months 0.06 -0.51 -0.32 0.07 2.5 -0.33 1.4
+h0.01i h0.04i h0.04i h0.43i h0.04i
+61Table 14
+Relation of the commodity factors to the future returns of commodity currencies
+This table reports the coefﬁcient estimates from the following predictive regressions with overlapping
+observations at the quarterly frequency (for comparability with Chen, Rogoff, and Rossi (2010)):
+0
+ln(FX =FX) = p + ppp f + e and k2f1;2;3;4g;
+t+k t 0 t t+k
+where ln(FX =FX) represents the equally-weighted returns from a set of commodity currencies (i.e.,
+t+k t
+Australia, Canada, Chile, New Zealand, Norway, and South Africa; see Labuszewski (2012)) with the US
+0
+dollar as the reference currency (i.e., FXjUSD) and f [AVG CARRY CMOM] . We compute standard
+t t t t
+errors based on the Hodrick (1992) 1B covariance estimator under the null of no predictability and report
+2
+2
+the corresponding p-values, denoted by H[p]. Adjusted R is reported as R (in %). The sample period is
+from 1974:Q1 to 2011:Q3. The inference based on the Newey-West p-values agrees with those from H[p],
+hence, the Newey-West p-values are not reported.
+Predictive slope coefﬁcients
+2
+Horizon p p p p R
+0 AVG CARRY CMOM
+1 quarter Estimate 0.01 -0.12 0.03 0.06 6.0
+H[p] h0.02i h0.06i h0.25i h0.03i
+2 quarters Estimate 0.02 -0.09 0.12 0.04 4.0
+H[p] h0.02i h0.27i h0.01i h0.25i
+3 quarters Estimate 0.02 -0.06 0.17 0.07 6.0
+H[p] h0.02i h0.64i h0.00i h0.07i
+4 quarters Estimate 0.03 -0.03 0.18 0.11 5.0
+H[p] h0.02i h0.81i h0.00i h0.01i
+62Table 15
+Contemporaneous association of the commodity factors with economic fundamentals
+All results rely on the univariate regressions:
+AVG = f + fX + e ; CARRY = f + fX + e ; CMOM = f + fX + e ;
+t 0 t t t 0 t t t 0 t t
+where X represents a set of economy-wide fundamentals deﬁned in Appendix C. We standardize X by its
+t t
+standard deviation, thus the reportedf’s represent the exposure of each factor to a one standard deviation
+change in the economic fundamental. We report the Newey and West (1987) p-values (with lags automat-
+ically selected, as in Newey and West (1994)), and denote them by NW[p]. The regression intercepts are
+not reported to save space, and thef coefﬁcients that are statistically signiﬁcant are in bold. The regression
+coefﬁcients have been multiplied by 100.
+Average factor Carry factor Momentum factor
+f NW[p] f NW[p] f NW[p]
+A. Economic activity
+IP growth 0.73 0.00 -0.04 0.88 -0.11 0.77
+B. Equity market
+Equity premium 0.66 0.04 -0.69 0.03 -0.40 0.28
+Size factor 0.30 0.14 -0.17 0.53 -0.27 0.39
+Value factor 0.13 0.50 0.51 0.06 0.64 0.01
+Momentum factor -0.02 0.95 0.68 0.09 1.44 0.00
+Equity variance -0.84 0.02 -0.23 0.33 -0.01 0.98
+C. Bond market
+Term spread -0.36 0.10 0.09 0.73 0.24 0.32
+Default spread -0.44 0.16 0.11 0.75 -0.09 0.78
+D. Commodity market
+Cross-sectional volatility -0.25 0.57 0.96 0.01 0.40 0.27
+Open interest growth 0.93 0.00 0.41 0.12 1.53 0.00
+E. Currency market
+Currency returns (FXjUSD) -0.80 0.00 -0.05 0.86 -0.42 0.22
+Currency variance -0.40 0.27 0.01 0.97 -0.35 0.42
+Currency carry returns 0.33 0.34 -0.18 0.63 0.21 0.46
+F. Liquidity
+TED spread -0.05 0.82 0.10 0.75 0.06 0.87
+63Table Appendix-I
+Descriptive statistics of commodity futures excess returns, frequency of contango, and open interest
+The monthly excess returns are computed using equation (2), which takes into account the ﬁrst notice day conventions
+and also incorporates the interest earned on a fully collateralized futures position. Displayed are the number of
+observations (N), the annualized mean, standard deviation (SD), Sharpe ratio (SR), monthly skewness, and the ﬁrst-
+order autocorrelation (r ). Also reported are (i) the fraction of the months in which a commodity is in contango,
+1
+(1) (0) (0) (1)
+denoted by 1 , where y  F =F , F is the price of the front-month futures contract and F is the price
+t
+ln(y )>0 t t t t
+t
+of the next maturity futures contract; (ii) the mean of ln(y); and (iii) the end of the month open interest, as measured
+t
+by the number of contracts. Our sample starts in January 1970 and ends in September 2011, and the futures data is
+constructed using end-of-day data provided by the CME.
+Commodity N Mean SD SR Skewness r 1 ln(y) Open
+1 ln(y )>0 t
+t
+futures (Mean) interest
+(number)
+Barley 107 -9.83 11.72 -0.84 0.34 -0.01 0.90 0.015 413
+Cocoa 501 5.51 32.21 0.17 0.72 0.00 0.72 0.003 19,587
+Coffee 457 7.81 37.46 0.21 1.18 -0.02 0.68 0.004 21,076
+Corn 501 -0.76 25.91 -0.03 1.12 0.01 0.83 0.018 146,178
+Cotton 501 4.67 25.81 0.18 0.58 0.10 0.69 0.005 21,925
+Lumber 466 -6.42 27.87 -0.23 0.09 0.06 0.66 0.020 2,792
+Oats 500 0.51 31.88 0.02 2.31 -0.04 0.72 0.018 4,967
+Orange juice 501 3.55 31.53 0.11 1.83 -0.04 0.65 0.007 7,886
+Rough rice 301 -2.41 28.70 -0.08 1.28 0.12 0.87 0.021 3,740
+Soybeans 501 4.93 28.55 0.17 1.34 0.03 0.77 0.006 60,111
+Soybean meal 501 8.22 33.12 0.25 2.18 0.06 0.62 0.001 23,806
+Soybean oil 501 8.63 32.74 0.26 1.40 -0.04 0.75 0.001 30,674
+Sugar 501 9.00 42.02 0.21 1.17 0.17 0.62 0.013 58,129
+Wheat 501 0.42 27.10 0.02 0.73 0.07 0.76 0.014 52,989
+Crude oil 342 11.62 33.47 0.35 0.42 0.19 0.46 -0.002 140,095
+Heating oil 390 16.26 35.88 0.45 1.14 0.05 0.65 -0.005 5,452
+Natural gas 257 -4.68 51.02 -0.09 0.60 0.10 0.77 0.018 69,613
+Propane 230 29.31 64.88 0.45 7.01 -0.07 0.65 -0.008 142
+RBOB gasoline 71 18.58 40.77 0.46 -0.59 0.22 0.46 -0.001 6,649
+Unleaded gasoline 264 25.84 40.70 0.63 1.03 0.02 0.42 -0.012 2,044
+Feeder cattle 452 2.68 16.28 0.16 -0.53 -0.01 0.45 0.000 4,102
+Lean hogs 501 5.41 26.04 0.21 0.04 -0.03 0.53 0.013 17,334
+Live cattle 501 5.34 17.51 0.31 -0.26 -0.01 0.49 -0.002 32,505
+Pork belly 499 2.01 36.77 0.05 0.55 -0.07 0.45 0.003 3,309
+Copper 501 7.91 27.94 0.28 0.33 0.17 0.69 0.000 11,504
+Gold 441 2.11 19.57 0.11 0.49 0.02 1.00 0.008 44,645
+Palladium 416 11.47 35.62 0.32 0.41 0.04 0.74 0.005 4,403
+Platinum 501 6.46 27.84 0.23 0.47 0.00 0.76 0.008 7,703
+Silver 501 6.41 34.35 0.19 1.47 0.09 0.98 0.009 19,380
+64Table Appendix-II
+Excess returns of the commodity factors, the commodity indexes, and the four commodity categories
+Panel A ﬁrst reports the descriptive statistics for each of the factors. The average factor, denoted by AVG,
+is the excess return of a long position in all available commodity futures. The carry factor, denoted by
+CARRY, is the return on strategy C5, while the momentum factor, denoted by CMOM, is the return on
+strategy M5. Panel B corresponds to the excess returns of the Goldman Sachs Commodity Index (GSCI,
+source: ticker GSCIEXR in Datastream) and the Commodity Research Bureau index (CRB), while Panel
+C corresponds to the equally weighted commodity returns across four categories. Panel D reports the
+summary statistics for two additional factors (details of the construction are in Appendix C). Our procedure
+for constructing the value factor, denoted by VALUE, is similar to that of Asness, Moskowitz, and Pedersen
+(2013), in that in each month, we rank all the commodities by the ratio of the second nearest maturity
+futures price ﬁve years ago to its current price. We divide the commodities into ﬁve groups and compute
+the next month portfolio returns. The value factor is the return difference between the top and bottom
+quintiles. The DVOL corresponds to the innovation in commodity volatility and is computed following
+Menkhoff, Sarno, Schmeling, and Schrimpf (2012a, equation (4)). For AVG , CARRY , and CMOM we
+t t t
+12
+investigate seasonality of the form: f =u +å u 1 +e , where the 1 ’s are dummy variables for the
+t 0 j j;t t j
+j=2
+months of February through December. We do not ﬁnd evidence of seasonality in the factors.
+PW bootstrap CI
+Mean lower upper SD SR Skewness r 1
+1 er>0
+Panel A: Commodity factors
+AVG 6.27 1.32 12.60 14.32 0.44 0.22 0.05 57.37
+CARRY 16.34 9.36 23.40 22.26 0.73 0.30 0.09 56.77
+CMOM 16.11 9.36 22.92 26.28 0.61 0.34 -0.01 57.37
+Panel B: Commodity indexes
+GSCI 5.43 -0.84 11.52 20.04 0.27 0.06 0.16 54.75
+CRB 3.53 -0.36 8.04 13.56 0.26 -0.06 0.08 52.53
+Panel C: Commodity categories
+Agriculture 3.79 -2.88 11.28 16.78 0.23 0.79 0.00 50.71
+Livestock 4.29 0.12 14.64 19.65 0.22 0.13 -0.01 52.73
+Metal 6.98 -0.84 8.76 22.96 0.30 0.39 0.11 52.53
+Energy 14.20 3.84 24.48 35.18 0.40 1.70 0.08 53.59
+Panel D: Additional commodity factors
+VALUE 6.15 -2.16 14.28 28.17 0.22 -0.19 -0.01 52.61
+DVOL 0.02 -0.12 0.12 0.68 - 0.24 -0.25 -
+65Table Appendix-III
+Membership in the long and short components of the carry and momentum strategies
+Entries under the column labeled “Long (Short)” depict how many months the respective commodity has entered the
+backwardation (contango) component of the carry strategy C5 (Panel A). The next four columns show how many
+months the commodity has entered the long and short components of the momentum strategy M5 (Panel B). For
+example, in 171 (126) months the live cattle (soybean oil) has been among the ﬁve highest backwardated (six-month
+momentum) commodities.
+Panel A: Carry strategy, C5 Panel B: Momentum strategy, M5
+Long Short Long Short
+Live cattle 171 Oats 225 Soybean oil 126 Sugar 139
+Lean hog 168 Lumber 191 Corn 110 Pork belly 123
+Pork belly 118 Lean hog 182 Cocoa 99 Lumber 121
+Sugar 108 Wheat 165 Crude oil 97 Orange juice 112
+Coffee 104 Sugar 158 Cotton 97 Cocoa 111
+Oats 100 Corn 156 Feeder cattle 95 Oats 107
+Lumber 93 Orange juice 103 Gold 90 Natural gas 102
+Orange juice 91 Rough rice 94 Copper 89 Coffee 92
+Cocoa 86 Cocoa 92 Heating oil 87 Corn 88
+Unleaded gas 86 Cotton 92 Unleaded gas 83 Soybean oil 78
+Cotton 85 Coffee 90 Coffee 80 Palladium 75
+Feeder cattle 77 Live cattle 89 Lumber 79 Rough rice 72
+Soybean meal 74 Natural gas 61 Barley 78 Silver 70
+Wheat 69 Platinum 35 Live cattle 75 Lean hog 68
+Heating oil 68 Pork belly 34 Lean hog 72 Wheat 68
+Soybean oil 65 Soybean meal 32 Natural gas 67 Platinum 67
+Copper 57 Feeder cattle 29 Oats 60 Natural gas 65
+Crude oil 50 Unleaded gas 22 Orange juice 59 Soybean meal 59
+Propane 37 Barley 22 Palladium 59 Cotton 56
+Corn 36 Soybean oil 17 Pork belly 57 Heating oil 52
+Natural gas 34 Silver 17 Platinum 50 Crude oil 45
+Palladium 30 Copper 16 Propane 49 Silver 39
+Soybeans 29 Palladium 16 RBOB gasoline 47 Gold 35
+RBOB gasoline 28 Silver 13 Rough rice 44 Unleaded gas 30
+Platinum 24 Crude oil 9 Soybeans 37 Live catttle 29
+Rough rice 20 Heating oil 9 Sugar 32 Feeder cattle 27
+Barley 6 RBOB gasoline 6 Silver 32 Propane 26
+Silver 1 Propane 5 Soybean meal 25 Barley 15
+Gold 0 Gold 0 Wheat 5 RBOB gasoline 9
+66Table Appendix-IV
+Excess returns of long and short legs of the commodity carry and momentum strategies
+This table presents the descriptive statistics of the excess returns generated by the long and short legs of the commod-
+(1) (0) (0)
+ity carry and momentum strategies. Let y  F =F , where F is the price of the front-month futures contract
+t
+t t t
+(1)
+and F is the price of the next maturity futures contract, both observed at the end of month t. A commodity is in
+t
+backwardation if ln(y)< 0 and in contango if ln(y)> 0. The carry strategy entails taking a long (short) futures po-
+t t
+sition in a commodity that is in backwardation (contango) at the end of month t, and we compute the returns over the
+subsequent month. For example, the long (short) leg of the carry strategy C5 contains an equally weighted portfolio
+consisting of ﬁve commodities with the most negative (positive) ln(y). For the momentum strategies, the commodi-
+t
+ties are ranked on the basis of their past six-month performance. Analogously, the long (short) leg of the momentum
+strategy M5 contains an equally weighted portfolio consisting of ﬁve commodities with the highest (lowest) past
+returns. For each of the long and short legs of the strategies, we report the average annualized monthly return and its
+95% conﬁdence interval based on a stationary bootstrap (denoted by PW, lower CI and PW, upper CI) with 10,000
+bootstrap iterations, in which the block size is based on the algorithm of Politis and White (2004), the annualized
+monthly standard deviation (SD), the annualized Sharpe ratio (SR), and the monthly skewness. The percentage of
+months in which the excess return of a strategy is positive is recorded as 1 . There are 501 monthly observations
+er>0
+in our sample from January 1970 to September 2011.
+Panel A: Long leg of carry strategy Panel B: Short leg of carry strategy
+Commodities long backwardation Commodities short contango
+C1 C2 C3 C4 C5 C1 C2 C3 C4 C5
+Mean 15.34 10.47 11.38 12.93 14.14 -6.03 -0.40 0.76 1.34 2.20
+PW, lower CI 2.76 -0.12 2.88 4.92 6.84 -14.16 -6.36 -6.72 -5.64 -4.20
+PW, upper CI 30.72 22.44 22.68 21.84 23.16 1.68 6.24 8.04 7.44 8.28
+SD 37.02 28.68 24.01 21.57 20.89 35.16 25.33 21.88 19.55 18.08
+SR 0.41 0.37 0.47 0.60 0.68 -0.17 -0.02 0.03 0.07 0.12
+Skewness 0.98 0.83 0.67 0.48 0.59 -1.56 -1.23 -1.44 -0.80 -0.48
+1 50.91 52.12 54.95 57.58 55.35 49.29 51.31 50.10 51.31 52.93
+er>0
+Panel C: Long leg of momentum strategy Panel D: Short leg of momentum strategy
+Commodities long winners Commodities short losers
+based on past six-month performance based on past six-month performance
+M1 M2 M3 M4 M5 M1 M2 M3 M4 M5
+Mean 13.00 15.62 11.99 12.39 13.63 -2.25 1.42 1.89 2.31 2.48
+PW, lower CI -0.12 4.80 3.00 3.84 6.00 -11.04 -6.48 -6.00 -4.20 -3.48
+PW, upper CI 27.60 28.80 22.44 23.04 22.08 6.48 9.00 9.12 8.64 8.64
+SD 44.37 34.13 28.40 25.86 24.12 40.50 30.11 25.97 22.98 20.63
+SR 0.29 0.46 0.42 0.48 0.56 -0.06 0.05 0.07 0.10 0.12
+Skewness 0.84 0.82 0.45 0.16 0.19 -1.36 -1.39 -0.86 -0.53 -0.34
+1 54.75 54.55 53.94 56.77 56.97 52.73 51.72 53.94 53.94 53.94
+er>0
+67Table Appendix-V
+Cross-sectional asset pricing results with the average, carry, and momentum factors and expanded
+set of test portfolios
+This table assesses the performance of the three-factor model and its two-factor nested counterparts, when the number
+of test portfolios is expanded to additionally include ﬁve variance portfolios. The variance portfolios are constructed
+as follows. At the end of each month we compute the monthly sum of absolute daily log returns for each commodity
+following Menkhoff, Sarno, Schmeling, and Schrimpf (2012a, equation (4)). We then sort commodities in ﬁve
+equally weighted portfolios according to their variance and compute the next month returns for each portfolio. The
+SDF of the three-factor model is of the form: m = 1  b AVG   b CARRY   b CMOM ,
+t+1 AVG t+1 CARRY t+1 CMOM t+1
+where AVG is the average factor (excess return obtained by holding all commodities available), CARRY is the
+t+1 t+1
+carry factor, and CMOM is the momentum factor. Reported are also results for the restricted versions of the SDF
+t+1
+2
+that impose b  0 and b  0, respectively. We report thec test corresponding to the null hypothesis that
+CMOM CARRY
+the pricing errors are zero, with p-values computed both based on the Newey-West and Shanken standard errors. The
+Hansen and Jagannathan (1997, equation (29)) distance measure (HJ-Dist.), with the associated p-value, is shown,
+which tests whether the distance measure is equal to zero.
+Three factor model Omitting momentum Omitting carry
+2 2 2 2 2 2
+Portfolios c c HJ-Dist. c c HJ-Dist. c c HJ-Dist.
+NW SH NW SH NW SH
+Carry, Momentum, Industry, Variance 16.40 15.71 0.007 25.64 24.39 0.008 35.74 34.53 0.013
+(17 portfolios) (0.29) f0.33g (0.281) (0.04) f0.06g (0.21) (0.00) f0.00g (0.00)
+Carry, Momentum, Variance 12.89 12.35 0.007 22.81 21.68 0.008 28.93 27.91 0.012
+(14 portfolios) (0.30) f0.34g (0.135) (0.03) f0.04g (0.10) (0.00) f0.01g (0.00)
+6869
+Table Online-I
+First notice day conventions adopted by the CME and start and end dates for the commodity futures sample
+This table describes the ﬁrst notice day (denoted by FN) convention for each of the 29 commodities. FN is either speciﬁed in the contract speciﬁcation or can be inferred from the
+product calendar (see, for instance, Shwayder and James (2011), Gorton, Hayashi, and Rouwenhorst (2013), Hong and Yogo (2012), and Yang (2013)). Our futures data is constructed
+using end-of-day data provided by the Chicago Mercantile Exchange (CME).
+Category Commodity Start End First notice day convention
+futures
+Agriculture Barley 1994:07 2003:05 FN is usually the last business day of the month preceding the contract month
+Cocoa 1970:01 2011:09 FN is usually ten business days prior to ﬁrst business day of contract month
+Coffee 1973:09 2011:09 FN is usually seven business days prior to ﬁrst business day of contract month
+Corn 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Cotton 1970:01 2011:09 FN is usually around the 15th of the contract month
+Lumber 1972:12 2011:09 FN is usually around the 15th of the contract month
+Oats 1970:02 2011:09 FN is usually the last business day of the month preceding the contract month
+Orange juice 1970:01 2011:09 FN is usually the ﬁrst business day of contract month
+Rough rice 1986:09 2011:09 FN is usually the last business day of the month preceding the contract month
+Soybeans 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Soybean meal 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Soybean oil 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Sugar 1970:01 2011:09 FN is usually the ﬁrst business day of the contract month
+Wheat 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Energy Crude oil 1983:04 2011:09 FN is usually around the 25th calendar day of the month preceding the contract month
+Heating oil 1979:04 2011:09 FN is usually within the ﬁrst two business days of the contract month
+Natural gas 1990:05 2011:09 FN is usually the last business day of the month preceding the contract month
+Propane 1987:09 2006:10 FN is usually within the ﬁrst two business days of the contract month
+RBOB gasoline 2005:11 2011:09 FN is usually within the two business days of the contract month
+Unleaded gasoline 1985:01 2006:12 FN is usually within the ﬁrst two business days of the contract month
+Livestock Feeder cattle 1973:10 2011:05 No ﬁrst notice day, last trade day is usually the last Thursday of the contract month
+Lean hogs 1970:01 2011:09 No ﬁrst notice day, last trade day is usually around the 10th of the contract month
+Live cattle 1970:01 2011:09 FN is usually within the ﬁrst four to ten days of the contract month
+Pork belly 1970:01 2011:07 FN is usually within the ﬁrst four to ten days of the contract month
+Metal Copper 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Gold 1975:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Palladium 1977:02 2011:09 FN is usually the last business day of the month preceding the contract month
+Platinum 1970:01 2011:09 FN is usually the last business day of the month preceding the contract month
+Silver 1970:01 2011:09 FN is usually the last business day of the month preceding the contract monthTable Online-II
+Open interest and number of commodities across the futures curve
+(0) (1)
+For a given commodity, let F be the price of the front-month futures contract, F be the price of the next maturity
+t t
+(n)
+futures contract, and likewise F be the price of the ﬁnal futures contract available for trading, where n can vary
+t
+(0) (n)
+across commodities. The futures prices F through F describe the futures curve for a given commodity. Tabulated
+t t
+below are the number of commodities, the open interest, and the number of observations across different points on
+the futures curve. For example, we have 29 commodities to construct the carry strategy if we use the ﬁrst contract,
+while we have only 17 commodities available to construct the carry strategy if we use the sixth contract.
+Slope of the futures curve is based on:
+           
+(1) (2) (3) (4) (5) (6)
+F F F F F F
+ln ln ln ln ln ln
+(0) (0) (0) (0) (0) (0)
+F F F F F F
+t t t t t t
+Number of commodities 29 29 29 27 23 17
+Open interest (end of month) 27,904 15,529 9,761 7,045 5,631 5,161
+Number of observations 12,207 12,071 11,831 10,659 6,958 4,532
+70Table Online-III
+Relation of the commodity factors to future real GDP growth, accounting for oil price growth
+We report the coefﬁcient estimates from the following predictive regressions with overlapping observations
+at the quarterly frequency:
+ln(GDP =GDP)=q +q AVG +q CARRY +q CMOM +f OIL growth +e ;
+t+k t 0 AVG t CARRY t CMOM t OIL t+k
+t
+where k2f1;2;3;4g, GDP refers to the real GDP of the G7 countries (source: Datastream, ticker
+G7OCMP03D), and OIL growth is the growth rate of West Texas intermediate oil price (Source: Fed-
+t
+eral Reserve Bank–St. Louis). The p-values based on the Newey and West (1987) covariance estimator,
+with lags automatically selected according to Newey and West (1994)), are denoted by NW[p]. Addition-
+ally, the p-values based on the Hodrick (1992) 1B covariance estimator under the null of no predictability
+2
+2
+are denoted by H[p]. Adjusted R is reported as R (in %). The sample period is from 1970:Q1 to 2011:Q3.
+Predictive slope coefﬁcients
+2
+Horizon q q q q f R
+0 AVG CARRY CMOM OIL
+1 quarter Estimate 0.01 0.03 -0.01 -0.01 0.00 13.3
+NW[p] (0.00) (0.01) (0.07) (0.01) (0.86)
+H[p] h0.00i h0.02i h0.12i h0.01i h0.90i
+2 quarters Estimate 0.01 0.05 -0.01 -0.02 0.00 10.7
+NW[p] (0.00) (0.02) (0.05) (0.01) (0.72)
+H[p] h0.00i h0.01i h0.01i h0.00i h0.78i
+3 quarters Estimate 0.02 0.04 -0.03 -0.02 0.00 8.9
+NW[p] (0.00) (0.06) (0.06) (0.02) (0.61)
+H[p] h0.00i h0.02i h0.00i h0.00i h0.64i
+4 quarters Estimate 0.03 0.04 -0.03 -0.03 -0.01 7.2
+NW[p] (0.00) (0.16) (0.10) (0.01) (0.32)
+H[p] h0.00i h0.08i h0.02i h0.00i h0.35i
+71Table Online-IV
+Correlations between the long and short legs of the carry and momentum strategies
+We report the correlation of the commodity factors and the long and short components of carry and mo-
+long
+short
+mentum strategies. The long (short) leg of the carry trade returns is denoted by CARRY (CARRY ).
+t
+t
+long
+short
+Similarly, the long (short) leg of the momentum returns is denoted by CMOM (CMOM ). The
+t
+t
+calculation of the returns of the long and short legs of the strategies follows the procedure described in
+Appendix A and implemented in Appendix B.
+long long
+short
+AVG CARRY CMOM CARRY CARRY CMOM
+t t t
+t t t
+long
+CARRY 0.71 0.65 0.21
+t
+short
+CARRY -0.71 0.48 0.10 -0.35
+t
+long
+CMOM 0.74 0.25 0.67 0.62 -0.41
+t
+short
+CMOM -0.73 0.06 0.49 -0.46 0.61 -0.32
+t
+721970:01 1980:01 1990:01 2000:01 2010:01
+date
+1970:01 1980:01 1990:01 2000:01 2010:01
+date
+Mean= 0.000,     SD= 0.085,     Min= − 0.401,     Max= 0.394
+1970:01 1980:01 1990:01 2000:01 2010:01
+date
+Fig. 1. Returns of commodity carry and momentum strategies
+Plotted in the top (middle) panel is the time-series of the excess returns generated by the carry factor
+cm
+CARRY (the momentum factor CMOM ). The bottom panel plots the time-series of er  CARRY 
+t t t
+t
+cm
+CMOM , for t = 1;:::;T and reports the mean, standard deviation, minimum and maximum of the er
+t
+t
+(1) (0)
+series. The shaded areas indicate NBER recessions. Let y  F =F , whereby, at the end of month t, a
+t t t
+commodity is in backwardation if ln(y)< 0 and in contango if ln(y)> 0. The carry strategy entails taking
+t t
+a long position in the ﬁve commodities with the lowest ln(y) and a short position in the ﬁve commodities
+t
+with the highest ln(y). The momentum strategy entails taking a long position in the ﬁve commodities
+t
+with the highest returns over the previous six months and a short position in the ﬁve commodities with the
+lowest returns over the previous six months. Our sample period is January 1970 to September 2011. The
+monthly returns of the carry and momentum strategies co-move with a correlation of 0:27.
+73
+Return difference between carry and momentum factors Returns of momentum strategy (M5, annualized) Returns of carry strategy (C5, annualized)
+−.4 −.3 −.2 −.1 0 .1 .2 .3 .4 .5 −.2 0 .2 .4 .6 −.2 0 .2 .4 .6Mean=0.95,     SD=1.02,     Min=0,     Max=5,     Q1=0,     Q2=1,     Q3=1
+1970:01 1980:01 1990:01 2000:01 2010:01
+date
+Fig. 2. Overlap in the commodities selected by the carry and momentum factors
+Plotted is the time-series of the number of commodities selected by both the carry and the momentum
+factors. We compute this overlap in two steps. First, we identify the commodities in the long legs of
+the carry and momentum strategies each month and compute the overlap (the maximum overlap is ﬁve).
+Second, we compute the same quantity for the short legs of the strategies (the maximum overlap is ﬁve).
+The plotted overlap is the sum of the overlaps of the long and short legs of the strategies. We report the
+mean, standard deviation, minimum, maximum, as well as the three quartiles (Q1, Q2, Q3) of the overlap
+distribution. The carry factor entails taking a long position in the ﬁve commodities with the lowest ln(y)
+t
+and a short position in the ﬁve commodities with the highest ln(y). The momentum factor entails taking
+t
+a long position in the ﬁve commodities with the highest returns over the previous six months and a short
+position in the ﬁve commodities with the lowest returns over the previous six months. Our sample period
+is January 1970 to September 2011.
+74
+Commodity overlap
+0 1 2 3 4 5 6 7 8 9 10Mean=0.270,           SD=0.098,           Min= −0.235,           Max=0.675
+1970:01 1980:01 1990:01 2000:01 2010:01
+date
+Fig. 3. Dynamic correlation between the carry and momentum factors
+The plotted correlation between the carry and momentum factors is based on the dynamic conditional
+correlation model of Engle (2002). The estimated correlation relies on a bivariate GARCH (1,1) model
+for carry and momentum factors. We report the mean, standard deviation, minimum, and maximum of the
+correlation series. The carry factor entails taking a long position in the ﬁve commodities with the lowest
+ln(y) and a short position in the ﬁve commodities with the highest ln(y). The momentum factor entails
+t t
+taking a long position in the ﬁve commodities with the highest returns over the previous six months and a
+short position in the ﬁve commodities with the lowest returns over the previous six months. Our sample
+period is January 1970 to September 2011.
+75
+Correlation between carry and momentum
+−.4 −.2 0 .2 .4 .6 .8 1Panel A: unconditional three−factor model Panel B: conditioning variable is open interest
+0.18 1 0.18
+9
+1
+0.16 0.16
+2 2 9
+R = 93.4% R = 96.2%
+0.14 0.14 2
+MAE = 1.96% MAE = 1.39%
+0.12 0.12
+2
+0.1 0.1
+8
+0.08 0.08
+8
+3
+12
+7
+10
+0.06 0.06
+3 12
+7
+10
+0.04 0.04
+6
+6 11
+11
+0.02 0.02
+5
+0 0
+4
+4
+5
+−0.02 −0.02
+−0.02 0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 0.18 −0.02 0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 0.18
+Realized returns Realized returns
+Panel C: conditioning variable is  ΔVol
+t Panel D: conditioning variable is log dividend yield
+1
+0.18 0.18 1
+9
+0.16 0.16
+9
+2 2
+R = 94.8% R = 95.1%
+0.14 0.14
+MAE = 1.74% MAE = 1.76%
+0.12 0.12
+2
+2
+0.1 0.1
+0.08 8 0.08 8
+7
+12
+3 7
+11
+12
+0.06 0.06
+3
+6
+10
+10
+0.04 0.04
+6
+11
+0.02 0.02
+0 0
+5 5 4
+4
+−0.02 −0.02
+−0.02 0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 0.18 −0.02 0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 0.18
+Realized returns Realized returns
+Fig. 4. Realized versus ﬁtted returns across the commodity portfolios
+Plotted are the realized returns (x-axis) and the ﬁtted returns (y-axis) corresponding to the commodity port-
+folios indexed from 1 to 12 (see Table 5). We compare the performance of the unconditional three-factor
+model (equation (6)) against the one associated with three selected conditional pricing models (equation
+(8)). The conditional models are obtained by incorporating the following conditioning variables: (i) open
+interest growth, (ii) change in commodity volatilityDVol , and (iii) log dividend yield. The ﬁtted average
+t
+2
+returns are based on equation (5). We also display the uncentered R ’s and the mean absolute errors (de-
+12
+noted by MAE), as goodness-of-ﬁt yardsticks. The MAE is computed as(1=12) jFitted  Realizedj,
+å
+i i
+i=1
+in monthly percentage units.
+76
+Fitted returns Fitted returns
+Fitted returns Fitted returnsPanel A1. Bottom commodity − barley Panel B1. Top commodity − unleaded gas
+1 0.9
+0.9
+0.8
+0.8
+0.7
+0.7
+0.6
+0.6
+0.5
+0.5
+0.4
+0.4
+0.3
+0.3
+0.2
+0.2
+0.1
+0.1
+0 0
+−5 −4.5 −4 −3.5 −3 −2.5 −2 −1.5 −1 −0.5 0 0 1 2 3 4 5 6 7 8
+t−statistic of alpha t−statistic of alpha
+Panel A2. Second−to−bottom commodity − corn Panel B2. Second−to−top commodity − heating oil
+1
+1
+0.9
+0.8
+0.8
+0.7
+0.6
+0.6
+0.5
+0.4
+0.4
+0.3
+0.2
+0.2
+0.1
+0 0
+−4 −3.5 −3 −2.5 −2 −1.5 −1 −0.5 0 0 0.5 1 1.5 2 2.5 3 3.5 4
+t−statistic of alpha t−statistic of alpha
+t
+Fig. 5. Estimated alpha tt-statistics vs. kernel density estimates of the bootstrapped distributions
+Plotted are the estimated alpha t-statistics versus the kernel density estimates of the bootstrapped distri-
+bution of the alpha t-statistic, computed following the procedure described in Kosowski, Timmermann,
+Wermers, and White (2006, Section III.B.1). The bootstrap procedure is as follows:
+1. For each commodity i= 1;:::;29; we estimate the model:
+i i i i i i
+er =a +b AVG +b CARRY +b CMOM +e ;
+t t t
+t AVG CARRY CMOM t
+i i i i i
+ˆ ˆ ˆ
+ˆ ˆ ˆ
+and savefa;t i;b ;b ;b g andfe ;t= t ;:::;t g.
+a ˆ i;min i;max
+AVG CARRY CMOM t
+i
+2. For each commodity i, we generate b= 1;:::;1000 samples by imposing the nulla = 0:
+i;b i;b
+i i i
+ˆ ˆ ˆ
+er =b AVG +b CARRY +b CMOM +e ˆ :
+t t t
+t AVG CARRY CMOM t
+3. We estimate:
+i;b i;b i;b i;b i;b
+i;b
+er =a +b AVG +b CARRY +b CMOM +e ;
+t t t
+t t
+AVG CARRY CMOM
+ˆ
+and saveft i;b;i= 1;:::;29;b= 1;:::;1000g.
+ˆ
+a
+4. The distribution of alpha t-statistic for the bottom commodity (barley, reported in Panel A1) is con-
+structed as the distribution of the minimum alpha t-statistic generated across all bootstraps. We
+follow a similar procedure for the other three individual commodities that have t-statistics signiﬁ-
+cant at the 10% level in Table 9, that is, corn (Panel A2), unleaded gas (Panel B1), and heating oil
+(Panel B2).
+The x-axis shows the t-statistic, and the y-axis shows the kernel density. The vertical line represents the
+t-statistic of alpha estimated using the return time-series.
+77
+Kernel density estimate Kernel density estimate
+Kernel density estimate Kernel density estimatePanel A1 − corn Panel A2 − corn
+1
+0.04
+Min=−0.779 Max=0.639 SD=0.137 Min=−0.079 Max=0.008 SD=0.011
+0.8
+0.02
+0.6
+0
+0.4
+−0.02
+0.2
+−0.04
+0
+−0.06
+−0.2
+−0.08
+−0.4
+−0.1
+−0.6
+−0.12
+−0.8
+−0.14
+−1
+1970 1975 1980 1985 1990 1995 2000 2005 2010 2015 1970 1975 1980 1985 1990 1995 2000 2005 2010 2015
+year year
+Panel B1 − silver Panel B2 − silver
+−0.12 1.4
+Min=−0.368 Max=1.537 SD=0.164
+Min=−0.213 Max=−0.156 SD=0.005
+1.2
+−0.14
+1
+−0.16
+0.8
+0.6
+−0.18
+0.4
+−0.2
+0.2
+0
+−0.22
+−0.2
+−0.24
+−0.4
+1970 1975 1980 1985 1990 1995 2000 2005 2010 2015 1970 1975 1980 1985 1990 1995 2000 2005 2010 2015
+year year
+Fig. 6. Time-varying coefﬁcients estimated using the Kalman ﬁlter
+ˆ i ˆ i
+Plotted are the coefﬁcientsb andb for corn and silver, estimated using the Kalman
+CARRY; tjt 1 CMOM; tjt 1
+ﬁlter. For each commodity i= 1;:::;29, the model is speciﬁed as follows:
+i i i i i i i i
+er =a +b AVG +b CARRY +b CMOM +e e N(0;R);
+t t t
+t AVG CARRY;t CMOM;t t t
+where
+i i i i i i i
+b = μ + F b + v v N(0;Q );
+CARRY;t 1 1 CARRY;t 1 1;t 1;t 1
+i i i i i i i
+b = μ + F b + v v N(0;Q ):
+CMOM;t 2 2 CMOM;t 1 2;t 2;t 2
+The model is cast in state-space form and estimated via maximum likelihood, following Kim and Nelson
+i
+ˆ
+(1999, chapter 3). The following percentiles of the standard deviation distributions of b and
+CARRY; tjt 1
+i
+ˆ
+b across the 29 commodities are illustrative of the time-varying nature of the coefﬁcients.
+CMOM; tjt 1
+Percentile 10th 25th 50th 75th 90th
+ˆ i
+b 0.002 0.004 0.057 0.137 0.253
+CARRY; tjt 1
+i
+ˆ
+b 0.002 0.010 0.720 0.130 0.277
+CMOM; tjt 1
+All 0.002 0.007 0.057 0.137 0.278
+The standard deviations are expressed in monthly units.
+78
+Time−varying beta on carry
+Time−varying beta on carry
+Time−varying beta on momentum
+Time−varying beta on momentum1 2 3 4 5 6 7 8 9 10 11 12
+Formation period (in months)
+1 2 3 4 5 6 7 8 9 10 11 12
+Formation period (in months)
+Fig. 7. Average returns and Sharpe ratios of momentum strategies across formation periods
+Plotted are the annualized average monthly returns (top panel) and Sharpe ratios (bottom panel) of momen-
+tum strategies with formation periods J that range from 1 to 12 months. Speciﬁcally, we report the results
+for strategy M5 (see also the caption to Table 1), which entails taking a long position in the ﬁve com-
+modities with the highest returns over the previous J months and a short position in the ﬁve commodities
+with the lowest returns over the previous J months. We measure past returns using the geometric average
+(equation (A3)). Our sample period is January 1970 to September 2011.
+79
+Annualized Sharpe ratio Annualized returns
+.2 .25 .3 .35 .4 .45 .5 .55 .6 .65 .7 .75 .8 .1 .11 .12 .13 .14 .15 .16 .17 .18 .19 .2 .21 .22 .23 .24</body></html>
